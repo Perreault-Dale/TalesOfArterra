@@ -1,0 +1,35 @@
+package atariaGame;
+
+import java.awt.Graphics; //inport graphics
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import javax.swing.JFrame; // inport extension
+
+
+public class Map extends JFrame { // game window
+
+ 
+    
+    public Map(){ //constructor
+        setTitle("Leaving Home");
+        setSize(500,500); // size of window
+        setResizable(false); 
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // lets game window close on X
+        
+        
+        
+    }
+   
+    public void paint(Graphics g){
+        g.drawString("Welcome to Edinburg", 150, 150);
+    } 
+    public static void main(String[] args) {
+        
+        new Map();
+    
+        
+    
+    }
+    
+}
