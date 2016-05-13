@@ -1,0 +1,34 @@
+
+package atariaGame;
+
+import java.util.Vector;
+import java.util.Enumeration;
+
+
+public class Location {
+    
+    //member variables
+    private int locationID;
+    private int mapID;
+    private int coodinates;
+    private String waypoint; //boolean
+    private String visited;  //boolean
+    private String blocked;  //boolean
+    private String description;
+    
+    
+    public Location(){
+       
+       
+        
+        
+    }
+    
+    
+    
+    public static void main(String[] args){
+       
+        Location Edinburg = locationID.getLocationId();
+        
+    }
+}
