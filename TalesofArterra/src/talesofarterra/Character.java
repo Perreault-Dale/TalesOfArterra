@@ -1,6 +1,7 @@
 package talesofarterra;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 /**
  *
@@ -129,6 +130,84 @@ public class Character implements Serializable {
 
     public void setUseWeapons(boolean[] useWeapons) {
         this.useWeapons = useWeapons;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 41 * hash + Arrays.hashCode(this.name);
+        hash = 41 * hash + this.gender;
+        hash = 41 * hash + this.level;
+        hash = 41 * hash + this.experience;
+        hash = 41 * hash + Arrays.hashCode(this.alignment);
+        hash = 41 * hash + Arrays.hashCode(this.abilities);
+        hash = 41 * hash + Arrays.hashCode(this.skills);
+        hash = 41 * hash + Arrays.hashCode(this.feats);
+        hash = 41 * hash + this.baseAttack;
+        hash = 41 * hash + this.armorClass;
+        hash = 41 * hash + this.hitPoints;
+        hash = 41 * hash + this.maxHP;
+        hash = 41 * hash + Arrays.hashCode(this.useWeapons);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Character other = (Character) obj;
+        if (this.gender != other.gender) {
+            return false;
+        }
+        if (this.level != other.level) {
+            return false;
+        }
+        if (this.experience != other.experience) {
+            return false;
+        }
+        if (this.baseAttack != other.baseAttack) {
+            return false;
+        }
+        if (this.armorClass != other.armorClass) {
+            return false;
+        }
+        if (this.hitPoints != other.hitPoints) {
+            return false;
+        }
+        if (this.maxHP != other.maxHP) {
+            return false;
+        }
+        if (!Arrays.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Arrays.equals(this.alignment, other.alignment)) {
+            return false;
+        }
+        if (!Arrays.equals(this.abilities, other.abilities)) {
+            return false;
+        }
+        if (!Arrays.equals(this.skills, other.skills)) {
+            return false;
+        }
+        if (!Arrays.equals(this.feats, other.feats)) {
+            return false;
+        }
+        if (!Arrays.equals(this.useWeapons, other.useWeapons)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Character{" + "name=" + name + ", gender=" + gender + ", level=" + level + ", experience=" + experience + ", alignment=" + alignment + ", abilities=" + abilities + ", skills=" + skills + ", feats=" + feats + ", baseAttack=" + baseAttack + ", armorClass=" + armorClass + ", hitPoints=" + hitPoints + ", maxHP=" + maxHP + ", useWeapons=" + useWeapons + '}';
     }
 
 }

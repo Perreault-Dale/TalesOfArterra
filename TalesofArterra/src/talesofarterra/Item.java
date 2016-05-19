@@ -41,4 +41,42 @@ public class Item implements Serializable {
         this.loreCount = loreCount;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + this.itemType;
+        hash = 97 * hash + this.cost;
+        hash = 97 * hash + this.loreCount;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Item other = (Item) obj;
+        if (this.itemType != other.itemType) {
+            return false;
+        }
+        if (this.cost != other.cost) {
+            return false;
+        }
+        if (this.loreCount != other.loreCount) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" + "itemType=" + itemType + ", cost=" + cost + ", loreCount=" + loreCount + '}';
+    }
+
 }

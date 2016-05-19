@@ -1,6 +1,7 @@
 package talesofarterra;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 /**
  *
@@ -75,6 +76,60 @@ public class Location implements Serializable {
 
     public void setDescription(char[] description) {
         this.description = description;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 43 * hash + this.locationID;
+        hash = 43 * hash + this.mapID;
+        hash = 43 * hash + Arrays.hashCode(this.coordinates);
+        hash = 43 * hash + (this.isWaypoint ? 1 : 0);
+        hash = 43 * hash + (this.visitted ? 1 : 0);
+        hash = 43 * hash + (this.blocked ? 1 : 0);
+        hash = 43 * hash + Arrays.hashCode(this.description);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Location other = (Location) obj;
+        if (this.locationID != other.locationID) {
+            return false;
+        }
+        if (this.mapID != other.mapID) {
+            return false;
+        }
+        if (this.isWaypoint != other.isWaypoint) {
+            return false;
+        }
+        if (this.visitted != other.visitted) {
+            return false;
+        }
+        if (this.blocked != other.blocked) {
+            return false;
+        }
+        if (!Arrays.equals(this.coordinates, other.coordinates)) {
+            return false;
+        }
+        if (!Arrays.equals(this.description, other.description)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Location{" + "locationID=" + locationID + ", mapID=" + mapID + ", coordinates=" + coordinates + ", isWaypoint=" + isWaypoint + ", visitted=" + visitted + ", blocked=" + blocked + ", description=" + description + '}';
     }
 
 }

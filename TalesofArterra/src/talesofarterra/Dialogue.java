@@ -1,6 +1,7 @@
 package talesofarterra;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 /**
  *
@@ -48,6 +49,48 @@ public class Dialogue implements Serializable {
 
     public void setDialogue(char[] dialogue) {
         this.dialogue = dialogue;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 89 * hash + this.dialogueID;
+        hash = 89 * hash + this.lineID;
+        hash = 89 * hash + Arrays.hashCode(this.speaker);
+        hash = 89 * hash + Arrays.hashCode(this.dialogue);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Dialogue other = (Dialogue) obj;
+        if (this.dialogueID != other.dialogueID) {
+            return false;
+        }
+        if (this.lineID != other.lineID) {
+            return false;
+        }
+        if (!Arrays.equals(this.speaker, other.speaker)) {
+            return false;
+        }
+        if (!Arrays.equals(this.dialogue, other.dialogue)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Dialogue{" + "dialogueID=" + dialogueID + ", lineID=" + lineID + ", speaker=" + speaker + ", dialogue=" + dialogue + '}';
     }
 
 }

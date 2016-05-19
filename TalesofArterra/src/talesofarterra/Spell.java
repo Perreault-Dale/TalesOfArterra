@@ -59,4 +59,50 @@ public class Spell implements Serializable {
         this.isArcane = isArcane;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 67 * hash + this.level;
+        hash = 67 * hash + this.damageType;
+        hash = 67 * hash + this.baseDamage;
+        hash = 67 * hash + this.damagePerLevel;
+        hash = 67 * hash + (this.isArcane ? 1 : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Spell other = (Spell) obj;
+        if (this.level != other.level) {
+            return false;
+        }
+        if (this.damageType != other.damageType) {
+            return false;
+        }
+        if (this.baseDamage != other.baseDamage) {
+            return false;
+        }
+        if (this.damagePerLevel != other.damagePerLevel) {
+            return false;
+        }
+        if (this.isArcane != other.isArcane) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Spell{" + "level=" + level + ", damageType=" + damageType + ", baseDamage=" + baseDamage + ", damagePerLevel=" + damagePerLevel + ", isArcane=" + isArcane + '}';
+    }
+
 }

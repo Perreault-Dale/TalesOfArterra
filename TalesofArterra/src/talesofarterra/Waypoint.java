@@ -41,4 +41,42 @@ public class Waypoint extends Location {
         this.locationDestination = locationDestination;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 89 * hash + this.mapID;
+        hash = 89 * hash + this.mapDestination;
+        hash = 89 * hash + this.locationDestination;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Waypoint other = (Waypoint) obj;
+        if (this.mapID != other.mapID) {
+            return false;
+        }
+        if (this.mapDestination != other.mapDestination) {
+            return false;
+        }
+        if (this.locationDestination != other.locationDestination) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Waypoint{" + "mapID=" + mapID + ", mapDestination=" + mapDestination + ", locationDestination=" + locationDestination + '}';
+    }
+
 }
