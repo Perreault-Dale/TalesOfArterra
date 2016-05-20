@@ -34,6 +34,8 @@ public class TalesofArterra {
         recoverRing.setDescription("You need to recover the Bedime family's lost ring. They promise a large reward.");
         
         String message = recoverRing.toString();
+        
+        System.out.println(message);
     }
     
 }
