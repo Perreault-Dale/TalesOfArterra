@@ -2,6 +2,7 @@ package talesofarterra;
 
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.Objects;
 
 /**
  *
@@ -10,19 +11,19 @@ import java.util.Arrays;
 public class Scene implements Serializable {
 
     //private member variables
-    private char[] description;
+    private String description;
     private int numMonsters;
-    private char[] bossName;
+    private String bossName;
 
     //public getter and setter functions
     public Scene() {
     }
 
-    public char[] getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(char[] description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
@@ -34,20 +35,20 @@ public class Scene implements Serializable {
         this.numMonsters = numMonsters;
     }
 
-    public char[] getBossName() {
+    public String getBossName() {
         return bossName;
     }
 
-    public void setBossName(char[] bossName) {
+    public void setBossName(String bossName) {
         this.bossName = bossName;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 59 * hash + Arrays.hashCode(this.description);
+        hash = 59 * hash + Objects.hashCode(this.description);
         hash = 59 * hash + this.numMonsters;
-        hash = 59 * hash + Arrays.hashCode(this.bossName);
+        hash = 59 * hash + Objects.hashCode(this.bossName);
         return hash;
     }
 
@@ -66,10 +67,10 @@ public class Scene implements Serializable {
         if (this.numMonsters != other.numMonsters) {
             return false;
         }
-        if (!Arrays.equals(this.description, other.description)) {
+        if (!Objects.equals(this.description, other.description)) {
             return false;
         }
-        if (!Arrays.equals(this.bossName, other.bossName)) {
+        if (!Objects.equals(this.bossName, other.bossName)) {
             return false;
         }
         return true;

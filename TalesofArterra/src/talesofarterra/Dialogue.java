@@ -2,6 +2,7 @@ package talesofarterra;
 
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.Objects;
 
 /**
  *
@@ -12,8 +13,8 @@ public class Dialogue implements Serializable {
     //private member variables
     private int dialogueID;
     private int lineID;
-    private char[] speaker;
-    private char[] dialogue;
+    private String speaker;
+    private String dialogue;
 
     //public getter and setter functions
     public Dialogue() {
@@ -35,19 +36,19 @@ public class Dialogue implements Serializable {
         this.lineID = lineID;
     }
 
-    public char[] getSpeaker() {
+    public String getSpeaker() {
         return speaker;
     }
 
-    public void setSpeaker(char[] speaker) {
+    public void setSpeaker(String speaker) {
         this.speaker = speaker;
     }
 
-    public char[] getDialogue() {
+    public String getDialogue() {
         return dialogue;
     }
 
-    public void setDialogue(char[] dialogue) {
+    public void setDialogue(String dialogue) {
         this.dialogue = dialogue;
     }
 
@@ -56,8 +57,8 @@ public class Dialogue implements Serializable {
         int hash = 3;
         hash = 89 * hash + this.dialogueID;
         hash = 89 * hash + this.lineID;
-        hash = 89 * hash + Arrays.hashCode(this.speaker);
-        hash = 89 * hash + Arrays.hashCode(this.dialogue);
+        hash = 89 * hash + Objects.hashCode(this.speaker);
+        hash = 89 * hash + Objects.hashCode(this.dialogue);
         return hash;
     }
 
@@ -79,10 +80,10 @@ public class Dialogue implements Serializable {
         if (this.lineID != other.lineID) {
             return false;
         }
-        if (!Arrays.equals(this.speaker, other.speaker)) {
+        if (!Objects.equals(this.speaker, other.speaker)) {
             return false;
         }
-        if (!Arrays.equals(this.dialogue, other.dialogue)) {
+        if (!Objects.equals(this.dialogue, other.dialogue)) {
             return false;
         }
         return true;

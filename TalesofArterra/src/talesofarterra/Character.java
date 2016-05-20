@@ -2,6 +2,7 @@ package talesofarterra;
 
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.Objects;
 
 /**
  *
@@ -10,7 +11,7 @@ import java.util.Arrays;
 public class Character implements Serializable {
 
     //private member variables
-    private char[] name;
+    private String name;
     private char gender;
     private int level;
     private int experience;
@@ -28,11 +29,11 @@ public class Character implements Serializable {
     public Character() {
     }
 
-    public char[] getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(char[] name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -135,7 +136,7 @@ public class Character implements Serializable {
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 41 * hash + Arrays.hashCode(this.name);
+        hash = 41 * hash + Objects.hashCode(this.name);
         hash = 41 * hash + this.gender;
         hash = 41 * hash + this.level;
         hash = 41 * hash + this.experience;
@@ -184,7 +185,7 @@ public class Character implements Serializable {
         if (this.maxHP != other.maxHP) {
             return false;
         }
-        if (!Arrays.equals(this.name, other.name)) {
+        if (!Objects.equals(this.name, other.name)) {
             return false;
         }
         if (!Arrays.equals(this.alignment, other.alignment)) {

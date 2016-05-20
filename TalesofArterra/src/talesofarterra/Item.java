@@ -1,6 +1,7 @@
 package talesofarterra;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  *
@@ -12,6 +13,7 @@ public class Item implements Serializable {
     private int itemType;
     private int cost;
     private int loreCount;
+    private String description;
 
     //public getter and setter functions
     public Item() {
@@ -41,12 +43,21 @@ public class Item implements Serializable {
         this.loreCount = loreCount;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
         hash = 97 * hash + this.itemType;
         hash = 97 * hash + this.cost;
         hash = 97 * hash + this.loreCount;
+        hash = 97 * hash + Objects.hashCode(this.description);
         return hash;
     }
 
@@ -71,12 +82,15 @@ public class Item implements Serializable {
         if (this.loreCount != other.loreCount) {
             return false;
         }
+        if (!Objects.equals(this.description, other.description)) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Item{" + "itemType=" + itemType + ", cost=" + cost + ", loreCount=" + loreCount + '}';
+        return description + "Item{" + "itemType=" + itemType + ", cost=" + cost + ", loreCount=" + loreCount + ", description=" + description + '}';
     }
 
 }

@@ -2,6 +2,7 @@ package talesofarterra;
 
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.Objects;
 
 /**
  *
@@ -16,7 +17,7 @@ public class Location implements Serializable {
     private boolean isWaypoint;
     private boolean visitted;
     private boolean blocked;
-    private char[] description;
+    private String description;
 
     //public getter and setter functions
     public Location() {
@@ -70,11 +71,11 @@ public class Location implements Serializable {
         this.blocked = blocked;
     }
 
-    public char[] getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(char[] description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
@@ -87,7 +88,7 @@ public class Location implements Serializable {
         hash = 43 * hash + (this.isWaypoint ? 1 : 0);
         hash = 43 * hash + (this.visitted ? 1 : 0);
         hash = 43 * hash + (this.blocked ? 1 : 0);
-        hash = 43 * hash + Arrays.hashCode(this.description);
+        hash = 43 * hash + Objects.hashCode(this.description);
         return hash;
     }
 
@@ -121,7 +122,7 @@ public class Location implements Serializable {
         if (!Arrays.equals(this.coordinates, other.coordinates)) {
             return false;
         }
-        if (!Arrays.equals(this.description, other.description)) {
+        if (!Objects.equals(this.description, other.description)) {
             return false;
         }
         return true;
