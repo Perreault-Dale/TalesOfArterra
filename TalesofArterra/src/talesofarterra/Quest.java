@@ -2,6 +2,7 @@ package talesofarterra;
 
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.Objects;
 
 /**
  *
@@ -12,8 +13,8 @@ public class Quest implements Serializable {
     //private member variables
     private int questID;
     private boolean accepted;
-    private char[] title;
-    private char[] description;
+    private String title;
+    private String description;
 
     //public getter and setter functions
     public Quest() {
@@ -35,29 +36,29 @@ public class Quest implements Serializable {
         this.accepted = accepted;
     }
 
-    public char[] getTitle() {
+    public String getTitle() {
         return title;
     }
 
-    public void setTitle(char[] title) {
+    public void setTitle(String title) {
         this.title = title;
     }
 
-    public char[] getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(char[] description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 59 * hash + this.questID;
-        hash = 59 * hash + (this.accepted ? 1 : 0);
-        hash = 59 * hash + Arrays.hashCode(this.title);
-        hash = 59 * hash + Arrays.hashCode(this.description);
+        int hash = 7;
+        hash = 79 * hash + this.questID;
+        hash = 79 * hash + (this.accepted ? 1 : 0);
+        hash = 79 * hash + Objects.hashCode(this.title);
+        hash = 79 * hash + Objects.hashCode(this.description);
         return hash;
     }
 
@@ -79,10 +80,10 @@ public class Quest implements Serializable {
         if (this.accepted != other.accepted) {
             return false;
         }
-        if (!Arrays.equals(this.title, other.title)) {
+        if (!Objects.equals(this.title, other.title)) {
             return false;
         }
-        if (!Arrays.equals(this.description, other.description)) {
+        if (!Objects.equals(this.description, other.description)) {
             return false;
         }
         return true;

@@ -26,6 +26,14 @@ public class TalesofArterra {
         Scene storeX = new Scene();
         Spell fireBall = new Spell();
         Waypoint eastGate = new Waypoint();
+        
+        recoverRing.setQuestID(1);
+        recoverRing.setAccepted(true);
+        
+        recoverRing.setTitle("Recover The Lost Ring");
+        recoverRing.setDescription("You need to recover the Bedime family's lost ring. They promise a large reward.");
+        
+        String message = recoverRing.toString();
     }
     
 }
