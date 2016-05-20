@@ -14,7 +14,7 @@ public class Item implements Serializable {
     private int loreCount;
 
     //public getter and setter functions
-    public Item{} {
+    public Item() {
     }
 
     public int getItemType() {

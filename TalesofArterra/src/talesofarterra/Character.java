@@ -25,7 +25,7 @@ public class Character implements Serializable {
     private boolean[] useWeapons;
 
     //public getter and setter functions
-    public Character{} {
+    public Character() {
     }
 
     public char[] getName() {

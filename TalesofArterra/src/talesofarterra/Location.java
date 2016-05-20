@@ -19,7 +19,7 @@ public class Location implements Serializable {
     private char[] description;
 
     //public getter and setter functions
-    public Location{} {
+    public Location() {
     }
 
     public int getLocationID() {

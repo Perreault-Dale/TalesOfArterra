@@ -16,7 +16,7 @@ public class Dialogue implements Serializable {
     private char[] dialogue;
 
     //public getter and setter functions
-    public Dialogue{} {
+    public Dialogue() {
     }
 
     public int getDialogueID() {

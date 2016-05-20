@@ -15,7 +15,7 @@ public class Scene implements Serializable {
     private char[] bossName;
 
     //public getter and setter functions
-    public Scene{} {
+    public Scene() {
     }
 
     public char[] getDescription() {

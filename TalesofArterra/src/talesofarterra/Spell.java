@@ -16,7 +16,7 @@ public class Spell implements Serializable {
     private boolean isArcane;
 
     //public getter and setter functions
-    public Spell{} {
+    public Spell() {
     }
 
     public int getLevel() {
