@@ -208,7 +208,8 @@ public class Character implements Serializable {
 
     @Override
     public String toString() {
-        return "Character{" + "name=" + name + ", gender=" + gender + ", level=" + level + ", experience=" + experience + ", alignment=" + alignment + ", abilities=" + abilities + ", skills=" + skills + ", feats=" + feats + ", baseAttack=" + baseAttack + ", armorClass=" + armorClass + ", hitPoints=" + hitPoints + ", maxHP=" + maxHP + ", useWeapons=" + useWeapons + '}';
+        return "Character{" + "name=" + name + ", gender=" + gender + ", level=" + level + ", experience=" + experience + ", alignment=" + Arrays.toString(alignment) + ", abilities=" + Arrays.toString(abilities) + ", skills=" + Arrays.toString(skills) + ", feats=" + Arrays.toString(feats) + ", baseAttack=" + baseAttack + ", armorClass=" + armorClass + ", hitPoints=" + hitPoints + ", maxHP=" + maxHP + ", useWeapons=" + Arrays.toString(useWeapons) + '}';
     }
-
+    
+    
 }

@@ -20,6 +20,7 @@ public class TalesofArterra {
         Dialogue diagOne = new Dialogue();
         Game saveGame = new Game();
         Item broadsword = new Item();
+        Location greatTemple = new Location();
         Map cityCenter = new Map();
         Player playerOne = new Player();
         Quest recoverRing = new Quest();
@@ -29,12 +30,55 @@ public class TalesofArterra {
         
         recoverRing.setQuestID(1);
         recoverRing.setAccepted(true);
-        
         recoverRing.setTitle("Recover The Lost Ring");
         recoverRing.setDescription("You need to recover the Bedime family's lost ring. They promise a large reward.");
         
-        String message = recoverRing.toString();
+        fireBall.setLevel(3);
+        fireBall.setDamageType(1);
+        fireBall.setBaseDamage(0);
+        fireBall.setDamagePerLevel(6);
+        fireBall.setIsArcane(true);
         
+        storeX.setDescription("General Store");
+        storeX.setNumMonsters(0);
+        storeX.setBossName("Buckethead");
+        
+        eastGate.setMapID(1);
+        eastGate.setMapDestination(2);
+        eastGate.setLocationDestination(12);
+        
+        int abilities[] = new int[] { 8, 8, 8, 8, 8, 8 };
+        playerChar.setAbilities(abilities);
+        int alignment[] = new int[] { 85, 50 };
+        playerChar.setAlignment(alignment);
+        playerChar.setArmorClass(10);
+        playerChar.setBaseAttack(4);
+        playerChar.setExperience(36500);
+        playerChar.setGender('m');
+        playerChar.setHitPoints(49);
+        boolean feats[] = new boolean[] { true, true, false, false, true, false, false, true, true };
+        playerChar.setFeats(feats);
+        playerChar.setLevel(5);
+        playerChar.setMaxHP(63);
+        playerChar.setName("David Bowie");
+        int skills[] = new int[] { 4, 4, 4, 4, 0, 0, 0, 0, 0 };
+        playerChar.setSkills(skills);
+        boolean weapons[] = new boolean[] { true, true, false, false, true, false, false, true, true };
+        playerChar.setUseWeapons(weapons);
+        
+        String message = playerChar.toString();
+        message += '\n' + eastGate.toString();
+        message += '\n' + recoverRing.toString();
+        message += '\n' + fireBall.toString();
+        message += '\n' + eastGate.toString();
+        message += '\n' + storeX.toString();
+        message += '\n' + diagOne.toString();
+        message += '\n' + saveGame.toString();
+        message += '\n' + broadsword.toString();
+        message += '\n' + greatTemple.toString();
+        message += '\n' + cityCenter.toString();
+        message += '\n' + playerOne.toString();
+                
         System.out.println(message);
     }
     
