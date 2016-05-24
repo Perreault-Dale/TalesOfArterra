@@ -3,7 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package byui.cit260.talesofarterra.model;
+package talesofarterra;
+
+import byui.cit260.talesofarterra.model.Character;
+import byui.cit260.talesofarterra.model.Dialogue;
+import byui.cit260.talesofarterra.model.Game;
+import byui.cit260.talesofarterra.model.Item;
+import byui.cit260.talesofarterra.model.Location;
+import byui.cit260.talesofarterra.model.Map;
+import byui.cit260.talesofarterra.model.Player;
+import byui.cit260.talesofarterra.model.Quest;
+import byui.cit260.talesofarterra.model.Scene;
+import byui.cit260.talesofarterra.model.Spell;
+import byui.cit260.talesofarterra.model.Waypoint;
 
 /**
  *
