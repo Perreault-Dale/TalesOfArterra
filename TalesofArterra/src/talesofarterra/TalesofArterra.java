@@ -17,6 +17,8 @@ import byui.cit260.talesofarterra.model.Scene;
 import byui.cit260.talesofarterra.model.Spell;
 import byui.cit260.talesofarterra.model.Waypoint;
 
+import byui.cit260.talesofarterra.control.ItemControl;
+
 /**
  *
  * @author Dale
@@ -59,7 +61,7 @@ public class TalesofArterra {
         eastGate.setMapDestination(2);
         eastGate.setLocationDestination(12);
         
-        int abilities[] = new int[] { 8, 8, 8, 8, 8, 8 };
+        int abilities[] = new int[] { 8, 12, 10, 8, 12, 17 };
         playerChar.setAbilities(abilities);
         int alignment[] = new int[] { 85, 50 };
         playerChar.setAlignment(alignment);
@@ -73,10 +75,16 @@ public class TalesofArterra {
         playerChar.setLevel(5);
         playerChar.setMaxHP(63);
         playerChar.setName("David Bowie");
-        int skills[] = new int[] { 4, 4, 4, 4, 0, 0, 0, 0, 0 };
+        int skills[] = new int[] { 12, 12, 12, 12, 0, 0, 0, 0, 0 };
         playerChar.setSkills(skills);
         boolean weapons[] = new boolean[] { true, true, false, false, true, false, false, true, true };
         playerChar.setUseWeapons(weapons);
+        
+        broadsword.setItemType(1);
+        broadsword.setCost(7500);
+        broadsword.setDescription("It's a really big sword, yet it feels very light to the touch.");
+        broadsword.setLoreCount(25);
+        broadsword.setIsIdentified(false);
         
         String message = playerChar.toString();
         message += '\n' + eastGate.toString();
@@ -92,6 +100,18 @@ public class TalesofArterra {
         message += '\n' + playerOne.toString();
                 
         System.out.println(message);
+        
+        ItemControl ic = new ItemControl();
+        int lore = ic.calcLore(playerChar);
+        String loreMessage = "\n\nCharacter lore =" + lore + "; Item lore = " + broadsword.getLoreCount();
+        ic.isIdentified(broadsword, lore);
+        if (broadsword.isIsIdentified()) {
+            loreMessage += "\nItem description: " + broadsword.getDescription();
+        }
+        else {
+            loreMessage += "\nItem description: (unidentified)";
+        }
+        System.out.println(loreMessage);
     }
     
 }

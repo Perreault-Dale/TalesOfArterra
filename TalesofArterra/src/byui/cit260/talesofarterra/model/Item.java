@@ -14,6 +14,7 @@ public class Item implements Serializable {
     private int cost;
     private int loreCount;
     private String description;
+    private boolean isIdentified;
 
     //public getter and setter functions
     public Item() {
@@ -51,6 +52,14 @@ public class Item implements Serializable {
         this.description = description;
     }
 
+    public boolean isIsIdentified() {
+        return isIdentified;
+    }
+
+    public void setIsIdentified(boolean isIdentified) {
+        this.isIdentified = isIdentified;
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -58,6 +67,7 @@ public class Item implements Serializable {
         hash = 97 * hash + this.cost;
         hash = 97 * hash + this.loreCount;
         hash = 97 * hash + Objects.hashCode(this.description);
+        hash = 97 * hash + (this.isIdentified ? 1 : 0);
         return hash;
     }
 
@@ -85,12 +95,15 @@ public class Item implements Serializable {
         if (!Objects.equals(this.description, other.description)) {
             return false;
         }
+        if (this.isIdentified != other.isIdentified) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return description + "Item{" + "itemType=" + itemType + ", cost=" + cost + ", loreCount=" + loreCount + ", description=" + description + '}';
+        return "Item{" + "itemType=" + itemType + ", cost=" + cost + ", loreCount=" + loreCount + ", description=" + description + ", isIdentified=" + isIdentified + '}';
     }
 
 }
