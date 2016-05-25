@@ -18,6 +18,7 @@ import byui.cit260.talesofarterra.model.Spell;
 import byui.cit260.talesofarterra.model.Waypoint;
 
 import byui.cit260.talesofarterra.control.ItemControl;
+import byui.cit260.talesofarterra.control.SpellControl;
 
 /**
  *
@@ -112,6 +113,11 @@ public class TalesofArterra {
             loreMessage += "\nItem description: (unidentified)";
         }
         System.out.println(loreMessage);
+        
+        SpellControl sc = new SpellControl();
+        int fireDamage = sc.calcDamage(playerChar, fireBall);
+        String spellMessage = "\n\nYou caused " + fireDamage + " points of Fire damage.";
+        System.out.println(spellMessage);
     }
     
 }
