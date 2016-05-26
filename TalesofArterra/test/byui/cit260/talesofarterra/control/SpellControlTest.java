@@ -74,9 +74,10 @@ public class SpellControlTest {
         fireBall.setIsArcane(true);
                 
         SpellControl instance = new SpellControl();
-        int expResult = (fireBall.getDamagePerLevel() * playerChar.getLevel());
+        int lowResult = 4 * playerChar.getLevel() + fireBall.getBaseDamage();
+        int highResult = (3 + fireBall.getDamagePerLevel()) * playerChar.getLevel() + fireBall.getBaseDamage();
         int result = instance.calcDamage(playerChar, fireBall);
-        assertEquals(true, (result > expResult));
+        assertEquals(true, (result > lowResult && result < highResult));
         // TODO review the generated test code and remove the default call to fail.
         // fail("The test case is a prototype.");
     }
