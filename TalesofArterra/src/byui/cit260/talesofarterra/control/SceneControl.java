@@ -11,4 +11,8 @@ package byui.cit260.talesofarterra.control;
  */
 public class SceneControl {
     
+    public boolean generateMonster()
+    {
+        return true;
+    }
 }
