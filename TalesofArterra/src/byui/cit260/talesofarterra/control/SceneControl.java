@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 package byui.cit260.talesofarterra.control;
+ 
+import byui.cit260.talesofarterra.model.Character;
+import byui.cit260.talesofarterra.model.Scene;
+import java.util.Random;
 
 /**
  *
@@ -13,6 +17,8 @@ public class SceneControl {
     
     public boolean generateMonster()
     {
+        
+        
         return true;
     }
 }
