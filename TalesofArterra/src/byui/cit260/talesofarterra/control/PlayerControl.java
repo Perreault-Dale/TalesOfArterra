@@ -5,10 +5,22 @@
  */
 package byui.cit260.talesofarterra.control;
 
+import byui.cit260.talesofarterra.model.Player;
+import byui.cit260.talesofarterra.model.Item;
+
 /**
  *
  * @author Dale
  */
 public class PlayerControl {
-    
+    public void calcBank(Player pc, Item item, char code) {
+        switch (code) {
+            case 's':
+                pc.setBank(pc.getBank() + item.getCost());
+                break;
+            case 'p':
+                pc.setBank(pc.getBank() - item.getCost());
+                break;
+        }
+    }
 }

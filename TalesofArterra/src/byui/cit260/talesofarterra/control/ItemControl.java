@@ -24,7 +24,7 @@ public class ItemControl {
         return skill[3] + intMod + d20;
     }
     
-    public void isIdentified(Item item, int lore) {
+    public void calcIdentified(Item item, int lore) {
         if (lore < item.getLoreCount()) {
             item.setIsIdentified(false);
             return;

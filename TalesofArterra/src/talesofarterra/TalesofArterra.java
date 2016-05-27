@@ -104,8 +104,8 @@ public class TalesofArterra {
         
         ItemControl ic = new ItemControl();
         int lore = ic.calcLore(playerChar);
-        String loreMessage = "\n\nCharacter lore =" + lore + "; Item lore = " + broadsword.getLoreCount();
-        ic.isIdentified(broadsword, lore);
+        String loreMessage = "\n\nCharacter lore = " + lore + "; Item lore = " + broadsword.getLoreCount();
+        ic.calcIdentified(broadsword, lore);
         if (broadsword.isIsIdentified()) {
             loreMessage += "\nItem description: " + broadsword.getDescription();
         }

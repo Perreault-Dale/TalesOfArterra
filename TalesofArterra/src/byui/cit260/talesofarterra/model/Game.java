@@ -16,6 +16,8 @@ public class Game implements Serializable {
     //private member variables
     private int time;
     private int days;
+    private int currentMap;
+    private int currentLocation;
     
     //public getter and setter functions
     public Game() {
@@ -37,11 +39,29 @@ public class Game implements Serializable {
         this.days = days;
     }
 
+    public int getCurrentMap() {
+        return currentMap;
+    }
+
+    public void setCurrentMap(int currentMap) {
+        this.currentMap = currentMap;
+    }
+
+    public int getCurrentLocation() {
+        return currentLocation;
+    }
+
+    public void setCurrentLocation(int currentLocation) {
+        this.currentLocation = currentLocation;
+    }
+
     @Override
     public int hashCode() {
         int hash = 3;
         hash = 11 * hash + this.time;
         hash = 11 * hash + this.days;
+        hash = 11 * hash + this.currentMap;
+        hash = 11 * hash + this.currentLocation;
         return hash;
     }
 
@@ -61,6 +81,12 @@ public class Game implements Serializable {
             return false;
         }
         if (this.days != other.days) {
+            return false;
+        }
+        if (this.currentMap != other.currentMap) {
+            return false;
+        }
+        if (this.currentLocation != other.currentLocation) {
             return false;
         }
         return true;
