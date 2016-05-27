@@ -6,7 +6,7 @@
 package byui.cit260.talesofarterra.control;
  
 import byui.cit260.talesofarterra.model.Character;
-import byui.cit260.talesofarterra.model.Scene;
+//import byui.cit260.talesofarterra.model.Scene;
 import java.util.Random;
 
 /**
@@ -14,11 +14,33 @@ import java.util.Random;
  * @author Dale
  */
 public class SceneControl {
+    public boolean generateMonster(Character monster) {
+        Random r = new Random();
+        int monsterAppear = r.nextInt(50) + 1;
+        
+        if (monsterAppear > 20)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     
-    public boolean generateMonster()
-    {
+    public boolean generateBoss(Character monster) {
+         Random r = new Random();
+        int monsterAppear = r.nextInt(50) + 1;
         
+        if (monsterAppear > 45)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
         
-        return true;
+ 
     }
 }
