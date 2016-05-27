@@ -15,6 +15,10 @@ public class Item implements Serializable {
     private int loreCount;
     private String description;
     private boolean isIdentified;
+    private boolean isEquipped;
+    private int maxDamage;
+    private int armor;
+    
 
     //public getter and setter functions
     public Item() {
@@ -60,14 +64,41 @@ public class Item implements Serializable {
         this.isIdentified = isIdentified;
     }
 
+    public boolean isIsEquipped() {
+        return isEquipped;
+    }
+
+    public void setIsEquipped(boolean isEquipped) {
+        this.isEquipped = isEquipped;
+    }
+
+    public int getMaxDamage() {
+        return maxDamage;
+    }
+
+    public void setMaxDamage(int maxDamage) {
+        this.maxDamage = maxDamage;
+    }
+
+    public int getArmor() {
+        return armor;
+    }
+
+    public void setArmor(int armor) {
+        this.armor = armor;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 97 * hash + this.itemType;
-        hash = 97 * hash + this.cost;
-        hash = 97 * hash + this.loreCount;
-        hash = 97 * hash + Objects.hashCode(this.description);
-        hash = 97 * hash + (this.isIdentified ? 1 : 0);
+        int hash = 5;
+        hash = 83 * hash + this.itemType;
+        hash = 83 * hash + this.cost;
+        hash = 83 * hash + this.loreCount;
+        hash = 83 * hash + Objects.hashCode(this.description);
+        hash = 83 * hash + (this.isIdentified ? 1 : 0);
+        hash = 83 * hash + (this.isEquipped ? 1 : 0);
+        hash = 83 * hash + this.maxDamage;
+        hash = 83 * hash + this.armor;
         return hash;
     }
 
@@ -92,10 +123,19 @@ public class Item implements Serializable {
         if (this.loreCount != other.loreCount) {
             return false;
         }
-        if (!Objects.equals(this.description, other.description)) {
+        if (this.isIdentified != other.isIdentified) {
             return false;
         }
-        if (this.isIdentified != other.isIdentified) {
+        if (this.isEquipped != other.isEquipped) {
+            return false;
+        }
+        if (this.maxDamage != other.maxDamage) {
+            return false;
+        }
+        if (this.armor != other.armor) {
+            return false;
+        }
+        if (!Objects.equals(this.description, other.description)) {
             return false;
         }
         return true;
@@ -103,7 +143,7 @@ public class Item implements Serializable {
 
     @Override
     public String toString() {
-        return "Item{" + "itemType=" + itemType + ", cost=" + cost + ", loreCount=" + loreCount + ", description=" + description + ", isIdentified=" + isIdentified + '}';
+        return "Item{" + "itemType=" + itemType + ", cost=" + cost + ", loreCount=" + loreCount + ", description=" + description + ", isIdentified=" + isIdentified + ", isEquipped=" + isEquipped + ", maxDamage=" + maxDamage + ", armor=" + armor + '}';
     }
-
+  
 }

@@ -31,4 +31,10 @@ public class ItemControl {
         }
         item.setIsIdentified(true);
     }
+    
+    public void calcEquipped(Item item) {
+        if (item.isIsIdentified() == true) {
+            item.setIsEquipped(true);
+        }
+    }
 }
