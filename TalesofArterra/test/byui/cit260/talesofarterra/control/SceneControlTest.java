@@ -39,7 +39,7 @@ public class SceneControlTest {
     @Test
     public void testGenerateBoss() {
         System.out.println("generateBoss");
-        Character monster = new troll;
+        Character monster = null;
         SceneControl instance = new SceneControl();
         boolean expResult = false;
         boolean result = instance.generateBoss(monster);
