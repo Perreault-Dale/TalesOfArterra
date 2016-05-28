@@ -21,4 +21,13 @@ public class SpellControl {
         float dice = (float) (r.nextFloat() * (float)spell.getDamagePerLevel() + (float)intMod + 1.0);
         return (int) (dice * char1.getLevel() + spell.getBaseDamage());
     }
+    
+    public void setSpell(Spell spell, String name, int level, String damageType, int baseDamage, int damagePerLevel, boolean isArcane) {
+        spell.setName(name);
+        spell.setLevel(level);
+        spell.setDamageType(damageType);
+        spell.setBaseDamage(baseDamage);
+        spell.setDamagePerLevel(damagePerLevel);
+        spell.setIsArcane(isArcane);
+    }
 }

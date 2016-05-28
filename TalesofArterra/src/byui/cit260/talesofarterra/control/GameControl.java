@@ -13,8 +13,8 @@ import byui.cit260.talesofarterra.model.Location;
  * @author Dale
  */
 public class GameControl {
-    public void restHours (Game game) {
-        game.setTime(game.getTime() + 8);
+    public void advanceHours (Game game, int hours) {
+        game.setTime(game.getTime() + hours);
         if (game.getTime() > 23) {
             game.setTime(game.getTime() - 24);
             game.setDays(game.getDays() + 1);
