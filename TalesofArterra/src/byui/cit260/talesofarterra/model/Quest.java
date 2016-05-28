@@ -13,6 +13,7 @@ public class Quest implements Serializable {
     //private member variables
     private int questID;
     private boolean accepted;
+    private boolean complete;
     private String title;
     private String description;
 
@@ -52,11 +53,20 @@ public class Quest implements Serializable {
         this.description = description;
     }
 
+    public boolean isComplete() {
+        return complete;
+    }
+
+    public void setComplete(boolean complete) {
+        this.complete = complete;
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
         hash = 79 * hash + this.questID;
         hash = 79 * hash + (this.accepted ? 1 : 0);
+        hash = 79 * hash + (this.complete ? 1 : 0);
         hash = 79 * hash + Objects.hashCode(this.title);
         hash = 79 * hash + Objects.hashCode(this.description);
         return hash;
@@ -80,6 +90,9 @@ public class Quest implements Serializable {
         if (this.accepted != other.accepted) {
             return false;
         }
+        if (this.complete != other.complete) {
+            return false;
+        }
         if (!Objects.equals(this.title, other.title)) {
             return false;
         }
@@ -91,7 +104,7 @@ public class Quest implements Serializable {
 
     @Override
     public String toString() {
-        return "Quest{" + "questID=" + questID + ", accepted=" + accepted + ", title=" + title + ", description=" + description + '}';
+        return "Quest{" + "questID=" + questID + ", accepted=" + accepted + ", complete=" + complete + ", title=" + title + ", description=" + description + '}';
     }
 
 }

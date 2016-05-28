@@ -10,9 +10,13 @@ import byui.cit260.talesofarterra.model.Item;
 
 /**
  *
- * @author Dale
+ * @author Dale Perreault
  */
 public class PlayerControl {
+    public void inputName(Player player, String name) {
+        player.setName(name);
+    }
+    
     public void calcBank(Player pc, Item item, char code) {
         switch (code) {
             case 's':
