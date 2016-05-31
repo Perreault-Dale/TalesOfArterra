@@ -49,7 +49,7 @@ public class TalesofArterra {
         recoverRing.setDescription("You need to recover the Bedime family's lost ring. They promise a large reward.");
         
         fireBall.setLevel(3);
-        fireBall.setDamageType(1);
+        fireBall.setDamageType("Fire");
         fireBall.setBaseDamage(0);
         fireBall.setDamagePerLevel(6);
         fireBall.setIsArcane(true);

@@ -17,9 +17,14 @@ public class SpellControl {
     public int calcDamage(Character char1, Spell spell) {
         Random r = new Random();
         int [] ability = char1.getAbilities();
-        int intMod = (ability[5] - 10) / 2;
-        float dice = (float) (r.nextFloat() * (float)spell.getDamagePerLevel() + (float)intMod + 1.0);
-        return (int) (dice * char1.getLevel() + spell.getBaseDamage());
+        if (ability[5] < 10 || char1.getLevel() < 1) {
+            return -1;
+        }
+        else {
+            int intMod = (ability[5] - 10) / 2;
+            float dice = (float) (r.nextFloat() * (float)spell.getDamagePerLevel() + (float)intMod + 1.0);
+            return (int) (dice * char1.getLevel() + spell.getBaseDamage());
+        }
     }
     
     public void setSpell(Spell spell, String name, int level, String damageType, int baseDamage, int damagePerLevel, boolean isArcane) {
