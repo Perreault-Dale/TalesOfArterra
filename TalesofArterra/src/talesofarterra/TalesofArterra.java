@@ -6,7 +6,6 @@
 package talesofarterra;
 
 import byui.cit260.talesofarterra.model.Character;
-import byui.cit260.talesofarterra.model.Dialogue;
 import byui.cit260.talesofarterra.model.Game;
 import byui.cit260.talesofarterra.model.Item;
 import byui.cit260.talesofarterra.model.Location;
@@ -15,7 +14,6 @@ import byui.cit260.talesofarterra.model.Player;
 import byui.cit260.talesofarterra.model.Quest;
 import byui.cit260.talesofarterra.model.Scene;
 import byui.cit260.talesofarterra.model.Spell;
-import byui.cit260.talesofarterra.model.Waypoint;
 
 import byui.cit260.talesofarterra.control.ItemControl;
 import byui.cit260.talesofarterra.control.SpellControl;
@@ -32,7 +30,6 @@ public class TalesofArterra {
     public static void main(String[] args) {
         // Instantiate new objects
         Character playerChar = new Character();
-        Dialogue diagOne = new Dialogue();
         Game saveGame = new Game();
         Item broadsword = new Item();
         Location greatTemple = new Location();
@@ -41,7 +38,6 @@ public class TalesofArterra {
         Quest recoverRing = new Quest();
         Scene storeX = new Scene();
         Spell fireBall = new Spell();
-        Waypoint eastGate = new Waypoint();
         
         recoverRing.setQuestID(1);
         recoverRing.setAccepted(true);
@@ -57,10 +53,6 @@ public class TalesofArterra {
         storeX.setDescription("General Store");
         storeX.setNumMonsters(0);
         storeX.setBossName("Buckethead");
-        
-        eastGate.setMapID(1);
-        eastGate.setMapDestination(2);
-        eastGate.setLocationDestination(12);
         
         int abilities[] = new int[] { 8, 12, 10, 8, 12, 17 };
         playerChar.setAbilities(abilities);
@@ -88,12 +80,9 @@ public class TalesofArterra {
         broadsword.setIsIdentified(false);
         
         String message = playerChar.toString();
-        message += '\n' + eastGate.toString();
         message += '\n' + recoverRing.toString();
         message += '\n' + fireBall.toString();
-        message += '\n' + eastGate.toString();
         message += '\n' + storeX.toString();
-        message += '\n' + diagOne.toString();
         message += '\n' + saveGame.toString();
         message += '\n' + broadsword.toString();
         message += '\n' + greatTemple.toString();

@@ -16,12 +16,18 @@ import java.util.Random;
  */
 public class ItemControl {
     public int calcLore(Character char1) {
-        Random r = new Random();
-        int d20 = r.nextInt(20) + 1;
         int [] ability = char1.getAbilities();
-        int intMod = (ability[4] - 10) / 2;
-        int [] skill = char1.getSkills();
-        return skill[3] + intMod + d20;
+        if (ability[4] < 9) {
+            return -1;
+        }
+        else {
+            int intMod = (ability[4] - 10) / 2;
+            Random r = new Random();
+            int d20 = r.nextInt(20) + 1;
+            int [] skill = char1.getSkills();
+            return skill[3] + intMod + d20;
+        }
+        
     }
     
     public void calcIdentified(Item item, int lore) {
