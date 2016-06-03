@@ -5,6 +5,8 @@
  */
 package talesofarterra;
 
+import byui.cit260.talesofarterra.model.Game;
+import byui.cit260.talesofarterra.model.Player;
 import byui.cit260.talesofarterra.view.StartMenuView;
 
 /**
@@ -13,12 +15,28 @@ import byui.cit260.talesofarterra.view.StartMenuView;
  */
 public class TalesofArterra {
 
-    /**
-     * @param args the command line arguments
-     */
+    private static Game currentGame = null;
+    private static Player player = null;
+    
     public static void main(String[] args) {
         StartMenuView startMenuView = new StartMenuView();
         startMenuView.displayMenuView();
+    }
+
+    public static Game getCurrentGame() {
+        return currentGame;
+    }
+
+    public static void setCurrentGame(Game currentGame) {
+        TalesofArterra.currentGame = currentGame;
+    }
+
+    public static Player getPlayer() {
+        return player;
+    }
+
+    public static void setPlayer(Player player) {
+        TalesofArterra.player = player;
     }
     
 }

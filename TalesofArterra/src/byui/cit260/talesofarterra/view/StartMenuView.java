@@ -77,13 +77,20 @@ public class StartMenuView {
             return false;
         }
         
-        this.displayNextView();
+        this.displayNextView(player);
         
         return true;
     }
 
-    private void displayNextView() {
-        System.out.println("\nNext we provide a customized welcome message.");
+    private void displayNextView(Player player) {
+        System.out.println("\n****************************************************************"
+                +          "\n* Welcome to the game, " + player.getName()
+                +          "\n* We hope you enjoy playing!"
+                +          "\n****************************************************************"
+        );
+        
+        MainMenuView mainMenuView = new MainMenuView();
+        mainMenuView.displayMainMenuView();
     }
     
 }
