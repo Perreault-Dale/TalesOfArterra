@@ -5,6 +5,10 @@
  */
 package byui.cit260.talesofarterra.view;
 
+import byui.cit260.talesofarterra.control.PlayerControl;
+import byui.cit260.talesofarterra.model.Player;
+import java.util.Scanner;
+
 /**
  *
  * @author Dale
@@ -29,8 +33,57 @@ public class StartMenuView {
           + "\n* a new life in the city of Edinburg, which is dealing with    *"
           + "\n* tragedies of its own.                                        *"
           + "\n*                                                              *"
-          + "\n****************************************************************";
+          + "\n****************************************************************"
         );
+    }
+
+    public void displayMenuView() {
+        boolean done = false;
+        do {
+            String playerName = this.getPlayerName();
+            if (playerName.toUpperCase().equals("Q")) {
+                return;
+            }
+            done = this.doAction(playerName);
+        }
+        while(!done);
+    }
+
+    private String getPlayerName() {
+        Scanner keyboard = new Scanner(System.in);
+        String value = "";
+        boolean valid = false;
+        
+        while(!valid) {
+            System.out.println(this.promptMessage);
+            
+            value = keyboard.nextLine();
+            value = value.trim();
+            
+            if (value.length() < 1) {
+                System.out.println("Sorry, your name cannot be blank.");
+                continue;
+            }
+            
+            break;
+        }
+        return value;
+    }
+
+    private boolean doAction(String playerName) {
+        Player player = PlayerControl.createPlayer(playerName);
+        if (player == null) {
+            System.out.println("\nError: Failed to create the player.");
+            return false;
+        }
+        
+        this.displayNextView();
+        
+        return true;
+    }
+
+    private void displayNextView() {
+        System.out.println("\nNext we provide a customized welcome message.");
     }
     
 }

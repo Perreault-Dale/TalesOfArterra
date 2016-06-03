@@ -18,6 +18,7 @@ public class TalesofArterra {
      */
     public static void main(String[] args) {
         StartMenuView startMenuView = new StartMenuView();
+        startMenuView.displayMenuView();
     }
     
 }

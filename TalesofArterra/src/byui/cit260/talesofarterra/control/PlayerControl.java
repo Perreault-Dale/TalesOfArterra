@@ -13,7 +13,14 @@ import byui.cit260.talesofarterra.model.Item;
  * @author Dale Perreault
  */
 public class PlayerControl {
-    public void inputName(Player player, String name) {
+
+    public static Player createPlayer(String name) {
+        Player player = new Player();
+        player.setBank(0);
+        PlayerControl.inputName(player,name);
+        return player;
+    }
+    public static void inputName(Player player, String name) {
         player.setName(name);
     }
     
