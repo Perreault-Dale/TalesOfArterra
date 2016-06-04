@@ -67,23 +67,23 @@ public class HelpMenuView {
     }
 
     private void objective() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("\n*** createNewGame stub function called ***");
     }
 
     private void movement() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("\n*** createNewGame stub function called ***");
     }
 
     private void henchmen() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("\n*** createNewGame stub function called ***");
     }
 
     private void resting() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("\n*** createNewGame stub function called ***");
     }
 
     private void resumeGame() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("\n*** createNewGame stub function called ***");
     }
 }
  
