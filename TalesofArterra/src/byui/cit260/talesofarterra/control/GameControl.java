@@ -24,4 +24,13 @@ public class GameControl {
         game.setCurrentMap(location.getMapID());
         game.setCurrentLocation(location.getLocationID());
     }
+
+    /**
+     *
+     */
+   public void createNewGame(){
+    //public static void createNewGame(){ will change once create new game is built
+        System.out.println("\n*** createNewGame stub function called ***");
+    }
 }
+
