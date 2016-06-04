@@ -22,7 +22,7 @@ public class StartMenuView {
         this.promptMessage = "\nPlease enter your name: ";
     }
 
-    private void displayBanner() {
+    public void displayBanner() {
         System.out.println(
             "\n****************************************************************"
           + "\n*                                                              *"
