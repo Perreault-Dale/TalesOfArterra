@@ -6,7 +6,8 @@
 package byui.cit260.talesofarterra.view;
 
 import byui.cit260.talesofarterra.control.GameControl;
-import byui.cit260.talesofarterra.model.GameMenuView;
+import byui.cit260.talesofarterra.view.GameMenuView;
+
 import java.util.Scanner;
 
 /**

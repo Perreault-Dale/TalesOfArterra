@@ -3,16 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package byui.cit260.talesofarterra.model;
+package byui.cit260.talesofarterra.view;
 
 /**
  *
- * @author Carlos
+ * @author Portal
  */
 public class GameMenuView {
 
-    public void displayMenu() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    void displayMenu() {
+        System.out.println("\n*** createNewGame stub function called ***");
     }
     
 }
