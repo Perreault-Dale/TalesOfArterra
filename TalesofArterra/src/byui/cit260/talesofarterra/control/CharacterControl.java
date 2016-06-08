@@ -12,7 +12,14 @@ import byui.cit260.talesofarterra.model.Item;
  * @author Dale
  */
 public class CharacterControl {
-    public void inputName(Character char1, String name) {
+
+    public static byui.cit260.talesofarterra.model.Character createPlayer(String charName) {
+        Character playerChar = new Character();
+        inputName(playerChar,charName);
+        return playerChar;
+    }
+    
+    public static void inputName(Character char1, String name) {
         char1.setName(name);
     }
     
