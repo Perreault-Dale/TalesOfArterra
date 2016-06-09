@@ -80,17 +80,15 @@ public class CharacterCreateView {
 
     private void displayGenderView(Character playerChar) {
         boolean done = false;
-        
         do {
             String menuOption = this.getGenderOption();
-            
             if (menuOption.toUpperCase().equals("Q"))
                 return;
-            
             done = this.doGenderAction(playerChar,menuOption);
-            
         }while (!done);
-        System.out.println(playerChar.toString());
+        
+        AbilitiesMenuView abilitiesView = new AbilitiesMenuView(playerChar,abilityPoints);
+        abilitiesView.displayMenuView();
     }
 
     private String getGenderOption() {
