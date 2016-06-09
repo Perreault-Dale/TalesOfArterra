@@ -6,7 +6,6 @@
 package byui.cit260.talesofarterra.view;
 
 import byui.cit260.talesofarterra.control.GameControl;
-import byui.cit260.talesofarterra.view.GameMenuView;
 
 import java.util.Scanner;
 
@@ -15,7 +14,7 @@ import java.util.Scanner;
  * @author Portal
  */
 public class MainMenuView {
-    private String menu;
+    private final String menu;
   
     
     public MainMenuView(){
@@ -74,16 +73,16 @@ public class MainMenuView {
         switch (choice) {
             case "N":
                 this.startNewGame();
-                break;
+                return true;
             case "G":
                 this.startExistingGame();
-                break;
+                return true;
             case "H":
                 this.displayHelpMenu();
-                break;
+                return true;
             case "S":
                 this.saveGame();
-                break;
+                return true;
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
                 break;
@@ -100,8 +99,8 @@ public class MainMenuView {
         GameMenuView gameMenu = new GameMenuView();
         gameMenu.displayMenu();
         
-        
-        System.out.println("\n*** startNewGame function called ***");
+        CharacterCreateView ccv = new CharacterCreateView();
+        ccv.displayMenuView();
     }
 
     private void startExistingGame() {

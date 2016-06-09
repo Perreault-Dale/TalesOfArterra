@@ -7,6 +7,7 @@ package talesofarterra;
 
 import byui.cit260.talesofarterra.model.Character;
 import byui.cit260.talesofarterra.view.CharacterCreateView;
+import byui.cit260.talesofarterra.view.StartMenuView;
 import java.util.Scanner;
 
 /**
@@ -19,8 +20,9 @@ public class TalesofArterra {
     
     
     public static void main(String[] args) {
-        CharacterCreateView ccv = new CharacterCreateView();
-        ccv.displayMenuView();
+        StartMenuView startItUp = new StartMenuView();
+        startItUp.displayMenuView();
+        
     }
 
     public static Character getPlayerChar() {
