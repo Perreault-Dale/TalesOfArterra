@@ -15,6 +15,11 @@ import java.util.Random;
  * @author Dale
  */
 public class ItemControl {
+    
+   public void addsToHealth(){
+        System.out.println("chugs Ption");
+    }
+    
     public int calcLore(Character char1) {
         int [] ability = char1.getAbilities();
         if (ability[4] < 9) {
