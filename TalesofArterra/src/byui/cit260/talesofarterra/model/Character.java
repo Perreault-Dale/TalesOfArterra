@@ -127,6 +127,46 @@ public class Character implements Serializable {
         return hitPoints;
     }
 
+    public Item getArmor() {
+        return armor;
+    }
+
+    public void setArmor(Item armor) {
+        this.armor = armor;
+    }
+
+    public Item getGloves() {
+        return gloves;
+    }
+
+    public void setGloves(Item gloves) {
+        this.gloves = gloves;
+    }
+
+    public Item getShoes() {
+        return shoes;
+    }
+
+    public void setShoes(Item shoes) {
+        this.shoes = shoes;
+    }
+
+    public Item getWeapon() {
+        return weapon;
+    }
+
+    public void setWeapon(Item weapon) {
+        this.weapon = weapon;
+    }
+
+    public Item getShield() {
+        return shield;
+    }
+
+    public void setShield(Item shield) {
+        this.shield = shield;
+    }
+
     public void setHitPoints(int hitPoints) {
         this.hitPoints = hitPoints;
     }

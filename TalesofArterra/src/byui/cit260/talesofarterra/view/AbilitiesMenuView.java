@@ -16,7 +16,7 @@ class AbilitiesMenuView {
     
     private final String promptMessage;
     private final Character playerChar;
-    private final int abilityPoints;
+    private int abilityPoints;
 
     public AbilitiesMenuView(Character playerChar) {
         this.displayBanner();
@@ -44,13 +44,13 @@ class AbilitiesMenuView {
     public void displayMenuView() {
         boolean done = false;
         do {
-            int [] able = upgradeAbilities(playerChar,abilityPoints);
-            done = this.confirmAbilities(playerChar,able);
+            int [] able = upgradeAbilities();
+            done = this.confirmAbilities(able);
         }
         while(!done);
     }
 
-    private int [] upgradeAbilities(Character playerChar, int abilityPoints) {
+    private int [] upgradeAbilities() {
         int [] able = playerChar.getAbilities();
         String menu;
         
@@ -66,13 +66,14 @@ class AbilitiesMenuView {
         
             Scanner keyboard = new Scanner(System.in);
             String value = "";
-            String notEnoughPoints = "You don't have enough points to increase that ability.";
+            
             boolean valid = false;
             while (!valid){
                 System.out.println(menu);
             
                 value = keyboard.nextLine();
                 value = value.trim();
+                value = value.toUpperCase();
             
                 if (value.length()<1) {
                     System.out.println("\nPlease enter a value.");
@@ -83,183 +84,27 @@ class AbilitiesMenuView {
             
             switch(value) {
                 case "1": {
-                    if (able[0] == 14 || able[0] == 15) {
-                        if (abilityPoints < 2) {
-                            System.out.println(notEnoughPoints);
-                        }
-                        else {
-                            able[0]++;
-                            abilityPoints -= 2;
-                        }
-                    }
-                    else if (able[0] > 15) {
-                        if (abilityPoints < 3) {
-                            System.out.println(notEnoughPoints);
-                        }
-                        else {
-                            able[0]++;
-                            abilityPoints -= 3;
-                        }
-                    }
-                    else {
-                        if (abilityPoints < 1) {
-                            System.out.println(notEnoughPoints);
-                        }
-                        else {
-                            able[0]++;
-                            abilityPoints--;
-                        }
-                    }
+                    able[0] = checkPoints(able[0]);
                     break;
                 }
                 case "2": {
-                    if (able[1] == 14 || able[1] == 15) {
-                        if (abilityPoints < 2) {
-                            System.out.println(notEnoughPoints);
-                        }
-                        else {
-                            able[1]++;
-                            abilityPoints -= 2;
-                        }
-                    }
-                    else if (able[1] > 15) {
-                        if (abilityPoints < 3) {
-                            System.out.println(notEnoughPoints);
-                        }
-                        else {
-                            able[1]++;
-                            abilityPoints -= 3;
-                        }
-                    }
-                    else {
-                        if (abilityPoints < 1) {
-                            System.out.println(notEnoughPoints);
-                        }
-                        else {
-                            able[1]++;
-                            abilityPoints--;
-                        }
-                    }
+                    able[1] = checkPoints(able[1]);
                     break;
                 }
                 case "3": {
-                    if (able[2] == 14 || able[2] == 15) {
-                        if (abilityPoints < 2) {
-                            System.out.println(notEnoughPoints);
-                        }
-                        else {
-                            able[2]++;
-                            abilityPoints -= 2;
-                        }
-                    }
-                    else if (able[2] > 15) {
-                        if (abilityPoints < 3) {
-                            System.out.println(notEnoughPoints);
-                        }
-                        else {
-                            able[2]++;
-                            abilityPoints -= 3;
-                        }
-                    }
-                    else {
-                        if (abilityPoints < 1) {
-                            System.out.println(notEnoughPoints);
-                        }
-                        else {
-                            able[2]++;
-                            abilityPoints--;
-                        }
-                    }
+                    able[2] = checkPoints(able[2]);
                     break;
                 }
                 case "4": {
-                    if (able[3] == 14 || able[3] == 15) {
-                        if (abilityPoints < 2) {
-                        System.out.println(notEnoughPoints);
-                        }
-                        else {
-                            able[3]++;
-                            abilityPoints -= 2;
-                        }
-                    }
-                    else if (able[3] > 15) {
-                        if (abilityPoints < 3) {
-                            System.out.println(notEnoughPoints);
-                        }
-                        else {
-                            able[3]++;
-                            abilityPoints -= 3;
-                        }
-                    }
-                    else {
-                        if (abilityPoints < 1) {
-                            System.out.println(notEnoughPoints);
-                        }
-                        else {
-                            able[3]++;
-                            abilityPoints--;
-                        }
-                    }
+                    able[3] = checkPoints(able[3]);
                     break;
                 }
                 case "5": {
-                    if (able[4] == 14 || able[4] == 15) {
-                        if (abilityPoints < 2) {
-                            System.out.println(notEnoughPoints);
-                        }
-                        else {
-                            able[4]++;
-                            abilityPoints -= 2;
-                        }
-                    }
-                    else if (able[4] > 15) {
-                        if (abilityPoints < 3) {
-                            System.out.println(notEnoughPoints);
-                        }
-                        else {
-                            able[4]++;
-                            abilityPoints -= 3;
-                        }
-                    }
-                    else {
-                        if (abilityPoints < 1) {
-                            System.out.println(notEnoughPoints);
-                        }
-                        else {
-                            able[4]++;
-                            abilityPoints--;
-                        }
-                    }
+                    able[4] = checkPoints(able[4]);
                     break;
                 }
                 case "6": {
-                    if (able[5] == 14 || able[5] == 15) {
-                        if (abilityPoints < 2) {
-                            System.out.println(notEnoughPoints);
-                        }
-                        else {
-                            able[5]++;
-                            abilityPoints -= 2;
-                        }
-                    }
-                    else if (able[5] > 15) {
-                        if (abilityPoints < 3) {
-                            System.out.println(notEnoughPoints);
-                        }
-                        else {
-                            able[5]++;
-                            abilityPoints -= 3;
-                        }
-                    }
-                    else {
-                        if (abilityPoints < 1) {
-                            System.out.println(notEnoughPoints);
-                        }
-                        else {
-                            able[5]++;
-                            abilityPoints--;
-                        }
-                    }
+                    able[5] = checkPoints(able[5]);
                     break;
                 }
                 case "H": {
@@ -273,8 +118,30 @@ class AbilitiesMenuView {
         }
         return able;
     }
+    
+    private int checkPoints(int score) {
+        String notEnoughPoints = "You don't have enough points to increase that ability.";
+        int drop;
+        if (score > 15) {
+            drop = 3;
+        }
+        else if (score == 14 || score == 15) {
+            drop = 2;
+        }
+        else {
+            drop = 1;
+        }
+        if (abilityPoints < drop) {
+            System.out.println(notEnoughPoints);
+        }
+        else {
+            score++;
+            abilityPoints -= drop;
+        }
+        return score;
+    }
 
-    private boolean confirmAbilities(Character playerChar, int[] able) {
+    private boolean confirmAbilities(int[] able) {
         String menu = "Your abilities:\n\n" +
         "1.	Strength: 		" + able[0] + "\n" +
         "2.	Constitution:           " + able[1] + "\n" +
@@ -309,7 +176,7 @@ class AbilitiesMenuView {
                 playerChar.setAbilities(able);
                 return true;
             case "R":
-                upgradeAbilities(playerChar,abilityPoints);
+                upgradeAbilities();
                 return true;
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
