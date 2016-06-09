@@ -5,12 +5,9 @@
  */
 package talesofarterra;
 
-import byui.cit260.talesofarterra.model.Game;
-import byui.cit260.talesofarterra.model.Player;
+import byui.cit260.talesofarterra.model.Character;
+import byui.cit260.talesofarterra.view.CharacterCreateView;
 import byui.cit260.talesofarterra.view.StartMenuView;
-
-
-
 import java.util.Scanner;
 
 /**
@@ -19,31 +16,23 @@ import java.util.Scanner;
  */
 public class TalesofArterra {
 
-    private static Game currentGame = null;
-    private static Player player = null;
+    private static Character playerChar = null;
     
     
     public static void main(String[] args) {
-        StartMenuView startMenuView = new StartMenuView();
-        startMenuView.displayMenuView();
-         
+        StartMenuView startItUp = new StartMenuView();
+        startItUp.displayMenuView();
+        
+    }
+
+    public static Character getPlayerChar() {
+        return playerChar;
+    }
+
+    public static void setPlayerChar(Character playerChar) {
+        TalesofArterra.playerChar = playerChar;
     }
     
     
-    public static Game getCurrentGame() {
-        return currentGame;
-    }
-
-    public static void setCurrentGame(Game currentGame) {
-        TalesofArterra.currentGame = currentGame;
-    }
-
-    public static Player getPlayer() {
-        return player;
-    }
-
-    public static void setPlayer(Player player) {
-        TalesofArterra.player = player;
-    }
     
 }

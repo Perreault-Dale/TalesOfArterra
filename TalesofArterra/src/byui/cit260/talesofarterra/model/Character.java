@@ -24,9 +24,23 @@ public class Character implements Serializable {
     private int hitPoints;
     private int maxHP;
     private boolean[] useWeapons;
+    private Item armor;
+    private Item gloves;
+    private Item shoes;
+    private Item weapon;
+    private Item shield;
 
     //public getter and setter functions
     public Character() {
+        this.level = 1;
+        this.experience = 0;
+        this.armorClass = 10;
+        this.baseAttack = 4;
+        this.alignment = new int[] {85,50};
+        this.abilities = new int[] {8,8,8,8,8,8};
+        this.skills = new int[] {4,4,4,4,0,0,0,0,0};
+        this.feats = new boolean[] {false,false,false,false,false,false,false,false,false};
+        this.useWeapons = new boolean[] {false,false,false,false,false,false,false,false,false};
     }
 
     public String getName() {
