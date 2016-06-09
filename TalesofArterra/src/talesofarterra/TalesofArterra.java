@@ -6,9 +6,7 @@
 package talesofarterra;
 
 import byui.cit260.talesofarterra.model.Character;
-import byui.cit260.talesofarterra.view.CharacterCreateView;
 import byui.cit260.talesofarterra.view.StartMenuView;
-import java.util.Scanner;
 
 /**
  *

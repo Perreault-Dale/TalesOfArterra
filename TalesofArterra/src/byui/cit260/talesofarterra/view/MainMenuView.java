@@ -79,7 +79,7 @@ public class MainMenuView {
                 return true;
             case "H":
                 this.displayHelpMenu();
-                return true;
+                break;
             case "S":
                 this.saveGame();
                 return true;
@@ -104,15 +104,16 @@ public class MainMenuView {
     }
 
     private void startExistingGame() {
-        System.out.println("\n*** startExistingGame function called ***");
-    }
-
-    private void displayHelpMenu() {
         System.out.println("\n*** StartSavedGame function called ***");
     }
 
+    private void displayHelpMenu() {
+        HelpMenuView getMeHelp = new HelpMenuView();
+        getMeHelp.menuChoice();
+    }
+
     private void saveGame() {
-        System.out.println("\n*** displayHelpMenu function called ***");
+        System.out.println("\n*** saveGame function called ***");
     }
 
   

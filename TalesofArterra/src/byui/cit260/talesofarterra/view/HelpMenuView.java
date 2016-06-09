@@ -53,8 +53,7 @@ public class HelpMenuView {
             case 'r': resting();
                           break;
             case 'B':
-            case'b': resumeGame();
-                          break;
+            case'b': return;
             default: System.out.println( "ERROR: That is not a valid choice!" );
             }
            }
@@ -67,23 +66,19 @@ public class HelpMenuView {
     }
 
     private void objective() {
-        System.out.println("\n*** createNewGame stub function called ***");
+        System.out.println("\n*** objective stub function called ***");
     }
 
     private void movement() {
-        System.out.println("\n*** createNewGame stub function called ***");
+        System.out.println("\n*** movement stub function called ***");
     }
 
     private void henchmen() {
-        System.out.println("\n*** createNewGame stub function called ***");
+        System.out.println("\n*** henchmen stub function called ***");
     }
 
     private void resting() {
-        System.out.println("\n*** createNewGame stub function called ***");
-    }
-
-    private void resumeGame() {
-        System.out.println("\n*** createNewGame stub function called ***");
+        System.out.println("\n*** resting stub function called ***");
     }
 }
  
