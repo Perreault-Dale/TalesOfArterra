@@ -36,11 +36,9 @@ public class ItemControl {
     }
     
     public void calcIdentified(Item item, int lore) {
-        if (lore < item.getLoreCount()) {
-            item.setIsIdentified(false);
-            return;
+        if (lore > item.getLoreCount()) {
+            item.setIsIdentified(true);
         }
-        item.setIsIdentified(true);
     }
     
     public void calcEquipped(Item item) {
