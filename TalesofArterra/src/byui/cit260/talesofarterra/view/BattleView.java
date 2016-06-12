@@ -51,7 +51,7 @@ public class BattleView {
         
         Scanner keyboard = new Scanner(System.in);
         String value = "";
-        boolean valid = true;
+        boolean valid = false;
         
         while (!valid){
             System.out.println("\n" + this.battleMenu);

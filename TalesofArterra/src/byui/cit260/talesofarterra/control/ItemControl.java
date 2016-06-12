@@ -17,7 +17,7 @@ import java.util.Random;
 public class ItemControl {
     
    public void addsToHealth(){
-        System.out.println("chugs Ption");
+        System.out.println("chugs Potion");
     }
     
     public int calcLore(Character char1) {

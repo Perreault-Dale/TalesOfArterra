@@ -20,13 +20,16 @@ public class MainMenuView {
     public MainMenuView(){
         this.menu = "\n"
                 + "\n--------------------------------------------"
-                + "\n| Main Menu                                |"
+                + "\n|  Main Menu                                |"
                 + "\n--------------------------------------------"
                 +"\nN - Start new game"
                 +"\nG - Get and start saved game"
                 +"\nH - Get help on how to play the game"
                 +"\nS - Save game"
                 +"\nQ - Quit"
+                +"\n---------------------------------------------"
+                +"\n ## Test Area menu options                 ##"
+                +"\nB - Battle view test"
                 +"\n---------------------------------------------"
                 ;
     }
@@ -60,11 +63,11 @@ public class MainMenuView {
             if (value.length()<1) {
                 System.out.println("\nYou must choose wisely...letters");
                 continue;
-            }
+                }
             break;
-        }
+            }
         return value;
-    }
+        }
 
     private boolean doAction(String choice) {
         
@@ -82,13 +85,16 @@ public class MainMenuView {
                 break;
             case "S":
                 this.saveGame();
+                break;
+            case "B":
+                this.startBattleView();
                 return true;
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
                 break;
-        }
+            }
         return false;
-    }
+        }
 
     private void startNewGame() {
         
@@ -101,22 +107,25 @@ public class MainMenuView {
         
         CharacterCreateView ccv = new CharacterCreateView();
         ccv.displayMenuView();
-    }
+        }
 
     private void startExistingGame() {
         System.out.println("\n*** StartSavedGame function called ***");
-    }
+        }
 
     private void displayHelpMenu() {
         HelpMenuView getMeHelp = new HelpMenuView();
         getMeHelp.menuChoice();
-    }
+        }
 
     private void saveGame() {
         System.out.println("\n*** saveGame function called ***");
-    }
-
-  
+        }
+    private void startBattleView() {
+        BattleView battleViewObject = new BattleView();
+        battleViewObject.displayBattleMenuView();
+        }
+            
     }
 
 
