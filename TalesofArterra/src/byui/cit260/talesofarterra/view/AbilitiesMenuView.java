@@ -87,28 +87,14 @@ class AbilitiesMenuView {
             }
             
             switch(value) {
-                case "1": {
-                    able[0] = checkPoints(able[0]);
-                    break;
-                }
-                case "2": {
-                    able[1] = checkPoints(able[1]);
-                    break;
-                }
-                case "3": {
-                    able[2] = checkPoints(able[2]);
-                    break;
-                }
-                case "4": {
-                    able[3] = checkPoints(able[3]);
-                    break;
-                }
-                case "5": {
-                    able[4] = checkPoints(able[4]);
-                    break;
-                }
+                case "1":
+                case "2":
+                case "3":
+                case "4":
+                case "5":
                 case "6": {
-                    able[5] = checkPoints(able[5]);
+                    int i = Integer.parseInt(value) - 1;
+                    able[i] = checkPoints(able[i]);
                     break;
                 }
                 case "H": {
