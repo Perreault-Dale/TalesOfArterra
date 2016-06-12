@@ -89,6 +89,8 @@ public class CharacterCreateView {
         
         AbilitiesMenuView abilitiesView = new AbilitiesMenuView(playerChar,abilityPoints);
         abilitiesView.displayMenuView();
+        FeatsMenuView featsMenu = new FeatsMenuView(playerChar);
+        System.out.println(playerChar.toString());
     }
 
     private String getGenderOption() {

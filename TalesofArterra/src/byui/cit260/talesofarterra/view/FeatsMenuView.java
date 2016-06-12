@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package byui.cit260.talesofarterra.view;
 
 import java.util.Scanner;
 import byui.cit260.talesofarterra.model.Character;
@@ -57,6 +57,7 @@ public class FeatsMenuView {
         displayMenu();
         char choice;
         int feature = 0;
+        boolean valid = false;
         do
         {
            System.out.print( "Please enter an option: " );
@@ -65,23 +66,16 @@ public class FeatsMenuView {
          
            switch(choice)
            {
-            case '1': feature = 0;
-                      break;
-            case '2': feature = 1;
-                      break;
-            case '3': feature = 2;
-                          break;
-            case '4': feature = 3;
-                          break;
-            case '5': feature = 4;
-                          break;
-            case '6': feature = 5;
-                      break;
-            case '7': feature = 6;
-                      break;
-            case '8': feature = 7;
-                          break;
-            case '9': feature = 8;
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9': feature = java.lang.Character.getNumericValue(choice) - 1;
+                      valid = true;
                           break;
             case 'H':
             case 'h': featsHelp();
@@ -89,12 +83,7 @@ public class FeatsMenuView {
             default: System.out.println( "ERROR: That is not a valid choice!" );
             }
            }
-           while (choice != '1' || choice != '2' 
-                   || choice != '3' || choice != '4'
-                   || choice != '5' || choice != '6'
-                   || choice != '7' || choice != '8'
-                   || choice != '9' || choice != 'h'
-                   || choice != 'H');
+           while (!valid);
         
         return feature;
 
