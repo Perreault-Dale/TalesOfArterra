@@ -80,6 +80,8 @@ public class CharacterControl {
     
     public void healPartial(Character char1, int heal) {
         char1.setHitPoints(char1.getHitPoints() + heal);
+        if (char1.getHitPoints() > char1.getMaxHP())
+                char1.setHitPoints(char1.getMaxHP());
     }
     
     public void healFull(Character char1) {
