@@ -49,7 +49,7 @@ public class StartMenuView extends View {
         );
         
         MainMenuView mainMenuView = new MainMenuView();
-        mainMenuView.displayMainMenuView();
+        mainMenuView.display();
     }
     
 }

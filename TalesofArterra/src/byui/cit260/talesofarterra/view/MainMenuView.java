@@ -7,18 +7,14 @@ package byui.cit260.talesofarterra.view;
 
 import byui.cit260.talesofarterra.control.GameControl;
 
-import java.util.Scanner;
-
 /**
  *
  * @author Portal
  */
-public class MainMenuView {
-    private final String menu;
-  
+public class MainMenuView extends View {
     
     public MainMenuView(){
-        this.menu = "\n"
+        super("\n"
                 + "\n--------------------------------------------"
                 + "\n|  Main Menu                                |"
                 + "\n--------------------------------------------"
@@ -30,46 +26,11 @@ public class MainMenuView {
                 +"\n---------------------------------------------"
                 +"\n ## Test Area menu options                 ##"
                 +"\nB - Battle view test"
-                +"\n---------------------------------------------"
-                ;
+                +"\n---------------------------------------------");
     }
     
-    void displayMainMenuView() {
-       
-        boolean done = false;
-        
-        do {
-            String menuOption = this.getMenuOption();
-            
-            if (menuOption.toUpperCase().equals("Q"))
-                return;
-            
-            done = this.doAction(menuOption);
-            
-        }while (!done);
-    }
-
-    private String getMenuOption() {
-        Scanner keyboard = new Scanner(System.in);
-        String value = "";
-        boolean valid = false;
-        
-        while (!valid){
-            System.out.println("\n" + this.menu);
-            
-            value = keyboard.nextLine();
-            value = value.trim();
-            
-            if (value.length()<1) {
-                System.out.println("\nYou must choose wisely...letters");
-                continue;
-                }
-            break;
-            }
-        return value;
-        }
-
-    private boolean doAction(String choice) {
+    @Override
+    public boolean doAction(String choice) {
         
         choice = choice.toUpperCase();
         
@@ -106,7 +67,9 @@ public class MainMenuView {
         gameMenu.displayMenu();
         
         CharacterCreateView ccv = new CharacterCreateView();
-        ccv.displayMenuView();
+        ccv.display();
+        GenderView genderView = new GenderView();
+        genderView.display();
         }
 
     private void startExistingGame() {
