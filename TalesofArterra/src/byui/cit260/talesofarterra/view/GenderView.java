@@ -27,44 +27,15 @@ public class GenderView extends View {
         choice = choice.toUpperCase();
         CharacterControl charCtl = new CharacterControl();
         Character playerChar = null;
-        FileInputStream fileInputStream = null;
-        ObjectInputStream objectInputStream = null;
- 
-        String serializedFileName = "playerChar.ser";
-      
-        try
-        {
-           fileInputStream = new FileInputStream(serializedFileName);
-           objectInputStream = new ObjectInputStream(fileInputStream);
-           playerChar = (Character) objectInputStream.readObject();
-           objectInputStream.close();
-        }
-        catch(FileNotFoundException fnfe)
-        {
-           System.out.println("File not found: "+fnfe.getMessage());
-           //Close all I/O streams
-           //Handle the exception here
-        }
-        catch(IOException ioe)
-        {
-           ioe.printStackTrace();
-           //Close all I/O streams
-           //Handle the exception here
-        }
-        catch(ClassNotFoundException cnfe)
-        {
-           cnfe.printStackTrace();
-           //Close all I/O streams
-           //Handle the exception here
-        }
+        playerChar = charCtl.loadCharacter("playerChar.ser");
         
         switch (choice) {
             case "M":
                 charCtl.inputGender(playerChar,'M');
-                return true;
+                return charCtl.saveCharacter(playerChar,"playerChar.ser");
             case "F":
                 charCtl.inputGender(playerChar,'F');
-                return true;
+                return charCtl.saveCharacter(playerChar,"playerChar.ser");
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
                 break;

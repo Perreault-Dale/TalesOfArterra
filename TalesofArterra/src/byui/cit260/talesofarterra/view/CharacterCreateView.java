@@ -28,36 +28,13 @@ public class CharacterCreateView extends View {
     }
 
     @Override
-    public boolean doAction(String charName) {
-        Character playerChar = CharacterControl.createPlayer(charName);
+    public boolean doAction(String value) {
+        Character playerChar = CharacterControl.createPlayer(value);
         if (playerChar == null) {
             System.out.println("\nError: Failed to create the character.");
             return false;
         }
-        saveCharacter(playerChar);
-        return true;
-    }
-
-    private void saveCharacter(Character playerChar) {
-        String characterFileName = "playerChar.ser";
-        FileOutputStream fileOutputStream = null;
-        ObjectOutputStream objectOutputStream = null;
-        
-        try
-        {
-            fileOutputStream = new FileOutputStream(characterFileName);
-            objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            //The object is being persisted here
-            objectOutputStream.writeObject(playerChar);
-            objectOutputStream.close();
-            System.out.println("Object serialized in file : " + characterFileName);
-        }
-        catch(IOException ioe)
-        {
-            //Close all I/O streams
-            ioe.printStackTrace();
-            //Handle the exception here
-        }
-    }
-        
+        CharacterControl cc = new CharacterControl();
+        return cc.saveCharacter(playerChar,"playerChar.ser");
+    } 
 }
