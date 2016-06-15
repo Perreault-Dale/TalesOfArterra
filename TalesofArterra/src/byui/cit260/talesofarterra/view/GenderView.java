@@ -31,10 +31,8 @@ public class GenderView extends View {
         
         switch (choice) {
             case "M":
-                charCtl.inputGender(playerChar,'M');
-                return charCtl.saveCharacter(playerChar,"playerChar.ser");
             case "F":
-                charCtl.inputGender(playerChar,'F');
+                charCtl.inputGender(playerChar,choice.charAt(0));
                 return charCtl.saveCharacter(playerChar,"playerChar.ser");
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
