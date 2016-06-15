@@ -6,6 +6,8 @@
 package byui.cit260.talesofarterra.view;
 
 import byui.cit260.talesofarterra.control.CharacterControl;
+import byui.cit260.talesofarterra.model.Character;
+import java.io.*;
 
 /**
  *
@@ -24,6 +26,37 @@ public class GenderView extends View {
         
         choice = choice.toUpperCase();
         CharacterControl charCtl = new CharacterControl();
+        Character playerChar = null;
+        FileInputStream fileInputStream = null;
+        ObjectInputStream objectInputStream = null;
+ 
+        String serializedFileName = "playerChar.ser";
+      
+        try
+        {
+           fileInputStream = new FileInputStream(serializedFileName);
+           objectInputStream = new ObjectInputStream(fileInputStream);
+           playerChar = (Character) objectInputStream.readObject();
+           objectInputStream.close();
+        }
+        catch(FileNotFoundException fnfe)
+        {
+           System.out.println("File not found: "+fnfe.getMessage());
+           //Close all I/O streams
+           //Handle the exception here
+        }
+        catch(IOException ioe)
+        {
+           ioe.printStackTrace();
+           //Close all I/O streams
+           //Handle the exception here
+        }
+        catch(ClassNotFoundException cnfe)
+        {
+           cnfe.printStackTrace();
+           //Close all I/O streams
+           //Handle the exception here
+        }
         
         switch (choice) {
             case "M":

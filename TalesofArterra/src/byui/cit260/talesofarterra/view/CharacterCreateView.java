@@ -7,7 +7,7 @@ package byui.cit260.talesofarterra.view;
 
 import byui.cit260.talesofarterra.control.CharacterControl;
 import byui.cit260.talesofarterra.model.Character;
-import java.util.Scanner;
+import java.io.*;
 
 /**
  *
@@ -34,8 +34,30 @@ public class CharacterCreateView extends View {
             System.out.println("\nError: Failed to create the character.");
             return false;
         }
-        
+        saveCharacter(playerChar);
         return true;
+    }
+
+    private void saveCharacter(Character playerChar) {
+        String characterFileName = "playerChar.ser";
+        FileOutputStream fileOutputStream = null;
+        ObjectOutputStream objectOutputStream = null;
+        
+        try
+        {
+            fileOutputStream = new FileOutputStream(characterFileName);
+            objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            //The object is being persisted here
+            objectOutputStream.writeObject(playerChar);
+            objectOutputStream.close();
+            System.out.println("Object serialized in file : " + characterFileName);
+        }
+        catch(IOException ioe)
+        {
+            //Close all I/O streams
+            ioe.printStackTrace();
+            //Handle the exception here
+        }
     }
         
 }
