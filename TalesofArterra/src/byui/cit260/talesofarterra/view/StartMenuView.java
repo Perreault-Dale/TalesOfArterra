@@ -24,7 +24,8 @@ public class StartMenuView extends View {
           + "\n* a new life in the city of Edinburg, which is dealing with    *"
           + "\n* tragedies of its own.                                        *"
           + "\n*                                                              *"
-          + "\n****************************************************************");
+          + "\n****************************************************************"
+          + "\n\nPlease enter your name:\n");
     }
 
     @Override
