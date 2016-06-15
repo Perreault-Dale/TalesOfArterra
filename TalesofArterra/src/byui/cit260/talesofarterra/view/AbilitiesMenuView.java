@@ -5,6 +5,7 @@
  */
 package byui.cit260.talesofarterra.view;
 
+import byui.cit260.talesofarterra.control.CharacterControl;
 import byui.cit260.talesofarterra.model.Character;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -13,48 +14,61 @@ import java.util.Scanner;
  *
  * @author Dale
  */
-class AbilitiesMenuView {
+class AbilitiesMenuView extends View {
     
-    private final String promptMessage;
-    private final Character playerChar;
+    private Character playerChar;
     private int abilityPoints;
     private final int initialPoints;
 
-    public AbilitiesMenuView(Character playerChar) {
-        this.displayBanner();
-        this.promptMessage = "Please select your character's abilities.";
-        this.playerChar = playerChar;
+    public AbilitiesMenuView() {
+        super("\n****************************************************************"
+          + "\n*                                                              *"
+          + "\n* Abilities Selection Menu                                     *"
+          + "\n*                                                              *"
+          + "\n****************************************************************"
+          + "\n\nShall we proceed to set your character's abilities?"
+          + "\nSelect Y to proceed, Q to quit the game.\n");
         this.abilityPoints = 1;
         this.initialPoints = this.abilityPoints;
     }
     
-    public AbilitiesMenuView(Character playerChar, int abilityPoints) {
-        this.displayBanner();
-        this.promptMessage = "Please select your character's abilities.";
-        this.playerChar = playerChar;
+    public AbilitiesMenuView(int abilityPoints) {
+        super("\n****************************************************************"
+          + "\n*                                                              *"
+          + "\n* Abilities Selection Menu                                     *"
+          + "\n*                                                              *"
+          + "\n****************************************************************"
+          + "\n\nShall we proceed to set your character's abilities?"
+          + "\nSelect Y to proceed, Q to quit the game.\n");
         this.abilityPoints = abilityPoints;
         this.initialPoints = this.abilityPoints;
     }
     
-    private void displayBanner() {
-        System.out.println(
-            "\n****************************************************************"
-          + "\n*                                                              *"
-          + "\n* Abilities Selection Menu                                     *"
-          + "\n*                                                              *"
-          + "\n****************************************************************");
-    }
-    
-    public void displayMenuView() {
+    @Override
+    public boolean doAction(String value) {
         boolean done = false;
-        do {
-            int [] able = upgradeAbilities();
-            done = this.confirmAbilities(able);
+        value = value.toUpperCase();
+        switch (value) {
+            case "Y": {
+                do {
+                    int [] able = upgradeAbilities();
+                    done = this.confirmAbilities(able);
+                }
+                while(!done);
+                break;
+            }
+            case "Q":
+                done = true;
+                break;
+            default:
+                System.out.println("\nPlease select a valid entry (Y,Q)");
         }
-        while(!done);
+        return done;
     }
 
     private int [] upgradeAbilities() {
+        CharacterControl cc = new CharacterControl();
+        playerChar = cc.loadCharacter("playerChar.ser");
         int [] able = playerChar.getAbilities();
         String menu;
         
@@ -66,7 +80,8 @@ class AbilitiesMenuView {
                 "4.	Dexterity:		" + able[3] + "\n" +
                 "5.	Intelligence:		" + able[4] + "\n" +
                 "6.	Charisma:		" + able[5] + "\n\n" +
-                "You have " + abilityPoints + " ability point(s) to use. Please select the ability to increase: (1-6)\n\nH - Help\n";
+                "You have " + abilityPoints + " ability point(s) to use. "
+                    + "Please select the ability to increase: (1-6)\n\nH - Help\n";
         
             Scanner keyboard = new Scanner(System.in);
             String value = "";
@@ -160,6 +175,9 @@ class AbilitiesMenuView {
                 return false;
             case "C":
                 playerChar.setAbilities(able);
+                CharacterControl cc = new CharacterControl();
+                cc.saveCharacter(playerChar,"playerChar.ser");
+                System.out.println(playerChar.toString());
                 valid = true;
                 break;
             default:

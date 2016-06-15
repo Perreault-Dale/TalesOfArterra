@@ -70,6 +70,8 @@ public class MainMenuView extends View {
         ccv.display();
         GenderView genderView = new GenderView();
         genderView.display();
+        AbilitiesMenuView abv = new AbilitiesMenuView(30);
+        abv.display();
         }
 
     private void startExistingGame() {
