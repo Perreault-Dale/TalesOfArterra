@@ -5,7 +5,6 @@
  */
 package talesofarterra;
 
-import byui.cit260.talesofarterra.model.Character;
 import byui.cit260.talesofarterra.view.StartMenuView;
 
 /**
@@ -14,23 +13,9 @@ import byui.cit260.talesofarterra.view.StartMenuView;
  */
 public class TalesofArterra {
 
-    private static Character playerChar = null;
-    
-    
     public static void main(String[] args) {
         StartMenuView startItUp = new StartMenuView();
         startItUp.display();
         
     }
-
-    public static Character getPlayerChar() {
-        return playerChar;
-    }
-
-    public static void setPlayerChar(Character playerChar) {
-        TalesofArterra.playerChar = playerChar;
-    }
-    
-    
-    
 }
