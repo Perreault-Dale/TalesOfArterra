@@ -18,6 +18,7 @@ public class MainMenuView {
   
     
     public MainMenuView(){
+        //local variables.
         this.menu = "\n"
                 + "\n--------------------------------------------"
                 + "\n|  Main Menu                                |"
@@ -48,15 +49,16 @@ public class MainMenuView {
             
         }while (!done);
     }
-
+    
     private String getMenuOption() {
+        //instance variables
         Scanner keyboard = new Scanner(System.in);
         String value = "";
         boolean valid = false;
         
         while (!valid){
             System.out.println("\n" + this.menu);
-            
+            //local variables
             value = keyboard.nextLine();
             value = value.trim();
             
@@ -68,11 +70,11 @@ public class MainMenuView {
             }
         return value;
         }
-
+    //argument variable
     private boolean doAction(String choice) {
         
         choice = choice.toUpperCase();
-        
+       
         switch (choice) {
             case "N":
                 this.startNewGame();
