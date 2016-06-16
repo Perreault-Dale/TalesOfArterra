@@ -264,18 +264,18 @@ class AbilitiesMenuView extends View {
     
     private void strengthHelp() {
         System.out.println("Strength measures the muscle and physical power of a character. "
-                + "This ability is especially important for fighters, barbarians, paladins, "
-                + "rangers, and monks because it helps them prevail in combat.");
+                + "\nThis ability is especially important for fighters, barbarians, paladins, "
+                + "\nrangers, and monks because it helps them prevail in combat.");
     }
 
     private void constitutionHelp() {
         System.out.println("Constitution represents the health and stamina of a character. "
-                + "High constitution increases the number of hit points a character has "
-                + "(affecting how much damage they can take), and this makes it important "
-                + "for everyone, but especially so for fighters. If constitution ever "
-                + "increases, hit points increase retroactively as well. Spellcasters also "
-                + "need strong constitution to keep their spells from being interrupted "
-                + "during combat.");
+                + "\nHigh constitution increases the number of hit points a character has "
+                + "\n(affecting how much damage they can take), and this makes it important "
+                + "\nfor everyone, but especially so for fighters. If constitution ever "
+                + "\nincreases, hit points increase retroactively as well. Spellcasters also "
+                + "\nneed strong constitution to keep their spells from being interrupted "
+                + "\nduring combat.");
     }
 
     private void wisdomHelp() {
@@ -293,30 +293,30 @@ class AbilitiesMenuView extends View {
 
     private void dexterityHelp() {
         System.out.println("Dexterity measures agility, reflexes, and balance. This ability "
-                + "is most important for rogues, but also for characters who typically wear "
-                + "light or medium armor (barbarians and rangers) or none at all (monks, "
-                + "wizards, and sorcerers), or for any character who wants to be a skilled "
-                + "archer.");
+                + "\nis most important for rogues, but also for characters who typically wear "
+                + "\nlight or medium armor (barbarians and rangers) or none at all (monks, "
+                + "\nwizards, and sorcerers), or for any character who wants to be a skilled "
+                + "\narcher.");
     }
 
     private void intelligenceHelp() {
         System.out.println("Intelligence determines how well a character learns and reasons. "
-                + "Intelligence is important for wizards because it affects how many spells "
-                + "they can cast, how hard their spells are to resist, and how powerful their "
-                + "spells can be. It is also important for any character who wants to have a "
-                + "strong assortment of skills; however increasing intelligence will not "
-                + "grant bonus skill points retroactively.");
+                + "\nIntelligence is important for wizards because it affects how many spells "
+                + "\nthey can cast, how hard their spells are to resist, and how powerful their "
+                + "\nspells can be. It is also important for any character who wants to have a "
+                + "\nstrong assortment of skills; however increasing intelligence will not "
+                + "\ngrant bonus skill points retroactively.");
     }
 
     private void charismaHelp() {
         System.out.println("Charisma measures a character's force of personality, "
-                + "persuasiveness, ability to lead, and physical attractiveness. It "
-                + "represents actual personal strength, not merely how one is perceived by "
-                + "others in a social setting. Charisma is most important for paladins, "
-                + "sorcerers, and bards. It is also important for clerics, as it affects "
-                + "their ability to turn undead. All characters benefit from having a high "
-                + "charisma when speaking with others in the world. Charisma affects an "
-                + "NPC's initial reaction to the player and it modifies the player's "
-                + "persuasion skill checks.");
+                + "\npersuasiveness, ability to lead, and physical attractiveness. It "
+                + "\nrepresents actual personal strength, not merely how one is perceived by "
+                + "\nothers in a social setting. Charisma is most important for paladins, "
+                + "\nsorcerers, and bards. It is also important for clerics, as it affects "
+                + "\ntheir ability to turn undead. All characters benefit from having a high "
+                + "\ncharisma when speaking with others in the world. Charisma affects an "
+                + "\nNPC's initial reaction to the player and it modifies the player's "
+                + "\npersuasion skill checks.");
     }
 }
