@@ -14,12 +14,11 @@ import byui.cit260.talesofarterra.control.GameControl;
 public class MainMenuView extends View {
     
     public MainMenuView(){
-<<<<<<< HEAD
+
         //local variables.
-        this.menu = "\n"
-=======
+
         super("\n"
->>>>>>> a161029cdb00e0b4de799246a16354862cc2be4a
+
                 + "\n--------------------------------------------"
                 + "\n|  Main Menu                                |"
                 + "\n--------------------------------------------"
@@ -34,8 +33,8 @@ public class MainMenuView extends View {
                 +"\n---------------------------------------------");
     }
     
-<<<<<<< HEAD
-    void displayMainMenuView() {
+
+    /*void displayMainMenuView() {
        
         boolean done = false;
         
@@ -48,9 +47,9 @@ public class MainMenuView extends View {
             done = this.doAction(menuOption);
             
         }while (!done);
-    }
+    }*/
     
-    private String getMenuOption() {
+    /*private String getMenuOption() {
         //instance variables
         Scanner keyboard = new Scanner(System.in);
         String value = "";
@@ -69,13 +68,12 @@ public class MainMenuView extends View {
             break;
             }
         return value;
-        }
+        }*/
     //argument variable
-    private boolean doAction(String choice) {
-=======
+
     @Override
     public boolean doAction(String choice) {
->>>>>>> a161029cdb00e0b4de799246a16354862cc2be4a
+
         
         choice = choice.toUpperCase();
        
@@ -133,7 +131,7 @@ public class MainMenuView extends View {
         }
     private void startBattleView() {
         BattleView battleViewObject = new BattleView();
-        battleViewObject.displayBattleMenuView();
+        battleViewObject.display();
         }
             
     }

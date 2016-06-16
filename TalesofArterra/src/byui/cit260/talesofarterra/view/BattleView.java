@@ -1,28 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package byui.cit260.talesofarterra.view;
 
 import byui.cit260.talesofarterra.control.AttackControl;
 import byui.cit260.talesofarterra.control.ItemControl;
-import java.util.Random;
-import java.util.Scanner;
 
-/**
- *
- * @author Portal
- */
-public class BattleView {
+
+
+public class BattleView extends View {
     
-    private String battleMenu;
-    
-    //Scanner in = new Scanner(System.in);
-    Random rand = new Random();
-   
-    public BattleView() {
-        this.battleMenu = "\n "
+
+    public BattleView () {
+        super("\n "
                 + "\n****************************************************"
                 + "\n| Battle Menu                                      |"
                 + "\n****************************************************"
@@ -30,12 +18,11 @@ public class BattleView {
                 + "\nD. Drink health potion, woops"
                 + "\nR. Run!, ya coward!"
                 + "\n****************************************************"
-                
-                ;
+        );
         }
-    void displayBattleMenuView() {
+   /* void displayBattleMenuView() {
         
-        boolean done = false;
+        boolean done = true;
         
         do {
             String menuOption = this.getMenuOption();
@@ -66,9 +53,10 @@ public class BattleView {
             break;
         }
         return value;
-    }
+    }*/
     
-    private boolean doAction(String choice) {
+    @Override
+    public boolean doAction(String choice) {
         
         choice = choice.toUpperCase();
         
@@ -105,6 +93,6 @@ public class BattleView {
     
     
     private void exitCombat() {
-        System.out.println("\n*** startExistingGame function called ***");
+        System.out.println("\n*** startExitingGame function called ***");
     }
 }
