@@ -19,7 +19,7 @@ public class BattleView extends View {
                 + "\nR. Run!, ya coward!"
                 + "\n****************************************************"
         );
-        }
+    }
    /* void displayBattleMenuView() {
         
         boolean done = true;

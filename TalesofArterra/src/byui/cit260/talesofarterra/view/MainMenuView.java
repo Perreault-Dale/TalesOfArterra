@@ -30,6 +30,7 @@ public class MainMenuView extends View {
                 +"\n---------------------------------------------"
                 +"\n ## Test Area menu options                 ##"
                 +"\nB - Battle view test"
+                +"\nM - Game Menu Test                           "
                 +"\n---------------------------------------------");
     }
     
@@ -93,6 +94,8 @@ public class MainMenuView extends View {
             case "B":
                 this.startBattleView();
                 return true;
+            case "M":
+                this.startGameMenu();
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
                 break;
@@ -107,7 +110,7 @@ public class MainMenuView extends View {
         gameControlObject.createNewGame();
         
         GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayMenu();
+        gameMenu.display();
         
         CharacterCreateView ccv = new CharacterCreateView();
         ccv.display();
@@ -132,6 +135,12 @@ public class MainMenuView extends View {
     private void startBattleView() {
         BattleView battleViewObject = new BattleView();
         battleViewObject.display();
+        }
+    private void startGameMenu() {
+        
+        GameMenuView gameMenuViewObject = new GameMenuView ();
+        gameMenuViewObject.display();
+    
         }
             
     }
