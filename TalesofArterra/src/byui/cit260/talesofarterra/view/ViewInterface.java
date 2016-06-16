@@ -9,10 +9,8 @@ package byui.cit260.talesofarterra.view;
  *
  * @author Dale
  */
-class AbilityHelpMenu {
-
-    void displayMenuView() {
-        System.out.println("\n*** AbilityHelpView displayMenuView stub function called ***");
-    }
-    
+public interface ViewInterface {
+    public void display();
+    public String getInput();
+    public boolean doAction(String value);
 }

@@ -7,19 +7,19 @@ package byui.cit260.talesofarterra.view;
 
 import byui.cit260.talesofarterra.control.GameControl;
 
-import java.util.Scanner;
-
 /**
  *
  * @author Portal
  */
-public class MainMenuView {
-    private final String menu;
-  
+public class MainMenuView extends View {
     
     public MainMenuView(){
+<<<<<<< HEAD
         //local variables.
         this.menu = "\n"
+=======
+        super("\n"
+>>>>>>> a161029cdb00e0b4de799246a16354862cc2be4a
                 + "\n--------------------------------------------"
                 + "\n|  Main Menu                                |"
                 + "\n--------------------------------------------"
@@ -31,10 +31,10 @@ public class MainMenuView {
                 +"\n---------------------------------------------"
                 +"\n ## Test Area menu options                 ##"
                 +"\nB - Battle view test"
-                +"\n---------------------------------------------"
-                ;
+                +"\n---------------------------------------------");
     }
     
+<<<<<<< HEAD
     void displayMainMenuView() {
        
         boolean done = false;
@@ -72,6 +72,10 @@ public class MainMenuView {
         }
     //argument variable
     private boolean doAction(String choice) {
+=======
+    @Override
+    public boolean doAction(String choice) {
+>>>>>>> a161029cdb00e0b4de799246a16354862cc2be4a
         
         choice = choice.toUpperCase();
        
@@ -108,7 +112,11 @@ public class MainMenuView {
         gameMenu.displayMenu();
         
         CharacterCreateView ccv = new CharacterCreateView();
-        ccv.displayMenuView();
+        ccv.display();
+        GenderView genderView = new GenderView();
+        genderView.display();
+        AbilitiesMenuView abv = new AbilitiesMenuView(30);
+        abv.display();
         }
 
     private void startExistingGame() {

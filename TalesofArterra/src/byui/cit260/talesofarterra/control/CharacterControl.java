@@ -7,6 +7,12 @@ package byui.cit260.talesofarterra.control;
 
 import byui.cit260.talesofarterra.model.Character;
 import byui.cit260.talesofarterra.model.Item;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 /**
  *
  * @author Dale
@@ -94,5 +100,65 @@ public class CharacterControl {
     
     public void increaseArmorClass(Character char1, Item item) {
         char1.setArmorClass(char1.getArmorClass() + item.getArmor());
+    }
+    
+    public boolean saveCharacter(Character playerChar, String fileName) {
+        String characterFileName = fileName;
+        FileOutputStream fileOutputStream = null;
+        ObjectOutputStream objectOutputStream = null;
+        
+        try
+        {
+            fileOutputStream = new FileOutputStream(characterFileName);
+            objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            //The object is being persisted here
+            objectOutputStream.writeObject(playerChar);
+            objectOutputStream.close();
+            System.out.println("Object serialized in file : " + characterFileName);
+        }
+        catch(IOException ioe)
+        {
+            //Close all I/O streams
+            ioe.printStackTrace();
+            return false;
+            //Handle the exception here
+        }
+        return true;
+    }
+    
+    public Character loadCharacter(String fileName) {
+        FileInputStream fileInputStream = null;
+        ObjectInputStream objectInputStream = null;
+ 
+        String serializedFileName = fileName;
+        Character playerChar = null;
+      
+        try
+        {
+           fileInputStream = new FileInputStream(serializedFileName);
+           objectInputStream = new ObjectInputStream(fileInputStream);
+           playerChar = (Character) objectInputStream.readObject();
+           objectInputStream.close();
+        }
+        catch(FileNotFoundException fnfe)
+        {
+           System.out.println("File not found: "+fnfe.getMessage());
+           //Close all I/O streams
+           //Handle the exception here
+        }
+        catch(IOException ioe)
+        {
+           ioe.printStackTrace();
+           //Close all I/O streams
+           //Handle the exception here
+        }
+        catch(ClassNotFoundException cnfe)
+        {
+           cnfe.printStackTrace();
+           //Close all I/O streams
+           //Handle the exception here
+        }
+        
+        return playerChar;
     }
 }
