@@ -36,12 +36,14 @@ public class StartMenuView extends View {
 
     @Override
     public boolean doAction(String playerName) {
+        PlayerControl pc = new PlayerControl();
         Player player = PlayerControl.createPlayer(playerName);
         if (player == null) {
             System.out.println("\nError: Failed to create the player.");
             return false;
         }
-        
+        String fileName = "player_" + playerName + ".ser";
+        pc.savePlayer(player,fileName);
         this.displayNextView(player);
         
         return true;
