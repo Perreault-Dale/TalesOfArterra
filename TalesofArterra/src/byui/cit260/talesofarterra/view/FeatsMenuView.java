@@ -5,34 +5,19 @@
  */
 package byui.cit260.talesofarterra.view;
 
-import java.util.Scanner;
+//import java.util.Scanner;
 import byui.cit260.talesofarterra.model.Character;
 import byui.cit260.talesofarterra.control.CharacterControl;
 /**
  *
  * @author Lucas
  */
-public class FeatsMenuView { //extends View {
-    private final Character char1;
+public class FeatsMenuView extends View {
+    private Character char1;
              
 
-    public FeatsMenuView(Character char1) {
-        this.displayMenu();
-        int feature = this.menuChoice();
-        this.char1 = char1;
-        this.enableFeats(feature);
-    }
-    
-    public void enableFeats(int feature){
-        CharacterControl charControl = new CharacterControl();
-        charControl.enableFeats(char1, feature);
-    }
-    
-    
-    public void displayMenu()
-    {
-        System.out.println(
-            "\n****************************************************************"
+    public FeatsMenuView() {
+       super("\n****************************************************************"
           + "\n*                      FEATS MENU                              *"
           + "\n*       Select the new feat your character will learn:         *"         
           + "\n*==============================================================*"
@@ -49,43 +34,52 @@ public class FeatsMenuView { //extends View {
           + "\n*       \"9\"............................TOUGHNESS             *"
           + "\n*                                                              *"
           + "\n*       \"H\"............................HELP                  *"                    
+          + "\n****************************************************************"
+          + "\n*               Please enter an option:                        *"
           + "\n****************************************************************");
-    }
 
-    public int menuChoice()
-    {
-        displayMenu();
-        char choice;
-        int feature = 0;
-        boolean valid = false;
-        do
-        {
-           System.out.print( "Please enter an option: " );
-           Scanner reader = new Scanner(System.in);
-           choice = reader.next(".").charAt(0);
-         
-           switch(choice)
-           {
-            case '1':
-            case '2':
-            case '3':
-            case '4':
-            case '5':
-            case '6':
-            case '7':
-            case '8':
-            case '9': feature = java.lang.Character.getNumericValue(choice) - 1;
-                      valid = true;
-                          break;
-            case 'H':
-            case 'h': featsHelp();
-                          break;                          
-            default: System.out.println( "ERROR: That is not a valid choice!" );
-            }
-           }
-           while (!valid);
+    }
+    
+    //Use this to load a character from a file
+    //public void enableFeats(int feature){
+
         
-        return feature;
+
+    //}            
+      
+    @Override
+    public boolean doAction(String value)
+    {        
+        CharacterControl charControl = new CharacterControl();
+        char1 = charControl.loadCharacter("playerChar.ser");
+        int feature = 0;
+        charControl.enableFeats(char1, feature);
+        //char value;
+        //int feature = 0;
+        boolean exit = false;
+         
+           
+        
+           switch(value)
+           {
+            case "1":
+            case "2":
+            case "3":
+            case "4":
+            case "5":
+            case "6":
+            case "7":
+            case "8": 
+            case "9": int i = Integer.parseInt(value) - 1;
+                      //valid = true;
+                          break;
+            case "H":
+            case "h": exit = true;
+                          break;                          
+            default: System.out.println( "ERROR: That is not a valid value!" );
+            }
+        
+        return exit;
 
     }
     public void featsHelp()
@@ -93,8 +87,6 @@ public class FeatsMenuView { //extends View {
         System.out.println("\n*** createNewGame stub function called ***");
     }
 
-    public boolean doAction(String value) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
 }
 
