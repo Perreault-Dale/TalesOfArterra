@@ -33,7 +33,8 @@ public class FeatsMenuView extends View {
           + "\n*       \"8\"............................STEALTHY              *"
           + "\n*       \"9\"............................TOUGHNESS             *"
           + "\n*                                                              *"
-          + "\n*       \"H\"............................HELP                  *"                    
+          + "\n*       \"H\"............................HELP                  *"
+          + "\n*       \"Q\"............................QUIT***(TEMP)         *"         
           + "\n****************************************************************"
           + "\n*               Please enter an option:                        *"
           + "\n****************************************************************");
@@ -74,7 +75,10 @@ public class FeatsMenuView extends View {
                       //valid = true;
                           break;
             case "H":
-            case "h": exit = true;
+            case "h": featsHelp();
+                          break;         
+            case "Q":
+            case "q": exit = true;
                           break;                          
             default: System.out.println( "ERROR: That is not a valid value!" );
             }
@@ -84,7 +88,7 @@ public class FeatsMenuView extends View {
     }
     public void featsHelp()
     {
-        System.out.println("\n*** createNewGame stub function called ***");
+        System.out.println("\n*** featsHelp stub function called ***");
     }
 
 

@@ -27,6 +27,7 @@ public class MainMenuView extends View {
                 +"\nH - Get help on how to play the game"
                 +"\nS - Save game"
                 +"\nQ - Quit"
+                +"\nF -       **Feats Menu Test Call**           "  
                 +"\n---------------------------------------------"
                 +"\n ## Test Area menu options                 ##"
                 +"\nB - Battle view test"
@@ -79,6 +80,9 @@ public class MainMenuView extends View {
         choice = choice.toUpperCase();
        
         switch (choice) {
+            case "F":
+                this.featsMenu();
+                return true;
             case "N":
                 this.startNewGame();
                 return true;
@@ -138,6 +142,11 @@ public class MainMenuView extends View {
         BattleView battleViewObject = new BattleView();
         battleViewObject.display();
         }
+    //This is added to test the Feats menu
+    private void featsMenu() {
+        FeatsMenuView featsObject = new FeatsMenuView();
+        featsObject.display();
+        }    
     private void startGameMenu() {
         
         GameMenuView gameMenuViewObject = new GameMenuView ();
@@ -147,4 +156,4 @@ public class MainMenuView extends View {
             
     }
 
-
+    
