@@ -10,12 +10,11 @@ import java.util.Scanner;
  *
  * @author Lucas
  */
-public class HelpMenuView {
+
+public class HelpMenuView extends View {
     
-    public void displayMenu()
-    {
-        System.out.println(
-            "\n****************************************************************"
+    public HelpMenuView() {
+      super("\n****************************************************************"
           + "\n*                      HELP MENU                               *"
           + "\n*==============================================================*"
           + "\n*     KEY TO PRESS                           ACTION            *"
@@ -25,45 +24,43 @@ public class HelpMenuView {
           + "\n*       \"H\"..................................HENCHMEN        *"
           + "\n*       \"R\"..................................RESTING/HEALING *"
           + "\n*       \"B\"..................................BACK TO GAME    *"
-          + "\n****************************************************************");
+          + "\n****************************************************************"
+          + "\n*                  Please enter an option:                     *" );
     }
-
-    public void menuChoice()
+    
+    @Override
+    public boolean doAction(String value)
     {
-        displayMenu();
-        char choice;
+        boolean exit = false;
         do
         {
-           System.out.print( "Please enter an option: " );
-           Scanner reader = new Scanner(System.in);
-           choice = reader.next(".").charAt(0);
-
-           switch(choice)
+           switch(value)
            {
-            case 'O':
-            case 'o': objective();
+            case "O":
+            case "o": objective();
                       break;
-            case 'M':
-            case 'm': movement();
+            case "M":
+            case "m": movement();
                       break;
-            case 'H':
-            case 'h': henchmen();
+            case "H":
+            case "h": henchmen();
                           break;
-            case 'R':
-            case 'r': resting();
+            case "R":
+            case "r": resting();
                           break;
-            case 'B':
-            case'b': return;
-            default: System.out.println( "ERROR: That is not a valid choice!" );
+            case "B":
+            case "b": exit = true;
+            default: System.out.println( "ERROR: That is not a valid value!" );
             }
            }
-           while (choice != 'o' || choice != 'O' 
-                   || choice != 'm' || choice != 'M'
-                   || choice != 'h' || choice != 'H'
-                   || choice != 'r' || choice != 'R'
-                   || choice != 'b' || choice != 'B');
-
+           while (!"o".equals(value) || !"O".equals(value) 
+                   || !"m".equals(value) || !"M".equals(value)
+                   || !"h".equals(value) || !"H".equals(value)
+                   || !"r".equals(value) || !"R".equals(value)
+                   || !"b".equals(value) || !"B".equals(value));
+        return exit;
     }
+
 
     private void objective() {
         System.out.println("\n*** objective stub function called ***");
