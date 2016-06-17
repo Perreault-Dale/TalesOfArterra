@@ -32,9 +32,8 @@ public class HelpMenuView extends View {
     public boolean doAction(String value)
     {
         boolean exit = false;
-        do
-        {
-           switch(value)
+        
+          switch(value)
            {
             case "O":
             case "o": objective();
@@ -50,14 +49,15 @@ public class HelpMenuView extends View {
                           break;
             case "B":
             case "b": exit = true;
+                      break;
             default: System.out.println( "ERROR: That is not a valid value!" );
             }
-           }
-           while (!"o".equals(value) || !"O".equals(value) 
+                 /*(!"o".equals(value) || !"O".equals(value) 
                    || !"m".equals(value) || !"M".equals(value)
                    || !"h".equals(value) || !"H".equals(value)
                    || !"r".equals(value) || !"R".equals(value)
                    || !"b".equals(value) || !"B".equals(value));
+                 */
         return exit;
     }
 
