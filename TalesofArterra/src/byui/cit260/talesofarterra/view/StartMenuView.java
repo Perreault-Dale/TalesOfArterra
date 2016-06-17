@@ -23,6 +23,12 @@ public class StartMenuView extends View {
           + "\n* magic he learned on the farm, and a bit of money, he starts  *"
           + "\n* a new life in the city of Edinburg, which is dealing with    *"
           + "\n* tragedies of its own.                                        *"
+          + "\n* Your character will be a sorcerer, so those bloodthirsty     *"
+          + "\n* souls may be disappointed, but don't be dissuaded. You will  *"
+          + "\n* have opportunities to gain experience without going on       *"
+          + "\n* boring rat-killing quests. Hint: Go everyplace you can, and  *"
+          + "\n* talk to everyone. You may even find people who will come with*"
+          + "\n* you on further quests.                                       *"
           + "\n*                                                              *"
           + "\n****************************************************************"
           + "\n\nPlease enter your name:\n");
@@ -30,12 +36,14 @@ public class StartMenuView extends View {
 
     @Override
     public boolean doAction(String playerName) {
+        PlayerControl pc = new PlayerControl();
         Player player = PlayerControl.createPlayer(playerName);
         if (player == null) {
             System.out.println("\nError: Failed to create the player.");
             return false;
         }
-        
+        String fileName = "player_" + playerName + ".ser";
+        pc.savePlayer(player,fileName);
         this.displayNextView(player);
         
         return true;

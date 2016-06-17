@@ -106,18 +106,20 @@ public class MainMenuView extends View {
     private void startNewGame() {
         
         //GameControl.createNewGame(GameControl.getPlayer());
-        GameControl gameControlObject = new GameControl();
-        gameControlObject.createNewGame();
-        
-        GameMenuView gameMenu = new GameMenuView();
-        gameMenu.display();
-        
         CharacterCreateView ccv = new CharacterCreateView();
         ccv.display();
         GenderView genderView = new GenderView();
         genderView.display();
         AbilitiesMenuView abv = new AbilitiesMenuView(30);
         abv.display();
+        SkillsView skillView = new SkillsView();
+        skillView.display();
+        
+        GameControl gameControlObject = new GameControl();
+        gameControlObject.createNewGame();
+        
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.display();
         }
 
     private void startExistingGame() {

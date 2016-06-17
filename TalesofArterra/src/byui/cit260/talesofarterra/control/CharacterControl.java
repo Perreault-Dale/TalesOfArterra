@@ -67,7 +67,7 @@ public class CharacterControl {
     }
     
     public void addSkills(Character char1, int skill) {
-        int [] skills = new int[9];
+        int [] skills = new int[6];
         skills = char1.getSkills();
         skills[skill]++;
         char1.setSkills(skills);
