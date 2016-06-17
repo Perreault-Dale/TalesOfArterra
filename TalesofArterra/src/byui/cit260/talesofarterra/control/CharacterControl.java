@@ -94,6 +94,14 @@ public class CharacterControl {
         char1.setHitPoints(char1.getMaxHP());
     }
     
+    public void addHP(Character char1) {
+        int [] ability = char1.getAbilities();
+        int conMod = (ability[1] - 10) / 2;
+        int newHP = char1.getBaseAttack() + conMod;
+        char1.setHitPoints(char1.getHitPoints() + newHP);
+        increaseMaxHP(char1,newHP);
+    }
+    
     public void increaseMaxHP(Character char1, int hp) {
         char1.setMaxHP(char1.getMaxHP() + hp);
     }

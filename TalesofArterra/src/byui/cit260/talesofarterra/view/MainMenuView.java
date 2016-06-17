@@ -130,7 +130,7 @@ public class MainMenuView extends View {
 
     private void displayHelpMenu() {
         HelpMenuView getMeHelp = new HelpMenuView();
-        getMeHelp.menuChoice();
+        getMeHelp.display();
         }
 
     private void saveGame() {

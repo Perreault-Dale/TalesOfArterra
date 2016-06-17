@@ -175,6 +175,7 @@ class AbilitiesMenuView extends View {
             case "C":
                 playerChar.setAbilities(able);
                 CharacterControl cc = new CharacterControl();
+                cc.addHP(playerChar);
                 cc.saveCharacter(playerChar,"playerChar.ser");
                 valid = true;
                 break;

@@ -41,25 +41,13 @@ public class FeatsMenuView extends View {
 
     }
     
-    //Use this to load a character from a file
-    //public void enableFeats(int feature){
-
-        
-
-    //}            
-      
     @Override
     public boolean doAction(String value)
     {        
         CharacterControl charControl = new CharacterControl();
         char1 = charControl.loadCharacter("playerChar.ser");
         int feature = 0;
-        charControl.enableFeats(char1, feature);
-        //char value;
-        //int feature = 0;
         boolean exit = false;
-         
-           
         
            switch(value)
            {
@@ -71,9 +59,13 @@ public class FeatsMenuView extends View {
             case "6":
             case "7":
             case "8": 
-            case "9": int i = Integer.parseInt(value) - 1;
-                      //valid = true;
-                          break;
+            case "9": 
+                int i = Integer.parseInt(value) - 1;
+                charControl.enableFeats(char1, feature);
+                charControl.saveCharacter(char1, "playerChar.ser");
+                System.out.println(char1.toString());
+                exit = true;
+                break;
             case "H":
             case "h": featsHelp();
                           break;         
