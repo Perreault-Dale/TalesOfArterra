@@ -46,4 +46,9 @@ public class ItemControl {
             item.setIsEquipped(true);
         }
     }
+    
+    public void itemList (){
+        System.out.println("item list here");
+    }
+    
 }
