@@ -95,7 +95,7 @@ public class SkillsView extends View {
                 case "2":
                 case "3":
                 case "4": {
-                    int i = Integer.parseInt(value) - 1;
+                    int i = Integer.parseInt(value) + 1;
                     skills[i] = checkPoints(skills[i]);
                     break;
                 }
