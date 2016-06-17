@@ -12,7 +12,7 @@ import byui.cit260.talesofarterra.control.CharacterControl;
  *
  * @author Lucas
  */
-public class FeatsMenuView {
+public class FeatsMenuView { //extends View {
     private final Character char1;
              
 
@@ -91,6 +91,10 @@ public class FeatsMenuView {
     public void featsHelp()
     {
         System.out.println("\n*** createNewGame stub function called ***");
+    }
+
+    public boolean doAction(String value) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
 
