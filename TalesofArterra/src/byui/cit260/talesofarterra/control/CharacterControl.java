@@ -106,8 +106,32 @@ public class CharacterControl {
         char1.setMaxHP(char1.getMaxHP() + hp);
     }
     
-    public void increaseArmorClass(Character char1, Item item) {
-        char1.setArmorClass(char1.getArmorClass() + item.getArmor());
+    public int calcArmorClass(Character char1) {
+        int armorClass = char1.getArmorClass();
+        if (char1.getArmor() != null)
+            armorClass += char1.getArmor().getArmor();
+        if (char1.getGloves() != null)
+            armorClass += char1.getGloves().getArmor();
+        if (char1.getShield() != null)
+            armorClass += char1.getShield().getArmor();
+        if (char1.getShoes() != null)
+            armorClass += char1.getShoes().getArmor();
+        return armorClass;
+    }
+    
+    public int calcMaxDamage(Character char1) {
+        int [] able = char1.getAbilities();
+        int maxDamage = char1.getBaseAttack() + ((able[0]-10)/2);
+        if (char1.getWeapon() != null)
+            maxDamage += char1.getWeapon().getMaxDamage();
+        if (char1.getShield() != null)
+            maxDamage += char1.getShield().getMaxDamage();
+        return maxDamage;
+    }
+    
+    public int calcSpellSlots(Character char1) {
+        int [] able = char1.getAbilities();
+        return (4 + (able[5]-10)/2) * char1.getLevel();
     }
     
     public boolean saveCharacter(Character playerChar, String fileName) {

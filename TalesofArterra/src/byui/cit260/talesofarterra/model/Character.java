@@ -13,6 +13,7 @@ public class Character implements Serializable {
     //private member variables
     private String name;
     private char gender;
+    private String charClass;
     private int level;
     private int experience;
     private int[] alignment;
@@ -36,11 +37,12 @@ public class Character implements Serializable {
         this.experience = 0;
         this.armorClass = 10;
         this.baseAttack = 4;
+        this.charClass = "Sorcerer";
         this.alignment = new int[] {85,50};
         this.abilities = new int[] {8,8,8,8,8,8};
         this.skills = new int[] {4,4,0,0,0,0};
         this.feats = new boolean[] {false,false,false,false,false,false,false,false,false};
-        this.useWeapons = new boolean[] {false,false,false,false,false,false,false,false,false};
+        this.useWeapons = new boolean[] {false,false,false,false,true,true,false,true,true};
     }
 
     public String getName() {
@@ -57,6 +59,14 @@ public class Character implements Serializable {
 
     public void setGender(char gender) {
         this.gender = gender;
+    }
+
+    public String getCharClass() {
+        return charClass;
+    }
+
+    public void setCharClass(String charClass) {
+        this.charClass = charClass;
     }
 
     public int getLevel() {
@@ -262,7 +272,7 @@ public class Character implements Serializable {
 
     @Override
     public String toString() {
-        return "Character{" + "name=" + name + ", gender=" + gender + ", level=" + level + ", experience=" + experience + ", alignment=" + Arrays.toString(alignment) + ", abilities=" + Arrays.toString(abilities) + ", skills=" + Arrays.toString(skills) + ", feats=" + Arrays.toString(feats) + ", baseAttack=" + baseAttack + ", armorClass=" + armorClass + ", hitPoints=" + hitPoints + ", maxHP=" + maxHP + ", useWeapons=" + Arrays.toString(useWeapons) + '}';
+        return "Character{" + "name=" + name + ", gender=" + gender + ", charClass=" + charClass + ", level=" + level + ", experience=" + experience + ", alignment=" + Arrays.toString(alignment) + ", abilities=" + Arrays.toString(abilities) + ", skills=" + Arrays.toString(skills) + ", feats=" + Arrays.toString(feats) + ", baseAttack=" + baseAttack + ", armorClass=" + armorClass + ", hitPoints=" + hitPoints + ", maxHP=" + maxHP + ", useWeapons=" + Arrays.toString(useWeapons) + '}';
     }
     
     

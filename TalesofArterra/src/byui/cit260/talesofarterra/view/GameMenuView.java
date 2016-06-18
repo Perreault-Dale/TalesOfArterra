@@ -23,8 +23,8 @@ public class GameMenuView extends View {
           + "\n*       \"X\"..................................EXPLORE          *"
           + "\n*       \"R\"..................................REST             *"
           + "\n*       \"T\"..................................TALK TO          *"
-          + "\n*       \"B\"..................................LIST BAG CONTENTS*"
-          + "\n*       \"W\"..................................LIST WEAPONS     *"
+          + "\n*       \"B\"..................................LIST INVENTORY   *"
+          + "\n*       \"W\"..................................CHECH CHARACTER  *"
           + "\n*       \"C\"..................................CHECK HENCHMEN   *"
           + "\n*       \"#\"..................................GO TO: LOCATION  *"
           + "\n*       \"J\"..................................DISPLAY JOURNAL  *"
@@ -66,7 +66,7 @@ public class GameMenuView extends View {
                 break;
             
             case "W": 
-                this.listWeapons();
+                this.charSheet();
                 break;                          
             
             case "C": 
@@ -115,8 +115,9 @@ public class GameMenuView extends View {
         System.out.println("\n*** createNewGame stub function called ***");
     }
 
-    private void listWeapons() {
-        System.out.println("\n*** createNewGame stub function called ***");
+    private void charSheet() {
+        CharacterRecord charSheet = new CharacterRecord();
+        charSheet.display();
     }
 
     private void checkHenchmen() {
