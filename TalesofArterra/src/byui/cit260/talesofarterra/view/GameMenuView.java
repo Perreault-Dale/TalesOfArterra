@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package byui.cit260.talesofarterra.view;
-
+import byui.cit260.talesofarterra.view.RestView;
 /**
  *
  * @author Portal
@@ -89,9 +89,10 @@ public boolean doAction(String choice) {
     }
 
     private void rest() {
-        System.out.println("\n*** createNewGame stub function called ***");
+        RestView restView = new RestView();
+        restView.display();
+        restView.doAction("playerChar.ser");
     }
-
     private void bagContent() {
         System.out.println("\n*** createNewGame stub function called ***");
     }

@@ -20,24 +20,50 @@ public class RestView extends View {
     public RestView() {
        super("\n****************************************************************"
            + "\n*                       REST MENU                              *"
-           + "\n   YOU ARE FULLY HEALED AND HEALTHY! HOPE TO SEE YOU AGAIN!    *"
+           + "\n*                WOULD YOU LIKE TO REST??                      *"
+           + "\n****************************************************************"
+           + "\n*   IT WILL TAKE UP 8 HOURS AND YOUR HEALTH WILL BE RESTORED   *"
+           + "\n*       Select Y to proceed, Q to quit to the main menu.       *"
            + "\n****************************************************************");
             }
 
- @Override
+    @Override
     public boolean doAction(String value)
     {
-        //This sets the Characters HP to full HP
-        Character fullHealCharacter = new Character();
-        CharacterControl setFullHeal = new CharacterControl();
-        setFullHeal.healFull(fullHealCharacter);
-         
-         //This adds 8 hours to the game time 
-         Game game = new Game();
-         GameControl addHours = new GameControl();
-         addHours.advanceHours(game, 8);
-  
-         return true;
+         boolean exit = false;
+        switch (value) {
+            case "Y":
+            case "y":    
+                
+                        Character fullHealCharacter = new Character();   
+
+//Uncomment out this lines to test the health change                   
+                        //System.out.println(fullHealCharacter.getHitPoints());   
+                                                
+                        //This sets the Characters HP to full HP
+                        CharacterControl setFullHeal = new CharacterControl();
+                        setFullHeal.healFull(fullHealCharacter);
+                        
+//Uncomment out this line to test the health change  
+                        //System.out.println(fullHealCharacter.getHitPoints());
+
+                         //This adds 8 hours to the game time 
+                         Game game = new Game();
+                         GameControl addHours = new GameControl();
+                         addHours.advanceHours(game, 8);
+
+                        exit = true;
+                        break;
+                       
+                case "Q":
+                case "q":     
+                    exit = true;
+                    break;
+                default:
+                    System.out.println("\nPlease select a valid entry (Y,Q)");
+        }
+        return exit;
+      
     }
     
 }
