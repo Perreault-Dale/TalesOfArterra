@@ -22,9 +22,8 @@ public class GameMenuView extends View {
           + "\n*---------------------------------------------------------------*"
           + "\n*       \"X\"..................................EXPLORE          *"
           + "\n*       \"R\"..................................REST             *"
-          + "\n*       \"T\"..................................TALK TO          *"
           + "\n*       \"B\"..................................LIST INVENTORY   *"
-          + "\n*       \"C\"..................................CHECH CHARACTER  *"
+          + "\n*       \"C\"..................................CHECK CHARACTER  *"
           + "\n*       \"#\"..................................GO TO: LOCATION  *"
           + "\n*       \"J\"..................................DISPLAY JOURNAL  *"
           + "\n*       \"S\"..................................SAVE GAME        *"
@@ -35,16 +34,10 @@ public class GameMenuView extends View {
     
    }
 
-    @Override
- public boolean doAction(String choice) {
+@Override
+public boolean doAction(String choice) {
         choice = choice.toUpperCase();
         
-       /* do
-        {
-           System.out.print( "Please enter an option: " );
-           Scanner reader = new Scanner(System.in);
-           choice = reader.next(".").charAt(0);
-           */
            switch(choice)
            {
             
@@ -56,21 +49,14 @@ public class GameMenuView extends View {
                 this.rest(); 
                 break;
             
-            case "T": 
-                this.talkto();
-                break;
-            
             case "B": 
                 this.bagContent();
                 break;
             
-            case "W": 
-                this.charSheet();
-                break;                          
-            
             case "C": 
-                this.checkHenchmen();
-                break;
+                this.charSheet();
+                break; 
+                
             case "#": 
                 this.goTo();
                 break;
@@ -106,10 +92,6 @@ public class GameMenuView extends View {
         System.out.println("\n*** createNewGame stub function called ***");
     }
 
-    private void talkto() {
-        System.out.println("\n*** createNewGame stub function called ***");
-    }
-
     private void bagContent() {
         System.out.println("\n*** createNewGame stub function called ***");
     }
@@ -117,10 +99,6 @@ public class GameMenuView extends View {
     private void charSheet() {
         CharacterRecord charSheet = new CharacterRecord();
         charSheet.display();
-    }
-
-    private void checkHenchmen() {
-        System.out.println("\n*** createNewGame stub function called ***");
     }
 
     private void goTo() {
