@@ -8,6 +8,8 @@ package byui.cit260.talesofarterra.view;
 //import java.util.Scanner;
 import byui.cit260.talesofarterra.model.Character;
 import byui.cit260.talesofarterra.control.CharacterControl;
+import byui.cit260.talesofarterra.model.Game;
+import byui.cit260.talesofarterra.control.GameControl;
 /**
  *
  * @author Lucas
@@ -25,11 +27,16 @@ public class RestView extends View {
  @Override
     public boolean doAction(String value)
     {
+        //This sets the Characters HP to full HP
         Character fullHealCharacter = new Character();
         CharacterControl setFullHeal = new CharacterControl();
         setFullHeal.healFull(fullHealCharacter);
-         //maxHPChar = true;
          
+         //This adds 8 hours to the game time 
+         Game game = new Game();
+         GameControl addHours = new GameControl();
+         addHours.advanceHours(game, 8);
+  
          return true;
     }
     
