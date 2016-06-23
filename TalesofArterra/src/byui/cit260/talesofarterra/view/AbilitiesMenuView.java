@@ -7,7 +7,6 @@ package byui.cit260.talesofarterra.view;
 
 import byui.cit260.talesofarterra.control.CharacterControl;
 import byui.cit260.talesofarterra.model.Character;
-import java.util.Arrays;
 import java.util.Scanner;
 
 /**
