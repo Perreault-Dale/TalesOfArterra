@@ -9,6 +9,7 @@ import byui.cit260.talesofarterra.model.Game;
 import byui.cit260.talesofarterra.model.Location;
 import byui.cit260.talesofarterra.model.Map;
 import byui.cit260.talesofarterra.model.Player;
+import byui.cit260.talesofarterra.model.Character;
 import talesofarterra.TalesofArterra;
 
 /**
@@ -27,9 +28,13 @@ public class GameControl {
      *
      * @param player
      */
-   public void createNewGame(Player player){
-    //public static void createNewGame(){ will change once create new game is built
+    public static void createNewGame(Player player){
         Game game = new Game();
+        
+        CharacterControl cc = new CharacterControl();
+        Character playerChar = cc.loadCharacter("playerChar.ser");
+        player.setPlayerChar(playerChar);
+        
         game.setPlayer(player);
         
         Map map = Map.Outside;
