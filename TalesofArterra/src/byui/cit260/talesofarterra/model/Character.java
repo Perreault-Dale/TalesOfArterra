@@ -33,8 +33,8 @@ public class Character implements Serializable {
 
     //public getter and setter functions
     public Character() {
-        this.hitPoints = 10;
-        this.maxHP = 200;
+        this.hitPoints = 0;
+        this.maxHP = 0;
         this.level = 1;
         this.experience = 0;
         this.armorClass = 10;
