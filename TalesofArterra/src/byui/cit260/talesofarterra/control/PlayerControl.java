@@ -13,6 +13,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import talesofarterra.TalesofArterra;
 
 /**
  *
@@ -24,6 +25,7 @@ public class PlayerControl {
         Player player = new Player();
         player.setBank(0);
         PlayerControl.inputName(player,name);
+        TalesofArterra.setPlayer(player);
         return player;
     }
     public static void inputName(Player player, String name) {

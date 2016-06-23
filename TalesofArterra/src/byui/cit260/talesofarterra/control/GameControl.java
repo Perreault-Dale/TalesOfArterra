@@ -22,7 +22,6 @@ public class GameControl {
     }
     public void changeLocation(Game game, Location location) {
         game.setCurrentMap(location.getMapID());
-        game.setCurrentLocation(location.getLocationID());
     }
 
     /**
@@ -30,7 +29,8 @@ public class GameControl {
      */
    public void createNewGame(){
     //public static void createNewGame(){ will change once create new game is built
-        System.out.println("\n*** createNewGame stub function called ***");
+        Game game = new Game();
+        
     }
 }
 

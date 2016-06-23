@@ -35,43 +35,6 @@ public class MainMenuView extends View {
     }
     
 
-    /*void displayMainMenuView() {
-       
-        boolean done = false;
-        
-        do {
-            String menuOption = this.getMenuOption();
-            
-            if (menuOption.toUpperCase().equals("Q"))
-                return;
-            
-            done = this.doAction(menuOption);
-            
-        }while (!done);
-    }*/
-    
-    /*private String getMenuOption() {
-        //instance variables
-        Scanner keyboard = new Scanner(System.in);
-        String value = "";
-        boolean valid = false;
-        
-        while (!valid){
-            System.out.println("\n" + this.menu);
-            //local variables
-            value = keyboard.nextLine();
-            value = value.trim();
-            
-            if (value.length()<1) {
-                System.out.println("\nYou must choose wisely...letters");
-                continue;
-                }
-            break;
-            }
-        return value;
-        }*/
-    //argument variable
-
     @Override
     public boolean doAction(String choice) {
 
@@ -105,7 +68,6 @@ public class MainMenuView extends View {
 
     private void startNewGame() {
         
-        //GameControl.createNewGame(GameControl.getPlayer());
         CharacterCreateView ccv = new CharacterCreateView();
         ccv.display();
         GenderView genderView = new GenderView();
