@@ -7,6 +7,9 @@ package byui.cit260.talesofarterra.control;
 
 import byui.cit260.talesofarterra.model.Game;
 import byui.cit260.talesofarterra.model.Location;
+import byui.cit260.talesofarterra.model.Map;
+import byui.cit260.talesofarterra.model.Player;
+import talesofarterra.TalesofArterra;
 
 /**
  *
@@ -20,17 +23,22 @@ public class GameControl {
             game.setDays(game.getDays() + 1);
         }
     }
-    public void changeLocation(Game game, Location location) {
-        game.setCurrentMap(location.getMapID());
-    }
-
     /**
      *
+     * @param player
      */
-   public void createNewGame(){
+   public void createNewGame(Player player){
     //public static void createNewGame(){ will change once create new game is built
         Game game = new Game();
+        game.setPlayer(player);
         
+        Map map = Map.Outside;
+        game.setCurrentMap(map);
+        
+        Location location = Location.OutsideStart;
+        game.setCurrentLocation(location);
+        
+        TalesofArterra.setGame(game);
     }
 }
 

@@ -6,6 +6,7 @@
 package byui.cit260.talesofarterra.view;
 
 import byui.cit260.talesofarterra.control.GameControl;
+import talesofarterra.TalesofArterra;
 
 /**
  *
@@ -80,7 +81,7 @@ public class MainMenuView extends View {
         featsView.display();
         
         GameControl gameControlObject = new GameControl();
-        gameControlObject.createNewGame();
+        gameControlObject.createNewGame(TalesofArterra.getPlayer());
         
         GameMenuView gameMenu = new GameMenuView();
         gameMenu.display();

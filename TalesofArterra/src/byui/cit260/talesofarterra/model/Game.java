@@ -6,6 +6,7 @@
 package byui.cit260.talesofarterra.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  *
@@ -16,8 +17,9 @@ public class Game implements Serializable {
     //private member variables
     private int time;
     private int days;
-    private int currentMap;
-    private int currentLocation;
+    private Map currentMap;
+    private Location currentLocation;
+    private Player player;
     
     //public getter and setter functions
     public Game() {
@@ -39,29 +41,38 @@ public class Game implements Serializable {
         this.days = days;
     }
 
-    public int getCurrentMap() {
+    public Map getCurrentMap() {
         return currentMap;
     }
 
-    public void setCurrentMap(int currentMap) {
+    public void setCurrentMap(Map currentMap) {
         this.currentMap = currentMap;
     }
 
-    public int getCurrentLocation() {
+    public Location getCurrentLocation() {
         return currentLocation;
     }
 
-    public void setCurrentLocation(int currentLocation) {
+    public void setCurrentLocation(Location currentLocation) {
         this.currentLocation = currentLocation;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 11 * hash + this.time;
-        hash = 11 * hash + this.days;
-        hash = 11 * hash + this.currentMap;
-        hash = 11 * hash + this.currentLocation;
+        int hash = 7;
+        hash = 41 * hash + this.time;
+        hash = 41 * hash + this.days;
+        hash = 41 * hash + Objects.hashCode(this.currentMap);
+        hash = 41 * hash + Objects.hashCode(this.currentLocation);
+        hash = 41 * hash + Objects.hashCode(this.player);
         return hash;
     }
 
@@ -89,12 +100,14 @@ public class Game implements Serializable {
         if (this.currentLocation != other.currentLocation) {
             return false;
         }
+        if (!Objects.equals(this.player, other.player)) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Game{" + "time=" + time + ", days=" + days + '}';
+        return "Game{" + "time=" + time + ", days=" + days + ", currentMap=" + currentMap + ", currentLocation=" + currentLocation + ", player=" + player + '}';
     }
-    
 }
