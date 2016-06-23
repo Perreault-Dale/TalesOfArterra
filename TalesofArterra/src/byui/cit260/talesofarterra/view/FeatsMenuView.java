@@ -60,7 +60,7 @@ public class FeatsMenuView extends View {
             case "7":
             case "8": 
             case "9": 
-                int i = Integer.parseInt(value) - 1;
+                feature = Integer.parseInt(value) - 1;
                 charControl.enableFeats(char1, feature);
                 charControl.saveCharacter(char1, "playerChar.ser");
                 exit = true;
