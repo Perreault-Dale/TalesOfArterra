@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package byui.cit260.talesofarterra.view;
+import byui.cit260.talesofarterra.control.MapControl;
 import byui.cit260.talesofarterra.model.Game;
 import byui.cit260.talesofarterra.model.Location;
 import talesofarterra.TalesofArterra;
@@ -90,23 +91,13 @@ public boolean doAction(String choice) {
         Game game = TalesofArterra.getGame();
         
         // get the map's dimensions
-        int rows = game.getCurrentMap().getSize()[0];
-        int cols = game.getCurrentMap().getSize()[1];
-        
-        //create a two-dimensional array of the Locations on the map
-        Location[][] locs = new Location[rows][cols];
-        for (Location loc : Location.values()) {
-            if (loc.getMapID() == game.getCurrentMap().getMapID()) {
-                int r = loc.getCoordinates()[1];
-                int c = loc.getCoordinates()[0];
-                locs[r][c] = loc;
-            }
-        }
+        MapControl mc = new MapControl();
+        Location[][] locs = mc.createMap(game.getCurrentMap());
         
         System.out.println(game.getCurrentMap().name() + "\n");
-        for (int i = 0; i < rows; i++) {
+        for (int i = 0; i < locs.length; i++) {
             System.out.print("|");
-            for (int j = 0; j < cols; j++) {
+            for (int j = 0; j < locs[0].length; j++) {
                 // print location ID if a location is on the map
                 if (locs[i][j] == null) {
                     System.out.print(" ");
@@ -123,20 +114,20 @@ public boolean doAction(String choice) {
                 // print a column separator
                 System.out.print("|");
                 // print end line
-                if (j == cols - 1) {
+                if (j == locs[0].length - 1) {
                     System.out.print("\n");
                 }
             }
             // print row separator
             System.out.print("|");
-            for (int j = 0; j < cols; j++) {
+            for (int j = 0; j < locs[0].length; j++) {
                 System.out.print("--");
             }
             System.out.print("\n");
         }
         
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
+        for (int i = 0; i < locs.length; i++) {
+            for (int j = 0; j < locs[0].length; j++) {
                 if (locs[i][j] != game.getCurrentLocation() && locs[i][j] != null) {
                     System.out.println(locs[i][j].getLocationID() 
                             + " - " 
