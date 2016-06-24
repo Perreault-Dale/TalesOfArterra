@@ -95,6 +95,11 @@ public boolean doAction(String choice) {
         Location[][] locs = mc.createMap(game.getCurrentMap());
         
         System.out.println(game.getCurrentMap().name() + "\n");
+        System.out.print("|");
+        for (int j = 0; j < locs[0].length; j++) {
+            System.out.print("--");
+        }
+            System.out.print("\n");
         for (int i = 0; i < locs.length; i++) {
             System.out.print("|");
             for (int j = 0; j < locs[0].length; j++) {
