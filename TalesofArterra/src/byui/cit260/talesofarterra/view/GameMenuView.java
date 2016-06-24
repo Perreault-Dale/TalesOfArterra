@@ -15,7 +15,7 @@ public class GameMenuView extends View {
 
     public GameMenuView() {
             
-       super("n"
+       super("\n"
           +  "\n*****************************************************************"
           + "\n*                      GAME MENU                                *"
           + "\n*===============================================================*"
@@ -138,7 +138,9 @@ public boolean doAction(String choice) {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 if (locs[i][j] != game.getCurrentLocation() && locs[i][j] != null) {
-                    System.out.println(locs[i][j].getLocationID() + " - " + locs[i][j].getDescription());
+                    System.out.println(locs[i][j].getLocationID() 
+                            + " - " 
+                            + locs[i][j].getDescription());
                 }
             }
         }
