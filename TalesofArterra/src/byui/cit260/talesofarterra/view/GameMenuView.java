@@ -99,7 +99,7 @@ public boolean doAction(String choice) {
         for (int j = 0; j < locs[0].length; j++) {
             System.out.print("--");
         }
-            System.out.print("\n");
+        System.out.print("\n");
         for (int i = 0; i < locs.length; i++) {
             System.out.print("|");
             for (int j = 0; j < locs[0].length; j++) {
