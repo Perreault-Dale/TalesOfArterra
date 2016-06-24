@@ -157,22 +157,22 @@ public boolean doAction(String choice) {
     }
 
     private void goTo() {
-        System.out.println("\n*** createNewGame stub function called ***");
+        System.out.println("\n*** goTo stub function called ***");
     }
 
     private void displayJournal() {
-        System.out.println("\n*** createNewGame stub function called ***");
+        System.out.println("\n*** displayJournal stub function called ***");
     }
     
     private void saveGame() {
-        System.out.println("\n*** createNewGame stub function called ***");
+        System.out.println("\n*** saveGame stub function called ***");
     }
 
     private void quitGame() {
-        System.out.println("\n*** createNewGame stub function called ***");
+        System.out.println("\n*** quitGame stub function called ***");
     }
 
     private void displayHelp() {
-        System.out.println("\n*** createNewGame stub function called ***");
+        System.out.println("\n*** displayHelp stub function called ***");
     }
 }

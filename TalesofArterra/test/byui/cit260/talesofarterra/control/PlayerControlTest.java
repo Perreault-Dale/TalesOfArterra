@@ -28,7 +28,7 @@ public class PlayerControlTest {
         Player player = new Player();
         String name = "Alien";
         PlayerControl instance = new PlayerControl();
-        instance.inputName(player, name);
+        PlayerControl.inputName(player, name);
         assertEquals(player.getName(),name);
         // TODO review the generated test code and remove the default call to fail.
         // fail("The test case is a prototype.");
@@ -41,7 +41,7 @@ public class PlayerControlTest {
     public void testCalcBank() {
         System.out.println("calcBank");
         Player pc = new Player();
-        pc.setBank(100)
+        pc.setBank(100);
         Item item = new Item();
         item.setCost(60);
         char code = 's';

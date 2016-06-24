@@ -68,7 +68,7 @@ public class SpellControlTest {
         
         Spell fireBall = new Spell();
         fireBall.setLevel(3);
-        fireBall.setDamageType(1);
+        fireBall.setDamageType("fire");
         fireBall.setBaseDamage(0);
         fireBall.setDamagePerLevel(6);
         fireBall.setIsArcane(true);
