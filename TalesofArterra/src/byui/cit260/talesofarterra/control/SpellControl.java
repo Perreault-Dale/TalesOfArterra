@@ -7,6 +7,7 @@ package byui.cit260.talesofarterra.control;
 
 import byui.cit260.talesofarterra.model.Character;
 import byui.cit260.talesofarterra.model.Spell;
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -23,16 +24,20 @@ public class SpellControl {
         else {
             int intMod = (ability[5] - 10) / 2;
             float dice = (float) (r.nextFloat() * (float)spell.getDamagePerLevel() + (float)intMod + 1.0);
-            return (int) (dice * char1.getLevel() + spell.getBaseDamage());
+            float dice2 = (float) (r.nextFloat() * (float)spell.getBaseDamage());
+            return (int) (dice * char1.getLevel() + dice2);
         }
     }
     
-    public void setSpell(Spell spell, String name, int level, String damageType, int baseDamage, int damagePerLevel, boolean isArcane) {
-        spell.setName(name);
-        spell.setLevel(level);
-        spell.setDamageType(damageType);
-        spell.setBaseDamage(baseDamage);
-        spell.setDamagePerLevel(damagePerLevel);
-        spell.setIsArcane(isArcane);
+    public ArrayList<Spell> spellList(Character char1) {
+        ArrayList<Spell> listSpells = new ArrayList<>();
+        for (Spell spell : Spell.values()) {
+            if (spell.getLevel() == 1 && char1.getLevel() < 9) {
+                listSpells.add(spell);
+            }
+            else if (char1.getLevel() / 2 >= spell.getLevel())
+                listSpells.add(spell);
+        }
+        return listSpells;
     }
 }
