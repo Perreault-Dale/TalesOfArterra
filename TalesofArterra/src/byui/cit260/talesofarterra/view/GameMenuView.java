@@ -25,10 +25,11 @@ public class GameMenuView extends View {
           + "\n*---------------------------------------------------------------*"
           + "\n*       \"X\"..................................EXPLORE          *"
           + "\n*       \"R\"..................................REST             *"
-          + "\n*       \"B\"..................................LIST INVENTORY   *"
+          + "\n*       \"I\"..................................LIST INVENTORY   *"
           + "\n*       \"C\"..................................CHECK CHARACTER  *"
           + "\n*       \"#\"..................................GO TO: LOCATION  *"
           + "\n*       \"J\"..................................DISPLAY JOURNAL  *"
+          + "\n*       \"B\"..................................DISPLAY SPELLS   *"
           + "\n*       \"S\"..................................SAVE GAME        *"
           + "\n*       \"Q\"..................................QUIT GAME        *"
           + "\n*                                                               *"
@@ -52,7 +53,7 @@ public boolean doAction(String choice) {
                 this.rest(); 
                 break;
             
-            case "B": 
+            case "I": 
                 this.bagContent();
                 break;
             
@@ -66,6 +67,10 @@ public boolean doAction(String choice) {
             
             case "J": 
                 this.displayJournal();
+                break;
+                
+            case "B":
+                this.spellBook();
                 break;
             
             case "S": 
@@ -174,5 +179,10 @@ public boolean doAction(String choice) {
 
     private void displayHelp() {
         System.out.println("\n*** displayHelp stub function called ***");
+    }
+
+    private void spellBook() {
+        SpellListView slv = new SpellListView();
+        slv.display();
     }
 }

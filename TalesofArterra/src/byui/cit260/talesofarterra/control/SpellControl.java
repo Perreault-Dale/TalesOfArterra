@@ -40,4 +40,25 @@ public class SpellControl {
         }
         return listSpells;
     }
+    
+    public ArrayList<Spell> sortByType(String type) {
+        ArrayList<Spell> spellType = new ArrayList<>();
+        for (Spell spell : Spell.values()) {
+            if (spell.getDamageType().equals(type)) {
+                spellType.add(spell);
+            }
+        }
+        for (int i = 0; i < spellType.size() - 1; i++)
+        {
+            int index = i;
+            for (int j = i + 1; j < spellType.size(); j++)
+                if (spellType.get(j).getLevel() > spellType.get(index).getLevel())
+                    index = j;
+      
+            Spell largerLevel = spellType.get(index); 
+            spellType.set(index, spellType.get(i));
+            spellType.set(i, largerLevel);
+        }
+        return spellType;
+    }
 }
