@@ -11,6 +11,8 @@ import byui.cit260.talesofarterra.model.Map;
 import byui.cit260.talesofarterra.model.Player;
 import byui.cit260.talesofarterra.model.Character;
 import talesofarterra.TalesofArterra;
+//import java.util.ArrayList;
+//import java.util.Arrays;
 
 /**
  *
