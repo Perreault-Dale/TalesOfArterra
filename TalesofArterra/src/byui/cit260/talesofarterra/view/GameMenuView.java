@@ -7,6 +7,7 @@ package byui.cit260.talesofarterra.view;
 import byui.cit260.talesofarterra.control.MapControl;
 import byui.cit260.talesofarterra.model.Game;
 import byui.cit260.talesofarterra.model.Location;
+import byui.cit260.talesofarterra.control.GameControl;
 import talesofarterra.TalesofArterra;
 /**
  *
@@ -153,7 +154,18 @@ public boolean doAction(String choice) {
         restView.doAction("playerChar.ser");
     }
     private void bagContent() {
-        System.out.println("\n*** bagContent stub function called ***");
+        
+        System.out.println("bag stuff");
+        /*GameControl bag = new GameControl();
+        bag.createBagList();
+        
+        StringBuilder line;
+        
+        Game game = TalesofArterra.getGame();
+        BagItem[] bag = game.getBag();
+        
+        */
+        
     }
 
     private void charSheet() {

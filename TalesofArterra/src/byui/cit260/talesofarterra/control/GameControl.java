@@ -37,6 +37,14 @@ public class GameControl {
         
         game.setPlayer(player);
         
+        /*invetory list saved in game
+        
+        BagItem[] bagList = GameControl.createBagList();
+        game.setBag(bagList);
+        */
+        
+        
+        
         Map map = Map.Outside;
         game.setCurrentMap(map);
         
@@ -45,5 +53,55 @@ public class GameControl {
         
         TalesofArterra.setGame(game);
     }
+    /* autho carlos part of inventory itlist
+    public static BagItem[] createBagList () {
+        //array for bag items
+        BagItem[] bag = new BagItem[6];
+        
+        
+        BagItem curePot = new BagItem();
+        curePot.setDescription("Potion of Cure Wounds");
+        curePot.setQuantityInstock(0);
+        bag[Bitem.curePot.ordinal()] = curePot;
+        
+        BagItem lorePot = new BagItem();
+        lorePot.setDescription("Potion of Lore");
+        lorePot.setQuantityInstock(0);
+        bag[Bitem.lorePot.ordinal()] = lorePot;
+            
+        BagItem healKit = new BagItem();
+        healKit.setDescription("Healer’s Kit");
+        healKit.setQuantityInstock(0);
+        bag[Bitem.healKit.ordinal()] = healKit;
+          
+        BagItem mmWand = new BagItem();
+        mmWand.setDescription("Wand of Magic Missile");
+        mmWand.setQuantityInstock(0);
+        bag[Bitem.mmWand.ordinal()] = mmWand;
+          
+        BagItem noIdWand = new BagItem();
+        noIdWand.setDescription("wand "+"(unidentified)");
+        noIdWand.setQuantityInstock(0);
+        bag[Bitem.noIdWand.ordinal()] = noIdWand;
+         
+        BagItem noIdRing = new BagItem();
+        noIdRing.setDescription("ring "+"(unidentified");
+        noIdRing.setQuantityInstock(0);
+        bag[Bitem.noIdRing.ordinal()] = noIdRing;
+        
+        return bag;
+        
+       
+    }
+
+      public enum Bitem {
+        curePot,
+        lorePot,
+        healKit,
+        mmWand,
+        noIdWand,
+        noIdRing;
+    }
+    */
 }
 

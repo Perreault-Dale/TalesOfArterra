@@ -7,7 +7,8 @@ package byui.cit260.talesofarterra.model;
 
 import java.io.Serializable;
 import java.util.Objects;
-
+import java.util.ArrayList;
+import java.util.Arrays;
 /**
  *
  * @author Dale
@@ -20,7 +21,9 @@ public class Game implements Serializable {
     private Map currentMap;
     private Location currentLocation;
     private Player player;
-    
+   /* author carlos Iteminventory item havintg a compile error with BagItem
+    private BagItem[] bag;
+    */
     //public getter and setter functions
     public Game() {
     }
@@ -64,6 +67,16 @@ public class Game implements Serializable {
     public void setPlayer(Player player) {
         this.player = player;
     }
+
+    /*part of the inventory system
+    public BagItem[] getBag() {
+        return bag;
+    }
+
+    public void setBag(BagItem[] bag) {
+        this.bag = bag;
+    }
+    */
 
     @Override
     public int hashCode() {
