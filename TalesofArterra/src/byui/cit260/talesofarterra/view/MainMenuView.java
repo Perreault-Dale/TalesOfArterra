@@ -6,6 +6,7 @@
 package byui.cit260.talesofarterra.view;
 
 import byui.cit260.talesofarterra.control.GameControl;
+import byui.cit260.talesofarterra.control.SceneControl;
 import talesofarterra.TalesofArterra;
 
 /**
@@ -32,6 +33,7 @@ public class MainMenuView extends View {
                 +"\n ## Test Area menu options                 ##"
                 +"\nB - Battle view test"
                 +"\nM - Game Menu Test                           "
+                +"\nT - Store Test                               "                
                 +"\n---------------------------------------------");
     }
     
@@ -60,6 +62,8 @@ public class MainMenuView extends View {
                 return true;
             case "M":
                 this.startGameMenu();
+            case "T":
+                this.storeMenu();                
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
                 break;
@@ -108,6 +112,11 @@ public class MainMenuView extends View {
         GameMenuView gameMenuViewObject = new GameMenuView ();
         gameMenuViewObject.display();
     
+        }
+
+    private void storeMenu() {
+        SceneControl storeObject = new SceneControl();
+        storeObject.storeInventory();
         }
             
     }
