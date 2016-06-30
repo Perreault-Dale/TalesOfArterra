@@ -45,38 +45,66 @@ public class SceneControl {
         //possible monatery symbols
         //₳₴₴₵₶₷₸₹€₡₣₢₤₥₦₧₨₩₪€₭₮₰₱₲ⅎ
  
+    } 
+    
+    public enum InventoryList {
+         Regular_Sword(8, 10, 1, "Regular Sword"),
+         Strong_Sword(3, 25, 2, "Strong Sword"),
+         Dagger_of_the_Night(2, 78, 3, "Dagger of the Night"),
+         Potion_of_Healing(5, 5, 4, "Potion of Healing"),
+         Potion_of_Fortitude(9, 9, 5, "Potion of Fortitude"),
+         Weak_Shield(11, 2, 6, "Weak Shield"),
+         Strong_Shield(5, 40, 7, "Strong Shield"),
+         Shield_of_Olympus(1, 120, 8, "Shield of Olympus");
+         
+         private int amount;
+         private final float price;
+         private final int index;
+         private final String name;
+         
+         InventoryList(int amount, float price, int index, String name) {
+            this.amount = amount;
+            this.price = price;
+            this.index = index;
+            this.name = name;
+         }
+         public int getAmount() {
+             return this.amount;
+         }
+         public float getPrice() {
+             return this.price;
+         }
+         public int getIndex() {
+             return this.index;
+         }
+         public void setAmount(int amount) {
+             this.amount = amount;
+         }
+         public String getName() {
+             return this.name;
+         }
     }
-    public void storeInventory (){            
+       
+    private static final int totalItems = InventoryList.values().length;
         
-        int userPurchase; 
-
-        //This is the stock ammount of each item
-        int[] itemAmount = {8, 3, 2, 5, 9, 1}; 
-        //This is each item's name
-        String[] itemName = {"Regular Sword", "Strong Sword", "Dagger of the Night", 
-            "Potion of Healing", "Potion of Fortitude", "Shield of Olympus"};
-        //This is each item's price
-        float[] itemPrice = {10, 25, 78, 5, 9, 120};
-        //This it the total price of their order
-        float sum = 0;
-        //This is so the prices will have two zeros at the end of them 
+    public void storeInventory (){ 
+        int sum = 0;         
+        int userPurchase;
+        InventoryList[] items = InventoryList.values();
         DecimalFormat df = new DecimalFormat("#.00");
-        //This adds a number for each item for the user to order.
-        int itemNumber = 1;
         System.out.print(
-                "\n****************************************************************"
-              + "\n*             WELCOME TO THE STORE IN EDINBURG                 *"
-              + "\n*                  *Business is Booming!*                      *");        
-        do{
-            
+              "\n****************************************************************"
+            + "\n*             WELCOME TO THE STORE IN EDINBURG                 *"
+            + "\n*                  *Business is Booming!*                      *");      
+         
+        do {
             System.out.println(
-                    "\n*--------------------------------------------------------------*"                    
-                  + "\n*            The following is a list of our inventory          *" 
-                  + "\n****************************************************************");
-            for (int i = 0; i < itemAmount.length; i++)
-            {
-                System.out.println(itemNumber + " - " + itemName[i] + " - we have " + itemAmount[i] + " at ₢" + df.format(itemPrice[i]) + " each.");
-                itemNumber++;
+                  "\n*--------------------------------------------------------------*"                    
+                + "\n*            The following is a list of our inventory          *" 
+                + "\n****************************************************************");
+        
+            for (InventoryList item : items) {
+                System.out.println(item.getIndex() + " - " + item.getName() + " - we have " + item.getAmount() + " at ₢" + df.format(item.getPrice()) + " each.");
             }
             System.out.println(
                     "\n****************************************************************"
@@ -86,24 +114,57 @@ public class SceneControl {
             System.out.println("Pick an item: (1 for the first, 2 for the second, so on and so forth");
             System.out.print("Press 0 to leave\n>");
             userPurchase = in.nextInt();
-            if (userPurchase != 0){  
-               
-                    //Trying to get it so it will not allow more than what is offered. 
-
-               // if (itemAmount.length < userPurchase){  
-               //     System.out.println("Test");
-               // } else {
-               //     System.out.println("Invalid Selection, Please select a number between 1 and " + itemAmount.length);}
-                if (itemAmount[userPurchase - 1] != 0){
-                 itemAmount[userPurchase - 1] -= 1;
-                 System.out.println("You just bought a " + itemName[userPurchase - 1] + "! Congrats!!\n");
-                 sum += itemPrice[userPurchase - 1];
-                    } else {
-                            System.out.println("We are Sold out! Sorry!!");}
+            
+            if (userPurchase > totalItems) {
+                while (userPurchase > totalItems) {
+                    System.out.print("Invalid Selection, Please select a number between 1 and " + totalItems + "\n>");
+                    userPurchase = in.nextInt();
+                }
             }
-            itemNumber = 1;
+            
+            if (userPurchase != 0) {
+                if (items[userPurchase - 1].getAmount() != 0) {
+                    items[userPurchase - 1].setAmount(items[userPurchase - 1].getAmount() - 1);
+                    System.out.println("You just bought a " + items[userPurchase - 1] + "! Congrats!!\n");
+                    sum += items[userPurchase - 1].getPrice();
+            } else {
+                    System.out.println("We are Sold out! Sorry!!");
+                }
+         }
         }
-        while (userPurchase != 0);
-        System.out.println("You spent a total of ₢" + df.format(sum));
+        while (userPurchase != 0); 
+        System.out.println("You spent a total of ₢" + df.format(sum));   
+
     }
 }
+        
+          
+        //do{
+            
+           
+            //if (itemAmount.length < userPurchase){  
+                 //   while (itemAmount.length < userPurchase)
+                  //      {
+                  //      System.out.print("Invalid Selection, Please select a number between 1 and " + itemAmount.length + "\n>");
+                  //      userPurchase = in.nextInt();
+                  //      }
+                  //  }
+            //if (userPurchase != 0){  
+               
+               //Trying to get it so it will not allow more than what is offered. 
+
+
+               
+              //  if (itemAmount[userPurchase - 1] != 0){
+                // itemAmount[userPurchase - 1] -= 1;
+                 //System.out.println("You just bought a " + itemName[userPurchase - 1] + "! Congrats!!\n");
+                 //sum += itemPrice[userPurchase - 1];
+                   // } else {
+                     //       System.out.println("We are Sold out! Sorry!!");}
+            //}
+            //itemNumber = 1;
+        //}
+        //while (userPurchase != 0);
+        //System.out.println("You spent a total of ₢" + df.format(sum));
+
+
