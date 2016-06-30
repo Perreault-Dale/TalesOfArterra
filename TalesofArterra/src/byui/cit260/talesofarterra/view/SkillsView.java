@@ -95,16 +95,20 @@ public class SkillsView extends View {
                 case "2":
                 case "3":
                 case "4": {
-                    int i = Integer.parseInt(value) + 1;
-                    skills[i] = checkPoints(skills[i]);
-                    break;
+                    try {
+                        int i = Integer.parseInt(value) + 1;
+                        skills[i] = checkPoints(skills[i]);
+                        break;
+                    } catch(NumberFormatException ne) {
+                        System.out.println("\nPlease select a valid entry (1-4,H)");
+                    }
                 }
                 case "H": {
                     skillsHelpMenu();
                     break;
                 }
                 default:
-                    System.out.println("\nPlease select a valid entry (1-6,H)");
+                    System.out.println("\nPlease select a valid entry (1-4,H)");
             }
         }
         return skills;

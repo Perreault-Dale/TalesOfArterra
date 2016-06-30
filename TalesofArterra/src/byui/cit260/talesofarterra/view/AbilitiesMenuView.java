@@ -107,9 +107,13 @@ class AbilitiesMenuView extends View {
                 case "4":
                 case "5":
                 case "6": {
-                    int i = Integer.parseInt(value) - 1;
-                    able[i] = checkPoints(able[i]);
-                    break;
+                    try {
+                        int i = Integer.parseInt(value) - 1;
+                        able[i] = checkPoints(able[i]);
+                        break;
+                    } catch(NumberFormatException ne) {
+                        System.out.println("\nPlease select a valid entry (1-6,H)");
+                    }
                 }
                 case "H": {
                     abilityHelpMenu();

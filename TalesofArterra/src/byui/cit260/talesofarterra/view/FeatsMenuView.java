@@ -60,11 +60,15 @@ public class FeatsMenuView extends View {
             case "7":
             case "8": 
             case "9": 
-                feature = Integer.parseInt(value) - 1;
-                charControl.enableFeats(char1, feature);
-                charControl.saveCharacter(char1, "playerChar.ser");
-                exit = true;
-                break;
+                try {
+                    feature = Integer.parseInt(value) - 1;
+                    charControl.enableFeats(char1, feature);
+                    charControl.saveCharacter(char1, "playerChar.ser");
+                    exit = true;
+                    break;
+                } catch(NumberFormatException ne) {
+                    System.out.println( "ERROR: That is not a valid value!" );
+                }
             case "H":
             case "h": featsHelp();
                           break;         
