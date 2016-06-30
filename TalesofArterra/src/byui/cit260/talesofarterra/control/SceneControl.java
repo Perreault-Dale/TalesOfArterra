@@ -125,7 +125,7 @@ public class SceneControl {
             if (userPurchase != 0) {
                 if (items[userPurchase - 1].getAmount() != 0) {
                     items[userPurchase - 1].setAmount(items[userPurchase - 1].getAmount() - 1);
-                    System.out.println("You just bought a " + items[userPurchase - 1] + "! Congrats!!\n");
+                    System.out.println("You just bought a " + items[userPurchase - 1].getName() + "! Congrats!!\n");
                     sum += items[userPurchase - 1].getPrice();
             } else {
                     System.out.println("We are Sold out! Sorry!!");
