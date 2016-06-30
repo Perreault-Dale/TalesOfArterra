@@ -117,7 +117,7 @@ public class SpellListView extends View {
             }
         SpellControl instance = new SpellControl();
         ArrayList<Spell> spellList = new ArrayList<>();
-        spellList = instance.sortByType(type);
+        spellList = instance.sortByType(TalesofArterra.getPlayer().getPlayerChar(),type);
         for (Spell spell : spellList) {
             System.out.println(spellList.indexOf(spell) + " - " + spell.name() + " - " + spell.getLevel());
         }

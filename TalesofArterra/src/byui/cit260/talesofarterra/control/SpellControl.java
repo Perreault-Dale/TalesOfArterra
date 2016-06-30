@@ -41,9 +41,11 @@ public class SpellControl {
         return listSpells;
     }
     
-    public ArrayList<Spell> sortByType(String type) {
+    public ArrayList<Spell> sortByType(Character char1, String type) {
+        ArrayList<Spell> listSpells = new ArrayList<>();
+        listSpells = spellList(char1);
         ArrayList<Spell> spellType = new ArrayList<>();
-        for (Spell spell : Spell.values()) {
+        for (Spell spell : listSpells) {
             if (spell.getDamageType().equals(type)) {
                 spellType.add(spell);
             }
