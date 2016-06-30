@@ -17,8 +17,8 @@ public enum Map implements Serializable {
     //list of Maps
     Outside(0,5,5,true,true),
     CityCenter(1,10,10,true,false),
-    NonWorking(2,0,0,true,false),
-    NoLocations(3,5,5,true,false);
+    NonWorking(98,0,0,true,false),
+    NoLocations(99,5,5,true,false);
     
     // private class variables
     private final int mapID;
