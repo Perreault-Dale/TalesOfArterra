@@ -14,9 +14,9 @@ public class BattleView extends View {
                 + "\n****************************************************"
                 + "\n| Battle Menu                                      |"
                 + "\n****************************************************"
-                + "\nA. Attack, man mode"
-                + "\nD. Drink health potion, woops"
-                + "\nR. Run!, ya coward!"
+                + "\n1. Attack, man mode"
+                + "\n2. Drink health potion, woops"
+                + "\n3. Run!, ya coward!"
                 + "\n****************************************************"
         );
     }
@@ -61,22 +61,31 @@ public class BattleView extends View {
         choice = choice.toUpperCase();
         
         switch (choice) {
-            case "A" :
+            case "1" :
                 this.startNewAttack();
                 break;
-            case "D" :
+            case "2" :
                 this.drinkPotion();
                 break;
-            case "R" :
+            case "3" : 
                 this.exitCombat();
-                break;
+               {
+                    try {
+                        int i = Integer.parseInt(choice);
+                       
+                        break;
+                    } catch(NumberFormatException nfe) {
+                        System.out.println("\nPlease select a valid entry (1-4,H)");
+                    }
+                }
             default :
                 System.out.println("\n*** you have chosen poorly *** Try again");
                 break;
         }
         return false;
+        
     }   
-   
+
     private void startNewAttack() {
     
         AttackControl attackControlObject = new AttackControl ();

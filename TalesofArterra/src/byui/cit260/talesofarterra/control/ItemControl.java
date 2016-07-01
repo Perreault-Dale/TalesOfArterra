@@ -7,6 +7,7 @@ package byui.cit260.talesofarterra.control;
 
 import byui.cit260.talesofarterra.model.Character;
 import byui.cit260.talesofarterra.model.Item;
+import byui.cit260.talesofarterra.exceptions.ItemControlException;
 import java.util.Random;
 
 
@@ -20,10 +21,10 @@ public class ItemControl {
         System.out.println("chugs Potion");
     }
     
-    public int calcLore(Character char1) {
+    public int calcLore(Character char1) throws ItemControlException {
         int [] ability = char1.getAbilities();
         if (ability[4] < 9) {
-            return -1;
+           throw new ItemControlException("You reached the max amount.") ;
         }
         else {
             int intMod = (ability[4] - 10) / 2;

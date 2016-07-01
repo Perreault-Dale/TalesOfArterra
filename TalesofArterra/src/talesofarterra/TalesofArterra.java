@@ -20,8 +20,15 @@ public class TalesofArterra {
 
     public static void main(String[] args) {
         StartMenuView startItUp = new StartMenuView();
-        startItUp.display();
+       try {
         
+            startItUp.display();
+       } catch (Throwable te) {
+           System.out.println(te.getMessage());
+           te.printStackTrace();
+           startItUp.display();
+        
+       }
     }
 
     public static Game getGame() {
