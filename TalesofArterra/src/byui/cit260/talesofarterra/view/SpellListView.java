@@ -6,6 +6,7 @@
 package byui.cit260.talesofarterra.view;
 
 import byui.cit260.talesofarterra.control.SpellControl;
+import byui.cit260.talesofarterra.exceptions.SpellControlException;
 import byui.cit260.talesofarterra.model.Spell;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -51,7 +52,13 @@ public class SpellListView extends View {
     private boolean allSpells() {
         SpellControl instance = new SpellControl();
         ArrayList<Spell> spellList = new ArrayList<>();
-        spellList = instance.spellList(TalesofArterra.getPlayer().getPlayerChar());
+        
+        try {
+            spellList = instance.spellList(TalesofArterra.getPlayer().getPlayerChar());
+        } catch(SpellControlException sce) {
+            System.out.println(sce.getMessage());
+        }
+        
         for (Spell spell : spellList) {
             System.out.println(spellList.indexOf(spell) + " - " + spell.name() + " - " + spell.getLevel());
         }
@@ -117,7 +124,13 @@ public class SpellListView extends View {
             }
         SpellControl instance = new SpellControl();
         ArrayList<Spell> spellList = new ArrayList<>();
-        spellList = instance.sortByType(TalesofArterra.getPlayer().getPlayerChar(),type);
+        
+        try {
+            spellList = instance.sortByType(TalesofArterra.getPlayer().getPlayerChar(),type);
+        } catch(SpellControlException sce) {
+            System.out.println(sce.getMessage());
+        }
+        
         for (Spell spell : spellList) {
             System.out.println(spellList.indexOf(spell) + " - " + spell.name() + " - " + spell.getLevel());
         }

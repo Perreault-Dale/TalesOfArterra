@@ -7,6 +7,7 @@ package byui.cit260.talesofarterra.control;
 
 import byui.cit260.talesofarterra.model.Character;
 import byui.cit260.talesofarterra.model.Item;
+import byui.cit260.talesofarterra.exceptions.CharacterControlException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -19,8 +20,11 @@ import java.io.ObjectOutputStream;
  */
 public class CharacterControl {
 
-    public static byui.cit260.talesofarterra.model.Character createPlayer(String charName) {
+    public static Character createPlayer(String charName) throws CharacterControlException {
         Character playerChar = new Character();
+        if (charName.equals("")) {
+            throw new CharacterControlException("Your character must have a name.");
+        }
         inputName(playerChar,charName);
         return playerChar;
     }
