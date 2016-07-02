@@ -41,7 +41,7 @@ public class GameControl {
         
         QuestControl qc = new QuestControl();
         game.setJournal(qc.loadQuests());
-        game.getJournal()[0].isAccepted();
+        game.getJournal()[0].setAccepted(true);
         
         Map map = Map.Outside;
         game.setCurrentMap(map);
