@@ -39,13 +39,8 @@ public class GameControl {
         
         game.setPlayer(player);
         
-        /*invetory list saved in game
-        
-        BagItem[] bagList = GameControl.createBagList();
-        game.setBag(bagList);
-        */
-        
-        
+        QuestControl qc = new QuestControl();
+        game.setJournal(qc.loadQuests());
         
         Map map = Map.Outside;
         game.setCurrentMap(map);

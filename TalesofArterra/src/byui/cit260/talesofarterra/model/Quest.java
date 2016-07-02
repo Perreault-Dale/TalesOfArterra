@@ -11,7 +11,6 @@ import java.util.Objects;
 public class Quest implements Serializable {
 
     //private member variables
-    private int questID;
     private boolean accepted;
     private boolean complete;
     private String title;
@@ -19,16 +18,10 @@ public class Quest implements Serializable {
 
     //public getter and setter functions
     public Quest() {
+        accepted = false;
+        complete = false;
     }
     
-    public int getQuestID() {
-        return questID;
-    }
-
-    public void setQuestID(int questID) {
-        this.questID = questID;
-    }
-
     public boolean isAccepted() {
         return accepted;
     }
@@ -64,7 +57,6 @@ public class Quest implements Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 79 * hash + this.questID;
         hash = 79 * hash + (this.accepted ? 1 : 0);
         hash = 79 * hash + (this.complete ? 1 : 0);
         hash = 79 * hash + Objects.hashCode(this.title);
@@ -84,9 +76,6 @@ public class Quest implements Serializable {
             return false;
         }
         final Quest other = (Quest) obj;
-        if (this.questID != other.questID) {
-            return false;
-        }
         if (this.accepted != other.accepted) {
             return false;
         }
@@ -104,7 +93,7 @@ public class Quest implements Serializable {
 
     @Override
     public String toString() {
-        return "Quest{" + "questID=" + questID + ", accepted=" + accepted + ", complete=" + complete + ", title=" + title + ", description=" + description + '}';
+        return "Quest{" + "accepted=" + accepted + ", complete=" + complete + ", title=" + title + ", description=" + description + '}';
     }
 
 }

@@ -21,9 +21,8 @@ public class Game implements Serializable {
     private Map currentMap;
     private Location currentLocation;
     private Player player;
-   /* author carlos Iteminventory item havintg a compile error with BagItem
-    private BagItem[] bag;
-    */
+    private Quest[] journal;
+    
     //public getter and setter functions
     public Game() {
     }
@@ -68,15 +67,13 @@ public class Game implements Serializable {
         this.player = player;
     }
 
-    /*part of the inventory system
-    public BagItem[] getBag() {
-        return bag;
+    public Quest[] getJournal() {
+        return journal;
     }
 
-    public void setBag(BagItem[] bag) {
-        this.bag = bag;
+    public void setJournal(Quest[] journal) {
+        this.journal = journal;
     }
-    */
 
     @Override
     public int hashCode() {
