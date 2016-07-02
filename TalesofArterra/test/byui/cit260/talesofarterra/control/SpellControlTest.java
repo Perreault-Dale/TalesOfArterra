@@ -5,9 +5,12 @@
  */
 package byui.cit260.talesofarterra.control;
 
+import byui.cit260.talesofarterra.exceptions.SpellControlException;
 import byui.cit260.talesofarterra.model.Character;
 import byui.cit260.talesofarterra.model.Spell;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -72,11 +75,14 @@ public class SpellControlTest {
         SpellControl instance = new SpellControl();
         int lowResult = 4 * playerChar.getLevel() + 1;
         int highResult = (3 + fireBall.getDamagePerLevel()) * playerChar.getLevel() + fireBall.getBaseDamage();
-        int result = instance.calcDamage(playerChar, fireBall);
-        System.out.println(lowResult + " < " + result + " < " + highResult);
-        assertEquals(true, (result > lowResult && result < highResult));
-        // TODO review the generated test code and remove the default call to fail.
-        // fail("The test case is a prototype.");
+        int result;
+        try {
+            result = instance.calcDamage(playerChar, fireBall);
+            System.out.println(lowResult + " < " + result + " < " + highResult);
+            assertEquals(true, (result > lowResult && result < highResult));
+        } catch (SpellControlException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     /**
@@ -110,10 +116,14 @@ public class SpellControlTest {
                 
         SpellControl instance = new SpellControl();
         ArrayList<Spell> spellList = new ArrayList<>();
-        spellList = instance.spellList(playerChar);
-        assertNotNull(spellList);
-        for (Spell spell : spellList) {
-            System.out.println(spellList.indexOf(spell) + " - " + spell.name() + " - " + spell.getLevel());
+        try {
+            spellList = instance.spellList(playerChar);
+            assertNotNull(spellList);
+            for (Spell spell : spellList) {
+                System.out.println(spellList.indexOf(spell) + " - " + spell.name() + " - " + spell.getLevel());
+            }
+        } catch (SpellControlException ex) {
+            System.out.println(ex.getMessage());
         }
     }
 }

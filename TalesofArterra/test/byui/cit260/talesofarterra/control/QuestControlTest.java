@@ -28,8 +28,6 @@ public class QuestControlTest {
         QuestControl instance = new QuestControl();
         instance.acceptQuest(quest);
         assertEquals(true,quest.isAccepted());
-        // TODO review the generated test code and remove the default call to fail.
-        // fail("The test case is a prototype.");
     }
 
     /**
@@ -42,27 +40,6 @@ public class QuestControlTest {
         QuestControl instance = new QuestControl();
         instance.completeQuest(quest);
         assertEquals(true,quest.isComplete());
-        // TODO review the generated test code and remove the default call to fail.
-        // fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setInfo method, of class QuestControl.
-     */
-    @Test
-    public void testSetInfo() {
-        System.out.println("setInfo");
-        Quest quest = new Quest();
-        int id = 1;
-        String title = "Steal Ring";
-        String description = "Steal the gold ring from the Bedime estate.";
-        QuestControl instance = new QuestControl();
-        instance.setInfo(quest, id, title, description);
-        assertEquals(id,quest.getQuestID());
-        assertEquals(title,quest.getTitle());
-        assertEquals(description,quest.getDescription());
-        // TODO review the generated test code and remove the default call to fail.
-        // fail("The test case is a prototype.");
     }
 
     /**
@@ -77,8 +54,18 @@ public class QuestControlTest {
         QuestControl instance = new QuestControl();
         instance.updateDescription(quest, update);
         assertEquals("Steal the gold ring from the Bedime estate.\nYou completed the quest successfully.",quest.getDescription());
-        // TODO review the generated test code and remove the default call to fail.
-        // fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of loadQuests method, of class QuestControl.
+     */
+    @Test
+    public void testLoadQuests() {
+        System.out.println("loadQuests");
+        QuestControl instance = new QuestControl();
+        Quest[] expResult = new Quest[25];
+        Quest[] result = instance.loadQuests();
+        assertArrayEquals(expResult, result);
     }
     
 }
