@@ -34,8 +34,13 @@ public class QuestControl {
         Quest[] journal = null;
         int index = 0;
         
-        String title = "Getting a Job";
-        String description = "Now that you have arrived in Edinburg, you need to find work. Ask around, I'm sure someone's hiring.";
+        String title = "Leaving Home";
+        String description = "You grew up as an orphan on a farm raised by your loving stepparents, Tobias and Margo. Your stepmother passed away years ago. Your stepfather died when he torched your home to save you from a werewolf only days ago. Cast out into the world, you travel to the city of Edinburg. ";
+        setInfo(journal[index],title,description);
+        index++;
+        
+        title = "Getting a Job";
+        description = "Now that you have arrived in Edinburg, you need to find work. Ask around, I'm sure someone's hiring.";
         setInfo(journal[index],title,description);
         index++;
         
