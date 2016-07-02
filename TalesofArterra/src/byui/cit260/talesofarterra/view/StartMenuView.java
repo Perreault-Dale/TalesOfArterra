@@ -6,6 +6,7 @@
 package byui.cit260.talesofarterra.view;
 
 import byui.cit260.talesofarterra.control.PlayerControl;
+import byui.cit260.talesofarterra.exceptions.PlayerControlException;
 import byui.cit260.talesofarterra.model.Player;
 
 /**
@@ -37,15 +38,12 @@ public class StartMenuView extends View {
     @Override
     public boolean doAction(String playerName) {
         PlayerControl pc = new PlayerControl();
-        Player player = PlayerControl.createPlayer(playerName);
-        if (player == null) {
-            System.out.println("\nError: Failed to create the player.");
-            return false;
+        try {
+            Player player = PlayerControl.createPlayer(playerName);
+            this.displayNextView(player);
+        } catch(PlayerControlException pce) {
+            System.out.println(pce.getMessage());
         }
-        String fileName = "player_" + playerName + ".ser";
-        pc.savePlayer(player,fileName);
-        this.displayNextView(player);
-        
         return true;
     }
 

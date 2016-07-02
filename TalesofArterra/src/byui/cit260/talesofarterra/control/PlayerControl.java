@@ -5,6 +5,7 @@
  */
 package byui.cit260.talesofarterra.control;
 
+import byui.cit260.talesofarterra.exceptions.PlayerControlException;
 import byui.cit260.talesofarterra.model.Player;
 import byui.cit260.talesofarterra.model.Item;
 import java.io.FileInputStream;
@@ -21,10 +22,14 @@ import talesofarterra.TalesofArterra;
  */
 public class PlayerControl {
 
-    public static Player createPlayer(String name) {
+    public static Player createPlayer(String name) throws PlayerControlException {
         Player player = new Player();
         player.setBank(0);
-        PlayerControl.inputName(player,name);
+        if (!name.isEmpty()) {
+            inputName(player,name);
+        } else {
+            throw new PlayerControlException("You must enter a name.");
+        }
         TalesofArterra.setPlayer(player);
         return player;
     }
@@ -32,7 +37,7 @@ public class PlayerControl {
         player.setName(name);
     }
     
-    public void calcBank(Player pc, Item item, char code) {
+    public void calcBank(Player pc, Item item, char code) throws PlayerControlException {
         switch (code) {
             case 's':
                 pc.setBank(pc.getBank() + item.getCost());
@@ -40,6 +45,8 @@ public class PlayerControl {
             case 'p':
                 pc.setBank(pc.getBank() - item.getCost());
                 break;
+            default:
+                throw new PlayerControlException("You entered an invalid code.");
         }
     }
     
@@ -67,7 +74,7 @@ public class PlayerControl {
         return true;
     }
     
-    public Player loadCharacter(String fileName) {
+    public Player loadPlayer(String fileName) {
         FileInputStream fileInputStream = null;
         ObjectInputStream objectInputStream = null;
  

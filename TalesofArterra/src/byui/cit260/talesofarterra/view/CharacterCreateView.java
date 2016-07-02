@@ -6,6 +6,7 @@
 package byui.cit260.talesofarterra.view;
 
 import byui.cit260.talesofarterra.control.CharacterControl;
+import byui.cit260.talesofarterra.exceptions.CharacterControlException;
 import byui.cit260.talesofarterra.model.Character;
 import java.io.*;
 
@@ -29,10 +30,11 @@ public class CharacterCreateView extends View {
 
     @Override
     public boolean doAction(String value) {
-        Character playerChar = CharacterControl.createPlayer(value);
-        if (playerChar == null) {
-            System.out.println("\nError: Failed to create the character.");
-            return false;
+        Character playerChar = null;
+        try {
+            playerChar = CharacterControl.createPlayer(value);
+        } catch(CharacterControlException cce) {
+            System.out.println(cce.getMessage());
         }
         CharacterControl cc = new CharacterControl();
         return cc.saveCharacter(playerChar,"playerChar.ser");
