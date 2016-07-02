@@ -194,7 +194,8 @@ public boolean doAction(String choice) {
     }
 
     private void displayJournal() {
-        System.out.println("\n*** displayJournal stub function called ***");
+        JournalView jv = new JournalView();
+        jv.display();
     }
     
     private void saveGame() {
