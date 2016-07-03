@@ -25,16 +25,25 @@ public class PlayerControl {
     public static Player createPlayer(String name) throws PlayerControlException {
         Player player = new Player();
         player.setBank(0);
-        if (!name.isEmpty()) {
+        if (!isNumeric(name)) {
             inputName(player,name);
         } else {
-            throw new PlayerControlException("You must enter a name.");
+            throw new PlayerControlException("You may not enter a number for the name.");
         }
         TalesofArterra.setPlayer(player);
         return player;
     }
     public static void inputName(Player player, String name) {
         player.setName(name);
+    }
+
+    private static boolean isNumeric(String name) {
+        try {
+            double test = Double.parseDouble(name);
+        } catch(NumberFormatException nfe) {
+            return false;
+        }
+        return true;
     }
     
     public void calcBank(Player pc, Item item, char code) throws PlayerControlException {

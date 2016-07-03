@@ -22,8 +22,8 @@ public class CharacterControl {
 
     public static Character createPlayer(String charName) throws CharacterControlException {
         Character playerChar = new Character();
-        if (charName.equals("")) {
-            throw new CharacterControlException("Your character must have a name.");
+        if (isNumeric(charName)) {
+            throw new CharacterControlException("Your character must have a non-numeric name.");
         }
         inputName(playerChar,charName);
         return playerChar;
@@ -31,6 +31,15 @@ public class CharacterControl {
     
     public static void inputName(Character char1, String name) {
         char1.setName(name);
+    }
+
+    private static boolean isNumeric(String charName) {
+        try {
+            double test = Double.parseDouble(charName);
+        } catch(NumberFormatException nfe) {
+            return false;
+        }
+        return true;
     }
     
     public void inputGender(Character char1, char gender) {

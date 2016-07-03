@@ -38,12 +38,14 @@ public class StartMenuView extends View {
     @Override
     public boolean doAction(String playerName) {
         PlayerControl pc = new PlayerControl();
+        Player player = new Player();
         try {
-            Player player = PlayerControl.createPlayer(playerName);
-            this.displayNextView(player);
+            player = PlayerControl.createPlayer(playerName);
         } catch(PlayerControlException pce) {
             System.out.println(pce.getMessage());
+            return false;
         }
+        this.displayNextView(player);
         return true;
     }
 
