@@ -24,7 +24,7 @@ public class PlayerControl {
 
     public static Player createPlayer(String name) throws PlayerControlException {
         Player player = new Player();
-        player.setBank(0);
+        player.setBank(100);
         if (!isNumeric(name)) {
             inputName(player,name);
         } else {

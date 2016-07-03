@@ -8,11 +8,14 @@ import byui.cit260.talesofarterra.control.MapControl;
 import byui.cit260.talesofarterra.model.Game;
 import byui.cit260.talesofarterra.model.Location;
 import byui.cit260.talesofarterra.control.GameControl;
+import byui.cit260.talesofarterra.control.SceneControl;
 import byui.cit260.talesofarterra.exceptions.MapControlException;
+import byui.cit260.talesofarterra.exceptions.SceneControlException;
 import byui.cit260.talesofarterra.model.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import talesofarterra.TalesofArterra;
+import byui.cit260.talesofarterra.model.Character;
 /**
  *
  * @author Portal
@@ -39,7 +42,7 @@ public class GameMenuView extends View {
           + "\n*       \"Q\"..................................QUIT GAME         *"
           + "\n*---------------------------------------------------------------*"
           + "\n*       \"T\"..................................TEST MAP          *"
-          + "\n*                                                                *"
+          + "\n*       \"E\"..................................Store Test        *"
           + "\n*       \"H\"..................................HELP              *"                    
           + "\n*****************************************************************");
     
@@ -91,7 +94,10 @@ public boolean doAction(String choice) {
             case "T": 
                 this.testMap();
                 break;
-            
+                
+            case "E":
+                this.storeMenu(); 
+                break;
             case "H": 
                 this.displayHelp();
                 break;                                              
@@ -225,4 +231,15 @@ public boolean doAction(String choice) {
         TalesofArterra.setGame(game);
         displayMap();
     }
+    
+       private void storeMenu() {
+        SceneControl sc = new SceneControl();    
+        
+        try {
+            sc.storeInventory();
+            //SceneControl.storeInventory();
+        } catch(SceneControlException sce) {
+            System.out.println(sce.getMessage());
+        }
+       }
 }
