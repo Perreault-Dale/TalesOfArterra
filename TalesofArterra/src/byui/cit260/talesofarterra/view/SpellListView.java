@@ -8,6 +8,7 @@ package byui.cit260.talesofarterra.view;
 import byui.cit260.talesofarterra.control.SpellControl;
 import byui.cit260.talesofarterra.exceptions.SpellControlException;
 import byui.cit260.talesofarterra.model.Spell;
+import byui.cit260.talesofarterra.model.Character;
 import java.util.ArrayList;
 import java.util.Scanner;
 import talesofarterra.TalesofArterra;
@@ -26,6 +27,7 @@ public class SpellListView extends View {
           + "\n*---------------------------------------------------------------*"
           + "\n*       \"A\"................................All Spells         *"
           + "\n*       \"S\"................................Spells By Type     *"
+          + "\n*       \"T\"................................Test Invalid Input *"
           + "\n*       \"Q\"................................Go Back            *"
           + "\n*****************************************************************");
     }
@@ -40,6 +42,9 @@ public class SpellListView extends View {
                 break;
             case "S":
                 done = this.spellsByType();
+                break;
+            case "T":
+                done = this.badSpells();
                 break;
             case "Q":
                 return true;
@@ -127,6 +132,24 @@ public class SpellListView extends View {
         
         try {
             spellList = instance.sortByType(TalesofArterra.getPlayer().getPlayerChar(),type);
+        } catch(SpellControlException sce) {
+            System.out.println(sce.getMessage());
+        }
+        
+        for (Spell spell : spellList) {
+            System.out.println(spellList.indexOf(spell) + " - " + spell.name() + " - " + spell.getLevel());
+        }
+        return true;
+    }
+
+    private boolean badSpells() {
+        SpellControl instance = new SpellControl();
+        ArrayList<Spell> spellList = new ArrayList<>();
+        Character badChar = new Character();
+        badChar.setLevel(0);
+        
+        try {
+            spellList = instance.spellList(badChar);
         } catch(SpellControlException sce) {
             System.out.println(sce.getMessage());
         }

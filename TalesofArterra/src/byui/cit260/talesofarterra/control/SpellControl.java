@@ -36,7 +36,7 @@ public class SpellControl {
     public ArrayList<Spell> spellList(Character char1) throws SpellControlException {
         ArrayList<Spell> listSpells = new ArrayList<>();
         for (Spell spell : Spell.values()) {
-            if (spell.getLevel() == 1 && char1.getLevel() < 9) {
+            if (spell.getLevel() == 1 && char1.getLevel() > 0 && char1.getLevel() < 9) {
                 listSpells.add(spell);
             }
             else if (char1.getLevel() / 2 >= spell.getLevel())
