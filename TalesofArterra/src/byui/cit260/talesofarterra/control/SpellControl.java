@@ -18,15 +18,15 @@ import java.util.Random;
 public class SpellControl {
     public int calcDamage(Character char1, Spell spell) throws SpellControlException {
         Random r = new Random();
-        int [] ability = char1.getAbilities();
-        if (ability[5] < 10) {
+        int charisma = char1.getAbilities()[5];
+        if (charisma < 10) {
             throw new SpellControlException("You do not have sufficient Charisma to cast spells.");
         }
         else if (char1.getLevel() < 1) {
             throw new SpellControlException("Your character is level 0 and cannot cast spells.");
         }
         else {
-            int intMod = (ability[5] - 10) / 2;
+            int intMod = (charisma - 10) / 2;
             float dice = (float) (r.nextFloat() * (float)spell.getDamagePerLevel() + (float)intMod + 1.0);
             float dice2 = (float) (r.nextFloat() * (float)spell.getBaseDamage());
             return (int) (dice * char1.getLevel() + dice2);

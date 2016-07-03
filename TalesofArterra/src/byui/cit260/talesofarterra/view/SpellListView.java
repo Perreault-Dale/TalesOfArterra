@@ -157,6 +157,21 @@ public class SpellListView extends View {
         for (Spell spell : spellList) {
             System.out.println(spellList.indexOf(spell) + " - " + spell.name() + " - " + spell.getLevel());
         }
+        
+        try {
+            instance.calcDamage(badChar, Spell.Fireball);
+        } catch(SpellControlException sce) {
+            System.out.println(sce.getMessage());
+        }
+        
+        int[] abilities = new int[] { 8,12,8,12,14,18 };
+        badChar.setAbilities(abilities);
+        try {
+            instance.calcDamage(badChar, Spell.Fireball);
+        } catch(SpellControlException sce) {
+            System.out.println(sce.getMessage());
+        }
+        
         return true;
     }
 }
