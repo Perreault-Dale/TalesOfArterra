@@ -125,16 +125,17 @@ public class SceneControl {
             }
 
             Player player = TalesofArterra.getPlayer();
-                   if (player.getBank() < 2) {
-                       throw new SceneControlException("Get outta here, you can't afford anything!");
-                   }
+            if (player.getBank() < items[userPurchase - 1].getPrice()) {
+                throw new SceneControlException("Get outta here, you can't afford a " + items[userPurchase - 1].getName() + "!\nYou spent a total of ₢" + df.format(sum));
+            }
 
                    
             if (userPurchase != 0) {
                 if (items[userPurchase - 1].getAmount() != 0) {
-                    items[userPurchase - 1].setAmount(items[userPurchase - 1].getAmount() - 1);
+                    items[userPurchase - 1].setAmount(items[userPurchase - 1].getAmount() - 1); 
+                 
                     player.setBank(player.getBank() - items[userPurchase - 1].getPrice());
-                    System.out.println("You just bought a " + items[userPurchase - 1].getName() + "! Congrats!!\n");
+                    System.out.println("You just bought a " + items[userPurchase - 1].getName() + "! Congrats!!");
                     
                     sum += items[userPurchase - 1].getPrice();
                     
@@ -143,11 +144,13 @@ public class SceneControl {
                 }
          }
         }
-        while (userPurchase != 0);                         Player player = new Player();
-            player = TalesofArterra.getGame().getPlayer();
-                    throw new SceneControlException("Sorry, come back latter we .");            
+        while (userPurchase != 0);                         
+        
+        //Player player = new Player();
+        //player = TalesofArterra.getGame().getPlayer();
+             //       throw new SceneControlException("Sorry, come back latter we .");            
             
-        //System.out.println("You spent a total of ₢" + df.format(sum));   
+        System.out.println("You spent a total of ₢" + df.format(sum));   
 
     }
 }
