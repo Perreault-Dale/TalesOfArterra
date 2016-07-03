@@ -7,7 +7,7 @@ package byui.cit260.talesofarterra.control;
  
 import byui.cit260.talesofarterra.model.Character;
 import java.text.DecimalFormat;
-//import byui.cit260.talesofarterra.model.Scene;
+import byui.cit260.talesofarterra.exceptions.SceneControlException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -87,7 +87,7 @@ public class SceneControl {
        
     private static final int totalItems = InventoryList.values().length;
         
-    public void storeInventory (){ 
+    public void storeInventory() throws SceneControlException{ 
         int sum = 0;         
         int userPurchase;
         InventoryList[] items = InventoryList.values();
@@ -128,7 +128,7 @@ public class SceneControl {
                     System.out.println("You just bought a " + items[userPurchase - 1].getName() + "! Congrats!!\n");
                     sum += items[userPurchase - 1].getPrice();
             } else {
-                    System.out.println("We are Sold out! Sorry!!");
+                    throw new SceneControlException("Sorry, come back later we are sold out.");
                 }
          }
         }
@@ -138,33 +138,5 @@ public class SceneControl {
     }
 }
         
-          
-        //do{
-            
-           
-            //if (itemAmount.length < userPurchase){  
-                 //   while (itemAmount.length < userPurchase)
-                  //      {
-                  //      System.out.print("Invalid Selection, Please select a number between 1 and " + itemAmount.length + "\n>");
-                  //      userPurchase = in.nextInt();
-                  //      }
-                  //  }
-            //if (userPurchase != 0){  
-               
-               //Trying to get it so it will not allow more than what is offered. 
-
-
-               
-              //  if (itemAmount[userPurchase - 1] != 0){
-                // itemAmount[userPurchase - 1] -= 1;
-                 //System.out.println("You just bought a " + itemName[userPurchase - 1] + "! Congrats!!\n");
-                 //sum += itemPrice[userPurchase - 1];
-                   // } else {
-                     //       System.out.println("We are Sold out! Sorry!!");}
-            //}
-            //itemNumber = 1;
-        //}
-        //while (userPurchase != 0);
-        //System.out.println("You spent a total of ₢" + df.format(sum));
 
 

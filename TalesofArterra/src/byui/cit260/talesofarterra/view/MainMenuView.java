@@ -7,6 +7,7 @@ package byui.cit260.talesofarterra.view;
 
 import byui.cit260.talesofarterra.control.GameControl;
 import byui.cit260.talesofarterra.control.SceneControl;
+import byui.cit260.talesofarterra.exceptions.SceneControlException;
 import talesofarterra.TalesofArterra;
 
 /**
@@ -115,9 +116,14 @@ public class MainMenuView extends View {
         }
 
     private void storeMenu() {
-        SceneControl storeObject = new SceneControl();
-        storeObject.storeInventory();
+        SceneControl sc = new SceneControl();
+        try {
+            sc.storeInventory();
+            //SceneControl.storeInventory();
+        } catch(SceneControlException sce) {
+            System.out.println(sce.getMessage());
         }
+    }
             
     }
 
