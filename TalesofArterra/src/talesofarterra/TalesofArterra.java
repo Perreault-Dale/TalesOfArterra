@@ -52,13 +52,13 @@ public class TalesofArterra {
            
            try {
                
-                //if (TalesofArterra.inFile != null)
+                if (TalesofArterra.inFile != null)
                     TalesofArterra.inFile.close();
            
-                //if (TalesofArterra.outFile != null)
+                if (TalesofArterra.outFile != null)
                     TalesofArterra.outFile.close();
                 
-               // if (TalesofArterra.logFile != null)
+                if (TalesofArterra.logFile != null)
                     TalesofArterra.logFile.close();
                 
            }    catch (IOException ex){
