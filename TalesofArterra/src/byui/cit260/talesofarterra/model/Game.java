@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.Objects;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 /**
  *
  * @author Dale
@@ -22,11 +23,11 @@ public class Game implements Serializable {
     private Location currentLocation;
     private Player player;
     private Quest[] journal;
-    
+
     //public getter and setter functions
     public Game() {
     }
-    
+
     public int getTime() {
         return time;
     }

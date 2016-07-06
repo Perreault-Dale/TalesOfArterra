@@ -5,6 +5,8 @@
  */
 package byui.cit260.talesofarterra.view;
 
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 /**
@@ -14,7 +16,12 @@ import java.util.Scanner;
 public abstract class View implements ViewInterface {
     
     protected String displayMessage;
-
+    
+    protected final BufferedReader keyboard = 
+            
+                                talesofarterra.TalesofArterra.getInFile();
+    protected final PrintWriter console = 
+                                talesofarterra.TalesofArterra.getOutFile();
     public View(String displayMessage) {
         this.displayMessage = displayMessage;
     }
@@ -36,17 +43,17 @@ public abstract class View implements ViewInterface {
     
     @Override
     public String getInput() {
-        Scanner keyboard = new Scanner(System.in);
+        //Scanner keyboard = new Scanner(System.in);
         String value = "";
         boolean valid = false;
-        
+        try {
         // while a valid name has not been entered
         while(!valid) {
             // prompt for name
             System.out.println(this.displayMessage);
             
             //get value from keyboard entry
-            value = keyboard.nextLine();
+            value = this.keyboard.readLine();
             value = value.trim();
             
             if (value.length() < 1) { //blank value entered
@@ -54,7 +61,11 @@ public abstract class View implements ViewInterface {
                 continue;
             }
             break;
+            }
+        }catch (Exception e) {
+                System.out.println("Error reading input: " + e.getMessage());
         }
+        
         return value;
     }
 }

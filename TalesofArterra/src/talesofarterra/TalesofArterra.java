@@ -8,6 +8,11 @@ package talesofarterra;
 import byui.cit260.talesofarterra.model.Game;
 import byui.cit260.talesofarterra.model.Player;
 import byui.cit260.talesofarterra.view.StartMenuView;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.logging.Logger;
 
 /**
  *
@@ -17,11 +22,24 @@ public class TalesofArterra {
     
     private static Game game = null;
     private static Player player = null;
-
+    
+    private static PrintWriter outFile = null;
+    private static BufferedReader inFile = null;
+    
+    private static PrintWriter logFile = null;
+    
     public static void main(String[] args) {
         StartMenuView startItUp = new StartMenuView();
        try {
         
+           TalesofArterra.inFile =
+                   new BufferedReader(new InputStreamReader(System.in));
+           TalesofArterra.outFile =
+                   new PrintWriter(System.out, true);
+           
+           String filePath = "log.txt";
+           talesofarterra.TalesofArterra.logFile = new PrintWriter(filePath);
+           
             startItUp.display();
        } catch (Throwable te) {
            System.out.println(te.getMessage());
@@ -29,6 +47,26 @@ public class TalesofArterra {
            startItUp.display();
         
        }
+       
+       finally {
+           
+           try {
+               
+                //if (TalesofArterra.inFile != null)
+                    TalesofArterra.inFile.close();
+           
+                //if (TalesofArterra.outFile != null)
+                    TalesofArterra.outFile.close();
+                
+               // if (TalesofArterra.logFile != null)
+                    TalesofArterra.logFile.close();
+                
+           }    catch (IOException ex){
+           System.out.println("Error closing files");
+           return;
+            }
+       }       
+       
     }
 
     public static Game getGame() {
@@ -46,4 +84,29 @@ public class TalesofArterra {
     public static void setPlayer(Player player) {
         TalesofArterra.player = player;
     }
+
+    public static PrintWriter getOutFile() {
+        return outFile;
+    }
+
+    public static void setOutFile(PrintWriter outFile) {
+        TalesofArterra.outFile = outFile;
+    }
+
+    public static PrintWriter getLogFile() {
+        return logFile;
+    }
+
+    public static void setLogFile(PrintWriter logFile) {
+        TalesofArterra.logFile = logFile;
+    }
+
+    public static BufferedReader getInFile() {
+        return inFile;
+    }
+
+    public static void setInFile(BufferedReader inFile) {
+        TalesofArterra.inFile = inFile;
+    }
+    
 }
