@@ -7,7 +7,10 @@ package byui.cit260.talesofarterra.view;
 
 import byui.cit260.talesofarterra.control.CharacterControl;
 import byui.cit260.talesofarterra.model.Character;
+import java.io.IOException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -82,22 +85,26 @@ class AbilitiesMenuView extends View {
                 "You have " + abilityPoints + " ability point(s) to use. "
                     + "Please select the ability to increase: (1-6)\n\nH - Help\n";
         
-            Scanner keyboard = new Scanner(System.in);
+            // Scanner keyboard = new Scanner(System.in);
             String value = "";
             
             boolean valid = false;
             while (!valid){
-                System.out.println(menu);
-            
-                value = keyboard.nextLine();
-                value = value.trim();
-                value = value.toUpperCase();
-            
-                if (value.length()<1) {
-                    System.out.println("\nPlease enter a value.");
-                    continue;
+                try {
+                    System.out.println(menu);
+                    
+                    value = this.keyboard.readLine();
+                    value = value.trim();
+                    value = value.toUpperCase();
+                    
+                    if (value.length()<1) {
+                        System.out.println("\nPlease enter a value.");
+                        continue;
+                    }
+                    break;
+                } catch (IOException ex) {
+                    ErrorView.display(this.getClass().getName(), "Error reading input: " + ex.getMessage());
                 }
-                break;
             }
             
             switch(value) {
