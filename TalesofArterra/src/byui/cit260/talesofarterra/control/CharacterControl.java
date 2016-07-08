@@ -14,6 +14,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Dale
@@ -147,7 +149,7 @@ public class CharacterControl {
         return (4 + (able[5]-10)/2) * char1.getLevel();
     }
     
-    public boolean saveCharacter(Character playerChar, String fileName) {
+    public boolean saveCharacter(Character playerChar, String fileName) throws CharacterControlException {
         String characterFileName = fileName;
         FileOutputStream fileOutputStream = null;
         ObjectOutputStream objectOutputStream = null;
@@ -160,28 +162,28 @@ public class CharacterControl {
             objectOutputStream.writeObject(playerChar);
             objectOutputStream.close();
         }
-        catch(IOException ioe)
+        catch(Exception ex)
         {
-            //Close all I/O streams
-            ioe.printStackTrace();
-            return false;
-            //Handle the exception here
+            throw new CharacterControlException(ex.getMessage());
         }
         return true;
     }
     
-    public Character loadCharacter(String fileName) throws FileNotFoundException, IOException, ClassNotFoundException {
+    public Character loadCharacter(String fileName) throws CharacterControlException {
         FileInputStream fileInputStream = null;
         ObjectInputStream objectInputStream = null;
- 
+            
         String serializedFileName = fileName;
         Character playerChar = null;
-      
-        fileInputStream = new FileInputStream(serializedFileName);
-        objectInputStream = new ObjectInputStream(fileInputStream);
-        playerChar = (Character) objectInputStream.readObject();
-        objectInputStream.close();
-        
+            
+        try {
+            fileInputStream = new FileInputStream(serializedFileName);
+            objectInputStream = new ObjectInputStream(fileInputStream);
+            playerChar = (Character) objectInputStream.readObject();
+            objectInputStream.close();
+        } catch (Exception ex) {
+            throw new CharacterControlException(ex.getMessage());
+        }
         return playerChar;
     }
 }

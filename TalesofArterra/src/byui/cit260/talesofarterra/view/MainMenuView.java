@@ -6,6 +6,8 @@
 package byui.cit260.talesofarterra.view;
 
 import byui.cit260.talesofarterra.control.GameControl;
+import java.io.File;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -97,30 +99,47 @@ public class MainMenuView extends View {
         }
 
     private void startExistingGame() {
-        this.console.println("\n*** StartSavedGame function called ***");
+        File folder = new File(".");
+        File [] files = folder.listFiles(new FilenameFilter() {
+            @Override
+            public boolean accept(File dir, String name) {
+                return name.endsWith(".sav");
+            }
+        });
+        for (File saveGame : files) {
+            this.console.println(saveGame);
         }
+        this.console.println("Please type the name of the game you wish to restart:");
+        String saveFile = this.getInput();
+        
+        try {
+            GameControl.loadGame(saveFile);
+        } catch(Exception ex) {
+            ErrorView.display("MainMenuView", ex.getMessage());
+        }
+        
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.display();
+    }
 
     private void displayHelpMenu() {
         HelpMenuView getMeHelp = new HelpMenuView();
         getMeHelp.display();
-        }
+    }
 
     private void saveGame() {
         this.console.println("\n*** saveGame function called ***");
-        }
+    }
+    
     private void startBattleView() {
         BattleView battleViewObject = new BattleView();
         battleViewObject.display();
-        }
+    }
     private void startGameMenu() {
         
         GameMenuView gameMenuViewObject = new GameMenuView ();
         gameMenuViewObject.display();
-    
-        }
-
-   
-            
     }
+}
 
 
