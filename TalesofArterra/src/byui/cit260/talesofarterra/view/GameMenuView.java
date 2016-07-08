@@ -7,7 +7,7 @@ package byui.cit260.talesofarterra.view;
 import byui.cit260.talesofarterra.control.MapControl;
 import byui.cit260.talesofarterra.model.Game;
 import byui.cit260.talesofarterra.model.Location;
-import byui.cit260.talesofarterra.control.SceneControl;
+import byui.cit260.talesofarterra.view.StoreView;
 import byui.cit260.talesofarterra.exceptions.MapControlException;
 import byui.cit260.talesofarterra.exceptions.SceneControlException;
 import byui.cit260.talesofarterra.model.Map;
@@ -229,7 +229,7 @@ public boolean doAction(String choice) {
     }
     
        private void storeMenu() {
-        SceneControl sc = new SceneControl();    
+        StoreView sc = new StoreView();    
         
         try {
             sc.storeInventory();
