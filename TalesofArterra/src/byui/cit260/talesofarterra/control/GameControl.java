@@ -5,6 +5,7 @@
  */
 package byui.cit260.talesofarterra.control;
 
+import byui.cit260.talesofarterra.exceptions.GameControlException;
 import byui.cit260.talesofarterra.model.Game;
 import byui.cit260.talesofarterra.model.Location;
 import byui.cit260.talesofarterra.model.Map;
@@ -12,7 +13,9 @@ import byui.cit260.talesofarterra.model.Player;
 import byui.cit260.talesofarterra.model.Character;
 import byui.cit260.talesofarterra.view.ErrorView;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import talesofarterra.TalesofArterra;
 
 /**
@@ -20,6 +23,27 @@ import talesofarterra.TalesofArterra;
  * @author Dale
  */
 public class GameControl {
+
+    public static void saveGame(Game game, String fileName) throws GameControlException {
+        String characterFileName = fileName + ".sav";
+        FileOutputStream fileOutputStream = null;
+        ObjectOutputStream objectOutputStream = null;
+        
+        try
+        {
+            fileOutputStream = new FileOutputStream(characterFileName);
+            objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            //The object is being persisted here
+            objectOutputStream.writeObject(game);
+            objectOutputStream.close();
+        }
+        catch(IOException ioe)
+        {
+            //Close all I/O streams
+            ioe.printStackTrace();
+            //Handle the exception here
+        }
+    }
     public void advanceHours (Game game, int hours) {
         game.setTime(game.getTime() + hours);
         if (game.getTime() > 23) {

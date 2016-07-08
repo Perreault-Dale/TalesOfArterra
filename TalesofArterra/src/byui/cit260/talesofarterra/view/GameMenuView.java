@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package byui.cit260.talesofarterra.view;
+import byui.cit260.talesofarterra.control.GameControl;
 import byui.cit260.talesofarterra.control.MapControl;
 import byui.cit260.talesofarterra.model.Game;
 import byui.cit260.talesofarterra.model.Location;
@@ -200,11 +201,15 @@ public boolean doAction(String choice) {
     }
     
     private void saveGame() {
-        this.console.println("\n*** saveGame stub function called ***");
-    }
-
-    private void quitGame() {
-        this.console.println("\n*** quitGame stub function called ***");
+        this.console.println("Enter the name of the save file.");
+        String fileName = this.getInput();
+        try {
+            GameControl.saveGame(TalesofArterra.getGame(), fileName);
+        } catch(Exception ex) {
+            ErrorView.display("GameMenuView",ex.getMessage());
+        } finally {
+            this.console.println("Your game saved successfully.");
+        }
     }
 
     private void displayHelp() {
