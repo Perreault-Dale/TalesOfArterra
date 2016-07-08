@@ -84,8 +84,7 @@ public boolean doAction(String choice) {
                 break;
            
             case "Q": 
-                this.quitGame();
-                break;
+                return true;
             
             case "T": 
                 this.testMap();

@@ -30,7 +30,11 @@ public abstract class View implements ViewInterface {
         do {
             this.console.println(displayMessage);
             value = this.getInput();
-            done = this.doAction(value);
+            if (value == "Q") {
+                done = true;
+            } else {
+                done = this.doAction(value);
+            }
         } while (!done);
     }
     

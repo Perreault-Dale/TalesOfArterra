@@ -2,6 +2,7 @@
 package byui.cit260.talesofarterra.view;
 
 import java.io.PrintWriter;
+import talesofarterra.TalesofArterra;
 
 /**
  *
@@ -9,8 +10,8 @@ import java.io.PrintWriter;
  */
 public class ErrorView {
     
-    private static final PrintWriter errorFile = talesofarterra.TalesofArterra.getOutFile();
-    private static final PrintWriter logFile = talesofarterra.TalesofArterra.getLogFile();
+    private static final PrintWriter errorFile = TalesofArterra.getOutFile();
+    private static final PrintWriter logFile = TalesofArterra.getLogFile();
     public static void display(String className, String errorMessage) {
         
         errorFile.println(

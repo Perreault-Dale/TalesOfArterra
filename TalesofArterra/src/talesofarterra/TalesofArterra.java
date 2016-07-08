@@ -9,9 +9,11 @@ import byui.cit260.talesofarterra.model.Game;
 import byui.cit260.talesofarterra.model.Player;
 import byui.cit260.talesofarterra.view.StartMenuView;
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -31,9 +33,8 @@ public class TalesofArterra {
         try {
             TalesofArterra.inFile = new BufferedReader(new InputStreamReader(System.in));
             TalesofArterra.outFile = new PrintWriter(System.out, true);
-           
             String filePath = "log.txt";
-            talesofarterra.TalesofArterra.logFile = new PrintWriter(filePath);
+            TalesofArterra.logFile = new PrintWriter(filePath);
             StartMenuView startItUp = new StartMenuView();
             startItUp.display();
         } catch (Throwable te) {
@@ -41,10 +42,9 @@ public class TalesofArterra {
                     "\nCause: " + te.getCause() + 
                     "\nMessage: " + te.getMessage());
             te.printStackTrace();
-        }
-       
+        } 
+        
         finally {
-           
             try {
                
                 if (TalesofArterra.inFile != null)
