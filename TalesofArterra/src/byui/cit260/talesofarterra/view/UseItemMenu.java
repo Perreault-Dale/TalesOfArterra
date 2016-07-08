@@ -6,6 +6,10 @@
 package byui.cit260.talesofarterra.view;
 
 import byui.cit260.talesofarterra.control.ItemControl;
+import byui.cit260.talesofarterra.exceptions.ItemControlException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import talesofarterra.TalesofArterra;
 
 /**
  *
@@ -48,7 +52,7 @@ public class UseItemMenu extends View{
             case "E":
                 this.backToBag();
             default :
-                System.out.println("\n*** you have chosen poorly *** Try again");
+                this.console.println("\n*** you have chosen poorly *** Try again");
                 break;
         }
         return false;
@@ -56,23 +60,27 @@ public class UseItemMenu extends View{
     }
     
     private void useItem () {
-        System.out.println("We have not added a Intentory controler");
+        this.console.println("We have not added a Intentory controler");
     }
     
     private void giveItem() {
-        System.out.println("Give to whom?");
+        this.console.println("Give to whom?");
     }
     
     private void dropItem() {
-        System.out.println("delete item maybe?");
+        this.console.println("delete item maybe?");
     }
     private void identifyItem() {
         ItemControl itemControlObject = new ItemControl ();
-        itemControlObject.itemList();
+        try {
+            itemControlObject.calcLore(TalesofArterra.getGame().getPlayer().getPlayerChar());
+        } catch (ItemControlException ex) {
+            ErrorView.display(this.getClass().getName(), "Error reading input: " + ex.getMessage());
+        }
     }
     
     private void backToBag() {
-        System.out.println("We have not added a Intentory controler so no bag yet");
+        this.console.println("We have not added a Intentory controler so no bag yet");
     }
     
 }

@@ -17,18 +17,5 @@ public class MapControlTest {
     
     public MapControlTest() {
     }
-
-    /**
-     * Test of drawMap method, of class MapControl.
-     */
-    @Test
-    public void testDrawMap() {
-        System.out.println("drawMap");
-        Map newMap = null;
-        MapControl instance = new MapControl();
-        instance.drawMap(newMap);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
     
 }

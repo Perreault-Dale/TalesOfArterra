@@ -5,8 +5,12 @@
  */
 package byui.cit260.talesofarterra.control;
 
+import byui.cit260.talesofarterra.exceptions.ItemControlException;
 import byui.cit260.talesofarterra.model.Character;
 import byui.cit260.talesofarterra.model.Item;
+import byui.cit260.talesofarterra.view.ErrorView;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -50,8 +54,13 @@ public class ItemControlTest {
         
         int lowResult = skills[3] + 1 + (abilities[4] - 10) / 2;
         int highResult = skills[3] + 20 + (abilities[4] - 10) / 2;
-        int result = instance.calcLore(playerChar);
-        assertEquals(true, (result > lowResult && result < highResult));
+        int result;
+        try {
+            result = instance.calcLore(playerChar);
+            assertEquals(true, (result > lowResult && result < highResult));
+        } catch (ItemControlException ex) {
+            ErrorView.display(this.getClass().getName(), "Error reading input: " + ex.getMessage());
+        }
         // TODO review the generated test code and remove the default call to fail.
         // fail("The test case is a prototype.");
     }

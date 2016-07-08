@@ -42,7 +42,7 @@ public class StartMenuView extends View {
         try {
             player = PlayerControl.createPlayer(playerName);
         } catch(PlayerControlException pce) {
-            System.out.println(pce.getMessage());
+            ErrorView.display(this.getClass().getName(), "Error reading input: " + pce.getMessage());
             return false;
         }
         this.displayNextView(player);
@@ -50,7 +50,7 @@ public class StartMenuView extends View {
     }
 
     private void displayNextView(Player player) {
-        System.out.println("\n****************************************************************"
+        this.console.println("\n****************************************************************"
                 +          "\n* Welcome to the game, " + player.getName()
                 +          "\n* We hope you enjoy playing!"
                 +          "\n****************************************************************"
