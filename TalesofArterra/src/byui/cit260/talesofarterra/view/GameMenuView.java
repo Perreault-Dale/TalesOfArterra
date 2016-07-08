@@ -7,15 +7,11 @@ package byui.cit260.talesofarterra.view;
 import byui.cit260.talesofarterra.control.MapControl;
 import byui.cit260.talesofarterra.model.Game;
 import byui.cit260.talesofarterra.model.Location;
-import byui.cit260.talesofarterra.control.GameControl;
 import byui.cit260.talesofarterra.control.SceneControl;
 import byui.cit260.talesofarterra.exceptions.MapControlException;
 import byui.cit260.talesofarterra.exceptions.SceneControlException;
 import byui.cit260.talesofarterra.model.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import talesofarterra.TalesofArterra;
-import byui.cit260.talesofarterra.model.Character;
 /**
  *
  * @author Portal
@@ -102,7 +98,7 @@ public boolean doAction(String choice) {
                 this.displayHelp();
                 break;                                              
             default: 
-                System.out.println( "ERROR: That is not a valid choice!" );
+                this.console.println( "ERROR: That is not a valid choice!" );
             }
            
            return false;
@@ -117,54 +113,54 @@ public boolean doAction(String choice) {
         Location[][] locs;
         try {
             locs = mc.createMap(game.getCurrentMap());
-            System.out.println(game.getCurrentMap().name() + "\n");
-            System.out.print("|");
+            this.console.println(game.getCurrentMap().name() + "\n");
+            this.console.print("|");
             for (int j = 0; j < locs[0].length; j++) {
-                System.out.print("--");
+                this.console.print("--");
             }
-            System.out.print("\n");
+            this.console.print("\n");
             for (int i = 0; i < locs.length; i++) {
-                System.out.print("|");
+                this.console.print("|");
                 for (int j = 0; j < locs[0].length; j++) {
                     // print location ID if a location is on the map
                     if (locs[i][j] == null) {
-                        System.out.print(" ");
+                        this.console.print(" ");
                     }
                     else {
                         // print X if current location
                         if (locs[i][j] != game.getCurrentLocation()) {
-                            System.out.print(locs[i][j].getLocationID());
+                            this.console.print(locs[i][j].getLocationID());
                         }
                         else {
-                            System.out.print("X");
+                            this.console.print("X");
                         }
                     }
                     // print a column separator
-                    System.out.print("|");
+                    this.console.print("|");
                     // print end line
                     if (j == locs[0].length - 1) {
-                        System.out.print("\n");
+                        this.console.print("\n");
                     }
                 }
                 // print row separator
-                System.out.print("|");
+                this.console.print("|");
                 for (int j = 0; j < locs[0].length; j++) {
-                    System.out.print("--");
+                    this.console.print("--");
                 }
-                System.out.print("\n");
+                this.console.print("\n");
             }
         
             for (int i = 0; i < locs.length; i++) {
                 for (int j = 0; j < locs[0].length; j++) {
                     if (locs[i][j] != game.getCurrentLocation() && locs[i][j] != null) {
-                        System.out.println(locs[i][j].getLocationID() 
+                        this.console.println(locs[i][j].getLocationID() 
                                 + " - " 
                                 + locs[i][j].getDescription());
                     }
                 }
             }
         } catch (MapControlException ex) {
-            System.out.println(ex.getMessage());
+            ErrorView.display(this.getClass().getName(), "Error reading input: " + ex.getMessage());
         }
         
         
@@ -177,7 +173,7 @@ public boolean doAction(String choice) {
     }
     private void bagContent() {
         
-        System.out.println("bag stuff");
+        this.console.println("bag stuff");
         /*GameControl bag = new GameControl();
         bag.createBagList();
         
@@ -196,7 +192,7 @@ public boolean doAction(String choice) {
     }
 
     private void goTo() {
-        System.out.println("\n*** goTo stub function called ***");
+        this.console.println("\n*** goTo stub function called ***");
     }
 
     private void displayJournal() {
@@ -205,15 +201,15 @@ public boolean doAction(String choice) {
     }
     
     private void saveGame() {
-        System.out.println("\n*** saveGame stub function called ***");
+        this.console.println("\n*** saveGame stub function called ***");
     }
 
     private void quitGame() {
-        System.out.println("\n*** quitGame stub function called ***");
+        this.console.println("\n*** quitGame stub function called ***");
     }
 
     private void displayHelp() {
-        System.out.println("\n*** displayHelp stub function called ***");
+        this.console.println("\n*** displayHelp stub function called ***");
     }
 
     private void spellBook() {
@@ -239,7 +235,7 @@ public boolean doAction(String choice) {
             sc.storeInventory();
             //SceneControl.storeInventory();
         } catch(SceneControlException sce) {
-            System.out.println(sce.getMessage());
+            ErrorView.display(this.getClass().getName(), "Error reading input: " + sce.getMessage());
         }
        }
 }

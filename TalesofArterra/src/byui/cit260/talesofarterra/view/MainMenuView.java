@@ -6,6 +6,9 @@
 package byui.cit260.talesofarterra.view;
 
 import byui.cit260.talesofarterra.control.GameControl;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import talesofarterra.TalesofArterra;
 
 /**
@@ -63,7 +66,7 @@ public class MainMenuView extends View {
                 this.startGameMenu();
                 break;
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                this.console.println("\n*** Invalid selection *** Try again");
                 break;
             }
         return false;
@@ -83,14 +86,18 @@ public class MainMenuView extends View {
         featsView.display();
         
         GameControl gameControlObject = new GameControl();
-        gameControlObject.createNewGame(TalesofArterra.getPlayer());
+        try {
+            gameControlObject.createNewGame(TalesofArterra.getPlayer());
+        } catch (IOException | ClassNotFoundException ex) {
+            ErrorView.display(this.getClass().getName(), "Error reading input: " + ex.getMessage());
+        }
         
         GameMenuView gameMenu = new GameMenuView();
         gameMenu.display();
         }
 
     private void startExistingGame() {
-        System.out.println("\n*** StartSavedGame function called ***");
+        this.console.println("\n*** StartSavedGame function called ***");
         }
 
     private void displayHelpMenu() {
@@ -99,7 +106,7 @@ public class MainMenuView extends View {
         }
 
     private void saveGame() {
-        System.out.println("\n*** saveGame function called ***");
+        this.console.println("\n*** saveGame function called ***");
         }
     private void startBattleView() {
         BattleView battleViewObject = new BattleView();

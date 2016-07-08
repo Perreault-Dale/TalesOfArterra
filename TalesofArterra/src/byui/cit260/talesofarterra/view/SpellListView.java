@@ -52,7 +52,7 @@ public class SpellListView extends View {
             case "Q":
                 return true;
             default: 
-                System.out.println( "ERROR: That is not a valid choice!" );
+                this.console.println( "ERROR: That is not a valid choice!" );
         }
         return done;
     }
@@ -64,11 +64,11 @@ public class SpellListView extends View {
         try {
             spellList = instance.spellList(TalesofArterra.getPlayer().getPlayerChar());
         } catch(SpellControlException sce) {
-            System.out.println(sce.getMessage());
+            ErrorView.display(this.getClass().getName(), "Error reading input: " + sce.getMessage());
         }
         
         for (Spell spell : spellList) {
-            System.out.println(spellList.indexOf(spell) + " - " + spell.name() + " - " + spell.getLevel());
+            this.console.println(spellList.indexOf(spell) + " - " + spell.name() + " - " + spell.getLevel());
         }
         return true;
     }
@@ -93,14 +93,14 @@ public class SpellListView extends View {
             boolean valid = false;
             while (!valid){
             try {
-                System.out.println(menu);
+                this.console.println(menu);
             
                 value = this.keyboard.readLine();
                 value = value.trim();
                 value = value.toUpperCase();
             
                 if (value.length()<1) {
-                    System.out.println("\nPlease enter a value.");
+                    this.console.println("\nPlease enter a value.");
                     continue;
                 }
                 break;
@@ -131,7 +131,7 @@ public class SpellListView extends View {
                     return true;
                 }
                 default:
-                    System.out.println("\nPlease select a valid entry (1-6,Q)");
+                    this.console.println("\nPlease select a valid entry (1-6,Q)");
             }
         SpellControl instance = new SpellControl();
         ArrayList<Spell> spellList = new ArrayList<>();
@@ -139,11 +139,11 @@ public class SpellListView extends View {
         try {
             spellList = instance.sortByType(TalesofArterra.getPlayer().getPlayerChar(),type);
         } catch(SpellControlException sce) {
-            System.out.println(sce.getMessage());
+            ErrorView.display(this.getClass().getName(), "Error reading input: " + sce.getMessage());
         }
         
         for (Spell spell : spellList) {
-            System.out.println(spellList.indexOf(spell) + " - " + spell.name() + " - " + spell.getLevel());
+            this.console.println(spellList.indexOf(spell) + " - " + spell.name() + " - " + spell.getLevel());
         }
         return true;
     }
@@ -157,25 +157,25 @@ public class SpellListView extends View {
         try {
             spellList = instance.spellList(badChar);
         } catch(SpellControlException sce) {
-            System.out.println(sce.getMessage());
+            ErrorView.display(this.getClass().getName(), "Error reading input: " + sce.getMessage());
         }
         
         for (Spell spell : spellList) {
-            System.out.println(spellList.indexOf(spell) + " - " + spell.name() + " - " + spell.getLevel());
+            this.console.println(spellList.indexOf(spell) + " - " + spell.name() + " - " + spell.getLevel());
         }
         
         try {
             instance.calcDamage(badChar, Spell.Fireball);
-        } catch(SpellControlException sce) {
-            System.out.println(sce.getMessage());
+        } catch(SpellControlException ex) {
+            ErrorView.display(this.getClass().getName(), "Error reading input: " + ex.getMessage());
         }
         
         int[] abilities = new int[] { 8,12,8,12,14,18 };
         badChar.setAbilities(abilities);
         try {
             instance.calcDamage(badChar, Spell.Fireball);
-        } catch(SpellControlException sce) {
-            System.out.println(sce.getMessage());
+        } catch(SpellControlException ex) {
+            ErrorView.display(this.getClass().getName(), "Error reading input: " + ex.getMessage());
         }
         
         return true;

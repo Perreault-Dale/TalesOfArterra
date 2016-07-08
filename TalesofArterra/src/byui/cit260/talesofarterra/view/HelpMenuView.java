@@ -51,7 +51,7 @@ public class HelpMenuView extends View {
             case "B":
             case "b": exit = true;
                       break;
-            default: System.out.println( "ERROR: That is not a valid value!" );
+            default: this.console.println( "ERROR: That is not a valid value!" );
             }
                  /*(!"o".equals(value) || !"O".equals(value) 
                    || !"m".equals(value) || !"M".equals(value)
@@ -64,19 +64,19 @@ public class HelpMenuView extends View {
 
 
     private void objective() {
-        System.out.println("\n*** objective stub function called ***");
+        this.console.println("\n*** objective stub function called ***");
     }
 
     private void movement() {
-        System.out.println("\n*** movement stub function called ***");
+        this.console.println("\n*** movement stub function called ***");
     }
 
     private void henchmen() {
-        System.out.println("\n*** henchmen stub function called ***");
+        this.console.println("\n*** henchmen stub function called ***");
     }
 
     private void resting() {
-        System.out.println("\n*** resting stub function called ***");
+        this.console.println("\n*** resting stub function called ***");
     }
 }
  

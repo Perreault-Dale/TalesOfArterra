@@ -49,14 +49,18 @@ public class SkillsView extends View {
                 done = true;
                 break;
             default:
-                System.out.println("\nPlease select a valid entry (Y,Q)");
+                this.console.println("\nPlease select a valid entry (Y,Q)");
         }
         return done;
     }
 
     private int [] upgradeSkills() {
         CharacterControl cc = new CharacterControl();
-        playerChar = cc.loadCharacter("playerChar.ser");
+        try {
+            playerChar = cc.loadCharacter("playerChar.ser");
+        } catch (IOException | ClassNotFoundException ex) {
+            ErrorView.display(this.getClass().getName(), "Error reading input: " + ex.getMessage());
+        }
         int [] skills = playerChar.getSkills();
         int [] able = playerChar.getAbilities();
         skillPoints = 1 + ((able[4] - 10) / 2);
@@ -80,14 +84,14 @@ public class SkillsView extends View {
             boolean valid = false;
             while (!valid){
                 try {
-                    System.out.println(menu);
+                    this.console.println(menu);
                     
                     value = this.keyboard.readLine();
                     value = value.trim();
                     value = value.toUpperCase();
                     
                     if (value.length()<1) {
-                        System.out.println("\nPlease enter a value.");
+                        this.console.println("\nPlease enter a value.");
                         continue;
                     }
                     break;
@@ -106,7 +110,7 @@ public class SkillsView extends View {
                         skills[i] = checkPoints(skills[i]);
                         break;
                     } catch(NumberFormatException ne) {
-                        System.out.println("\nPlease select a valid entry (1-4,H)");
+                        this.console.println("\nPlease select a valid entry (1-4,H)");
                     }
                 }
                 case "H": {
@@ -114,7 +118,7 @@ public class SkillsView extends View {
                     break;
                 }
                 default:
-                    System.out.println("\nPlease select a valid entry (1-4,H)");
+                    this.console.println("\nPlease select a valid entry (1-4,H)");
             }
         }
         return skills;
@@ -123,7 +127,7 @@ public class SkillsView extends View {
     private int checkPoints(int score) {
         String notEnoughPoints = "You don't have enough points to increase that ability.";
         if (score / playerChar.getLevel() == 1) {
-            System.out.println(notEnoughPoints);
+            this.console.println(notEnoughPoints);
         }
         else {
             score++;
@@ -139,6 +143,6 @@ public class SkillsView extends View {
     }
 
     private void skillsHelpMenu() {
-        System.out.println("Skills Menu stub function called.");
+        this.console.println("Skills Menu stub function called.");
     }
 }

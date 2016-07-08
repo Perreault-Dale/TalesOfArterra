@@ -8,6 +8,8 @@ package byui.cit260.talesofarterra.view;
 import byui.cit260.talesofarterra.control.CharacterControl;
 import byui.cit260.talesofarterra.model.Character;
 import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -27,7 +29,11 @@ public class GenderView extends View {
         choice = choice.toUpperCase();
         CharacterControl charCtl = new CharacterControl();
         Character playerChar = null;
-        playerChar = charCtl.loadCharacter("playerChar.ser");
+        try {
+            playerChar = charCtl.loadCharacter("playerChar.ser");
+        } catch (IOException | ClassNotFoundException ex) {
+            ErrorView.display(this.getClass().getName(), "Error reading input: " + ex.getMessage());
+        }
         
         switch (choice) {
             case "M":
@@ -35,7 +41,7 @@ public class GenderView extends View {
                 charCtl.inputGender(playerChar,choice.charAt(0));
                 return charCtl.saveCharacter(playerChar,"playerChar.ser");
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                this.console.println("\n*** Invalid selection *** Try again");
                 break;
         }
         return false;

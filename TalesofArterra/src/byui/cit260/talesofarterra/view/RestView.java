@@ -38,14 +38,14 @@ public class RestView extends View {
                         Character fullHealCharacter = new Character();   
 
 //Uncomment out this lines to test the health change                   
-                        //System.out.println(fullHealCharacter.getHitPoints());   
+                        //this.console.println(fullHealCharacter.getHitPoints());   
                                                 
                         //This sets the Characters HP to full HP
                         CharacterControl setFullHeal = new CharacterControl();
                         setFullHeal.healFull(fullHealCharacter);
                         
 //Uncomment out this line to test the health change  
-                        //System.out.println(fullHealCharacter.getHitPoints());
+                        //this.console.println(fullHealCharacter.getHitPoints());
 
                          //This adds 8 hours to the game time 
                          Game game = new Game();
@@ -60,7 +60,7 @@ public class RestView extends View {
                     exit = true;
                     break;
                 default:
-                    System.out.println("\nPlease select a valid entry (Y,Q)");
+                    this.console.println("\nPlease select a valid entry (Y,Q)");
         }
         return exit;
       

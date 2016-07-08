@@ -42,7 +42,7 @@ public class JournalView extends View {
             case "Q":
                 return true;
             default: 
-                System.out.println( "ERROR: That is not a valid choice!" );
+                this.console.println( "ERROR: That is not a valid choice!" );
         }
         return done;
     }
@@ -57,8 +57,8 @@ public class JournalView extends View {
         }
         
         for (Quest quest : questList) {
-            System.out.println("\n" + quest.getTitle());
-            System.out.println(quest.getDescription() + "\n");
+            this.console.println("\n" + quest.getTitle());
+            this.console.println(quest.getDescription() + "\n");
         }
         return true;
     }
@@ -73,8 +73,8 @@ public class JournalView extends View {
         }
         
         for (Quest quest : questList) {
-            System.out.println("\n" + quest.getTitle());
-            System.out.println(quest.getDescription() + "\n");
+            this.console.println("\n" + quest.getTitle());
+            this.console.println(quest.getDescription() + "\n");
         }
         return true;
     }
