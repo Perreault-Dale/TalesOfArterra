@@ -8,6 +8,9 @@ package byui.cit260.talesofarterra.view;
 //import java.util.Scanner;
 import byui.cit260.talesofarterra.model.Character;
 import byui.cit260.talesofarterra.control.CharacterControl;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Lucas
@@ -45,7 +48,11 @@ public class FeatsMenuView extends View {
     public boolean doAction(String value)
     {        
         CharacterControl charControl = new CharacterControl();
-        char1 = charControl.loadCharacter("playerChar.ser");
+        try {
+            char1 = charControl.loadCharacter("playerChar.ser");
+        } catch (IOException | ClassNotFoundException ex) {
+            this.console.println("Error reading input: " + ex.getMessage());
+        }
         int feature = 0;
         boolean exit = false;
         
@@ -67,7 +74,7 @@ public class FeatsMenuView extends View {
                     exit = true;
                     break;
                 } catch(NumberFormatException ne) {
-                    System.out.println( "ERROR: That is not a valid value!" );
+                    this.console.println( "ERROR: That is not a valid value!" );
                 }
             case "H":
             case "h": featsHelp();
@@ -75,7 +82,7 @@ public class FeatsMenuView extends View {
             case "Q":
             case "q": exit = true;
                           break;                          
-            default: System.out.println( "ERROR: That is not a valid value!" );
+            default: this.console.println( "ERROR: That is not a valid value!" );
             }
         
         return exit;
@@ -83,7 +90,7 @@ public class FeatsMenuView extends View {
     }
     public void featsHelp()
     {
-        System.out.println("\n*** featsHelp stub function called ***");
+        this.console.println("\n*** featsHelp stub function called ***");
     }
 
 

@@ -34,7 +34,7 @@ public class CharacterCreateView extends View {
         try {
             playerChar = CharacterControl.createPlayer(value);
         } catch(CharacterControlException cce) {
-            System.out.println(cce.getMessage());
+            this.console.println(cce.getMessage());
             return false;
         }
         CharacterControl cc = new CharacterControl();

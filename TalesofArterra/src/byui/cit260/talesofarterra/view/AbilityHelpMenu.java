@@ -53,19 +53,19 @@ class AbilityHelpMenu extends View {
                 exit = true;
                 break;
             default:
-                System.out.println("\nPlease select a valid entry (1-6,Q)");
+                this.console.println("\nPlease select a valid entry (1-6,Q)");
         }
         return exit;
     }
     
     private void strengthHelp() {
-        System.out.println("Strength measures the muscle and physical power of a character. "
+        this.console.println("Strength measures the muscle and physical power of a character. "
                 + "\nThis ability is especially important for fighters, barbarians, paladins, "
                 + "\nrangers, and monks because it helps them prevail in combat.");
     }
 
     private void constitutionHelp() {
-        System.out.println("Constitution represents the health and stamina of a character. "
+        this.console.println("Constitution represents the health and stamina of a character. "
                 + "\nHigh constitution increases the number of hit points a character has "
                 + "\n(affecting how much damage they can take), and this makes it important "
                 + "\nfor everyone, but especially so for fighters. If constitution ever "
@@ -75,7 +75,7 @@ class AbilityHelpMenu extends View {
     }
 
     private void wisdomHelp() {
-        System.out.println("Wisdom describes a character's willpower, common sense, "
+        this.console.println("Wisdom describes a character's willpower, common sense, "
                 + "\nperception, and intuition, whereas intelligence represents the "
                 + "\nability to analyze information. An \"absent-minded professor\" has "
                 + "\nlow wisdom and high intelligence. A simpleton with low intelligence "
@@ -88,7 +88,7 @@ class AbilityHelpMenu extends View {
     }
 
     private void dexterityHelp() {
-        System.out.println("Dexterity measures agility, reflexes, and balance. This ability "
+        this.console.println("Dexterity measures agility, reflexes, and balance. This ability "
                 + "\nis most important for rogues, but also for characters who typically wear "
                 + "\nlight or medium armor (barbarians and rangers) or none at all (monks, "
                 + "\nwizards, and sorcerers), or for any character who wants to be a skilled "
@@ -96,7 +96,7 @@ class AbilityHelpMenu extends View {
     }
 
     private void intelligenceHelp() {
-        System.out.println("Intelligence determines how well a character learns and reasons. "
+        this.console.println("Intelligence determines how well a character learns and reasons. "
                 + "\nIntelligence is important for wizards because it affects how many spells "
                 + "\nthey can cast, how hard their spells are to resist, and how powerful their "
                 + "\nspells can be. It is also important for any character who wants to have a "
@@ -105,7 +105,7 @@ class AbilityHelpMenu extends View {
     }
 
     private void charismaHelp() {
-        System.out.println("Charisma measures a character's force of personality, "
+        this.console.println("Charisma measures a character's force of personality, "
                 + "\npersuasiveness, ability to lead, and physical attractiveness. It "
                 + "\nrepresents actual personal strength, not merely how one is perceived by "
                 + "\nothers in a social setting. Charisma is most important for paladins, "

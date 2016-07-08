@@ -2,7 +2,9 @@
 package byui.cit260.talesofarterra.view;
 
 import byui.cit260.talesofarterra.control.AttackControl;
+import byui.cit260.talesofarterra.control.CharacterControl;
 import byui.cit260.talesofarterra.control.ItemControl;
+import talesofarterra.TalesofArterra;
 
 
 
@@ -41,11 +43,11 @@ public class BattleView extends View {
                        
                         break;
                     } catch(NumberFormatException nfe) {
-                        System.out.println("\nPlease select a valid entry (1-4,H)");
+                        this.console.println("\nPlease select a valid entry (1-4,H)");
                     }
                 }
             default :
-                System.out.println("\n*** you have chosen poorly *** Try again");
+                this.console.println("\n*** you have chosen poorly *** Try again");
                 break;
         }
         return false;
@@ -61,13 +63,13 @@ public class BattleView extends View {
         }
 
     private void drinkPotion (){
-        ItemControl potion = new ItemControl ();
-        potion.addsToHealth();
+        CharacterControl cc = new CharacterControl();
+        cc.healPartial(TalesofArterra.getGame().getPlayer().getPlayerChar(), 20);
     }
     
     
     
     private void exitCombat() {
-        System.out.println("\n*** startExitingGame function called ***");
+        this.console.println("\n*** startExitingGame function called ***");
     }
 }

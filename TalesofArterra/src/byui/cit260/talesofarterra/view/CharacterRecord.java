@@ -8,6 +8,9 @@ package byui.cit260.talesofarterra.view;
 import byui.cit260.talesofarterra.control.CharacterControl;
 import byui.cit260.talesofarterra.model.Character;
 import byui.cit260.talesofarterra.model.Item;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -50,7 +53,7 @@ class CharacterRecord extends View {
             case "Q":
                 return true;
             default:
-                System.out.println( "ERROR: That is not a valid choice!" );
+                this.console.println( "ERROR: That is not a valid choice!" );
                 return false;
         }
         
@@ -61,9 +64,13 @@ class CharacterRecord extends View {
     private boolean drawCharSheet(String fileName) {
         CharacterControl cc = new CharacterControl();
         Character char1 = null;
-        char1 = cc.loadCharacter(fileName);
+        try {
+            char1 = cc.loadCharacter(fileName);
+        } catch (IOException | ClassNotFoundException ex) {
+            this.console.println("Error reading input: " + ex.getMessage());
+        }
         if (char1 == null) {
-            System.out.println("ERROR: File not found.");
+            this.console.println("ERROR: File not found.");
             return false;
         }
         int [] able = char1.getAbilities();
@@ -80,7 +87,7 @@ class CharacterRecord extends View {
         Item shoes = char1.getShoes();
         Item weapon = char1.getWeapon();
                 
-        System.out.println(
+        this.console.println(
             "\n*******************************************************"
           + "\n*              Character Record                       *"
           + "\n*=====================================================*"
