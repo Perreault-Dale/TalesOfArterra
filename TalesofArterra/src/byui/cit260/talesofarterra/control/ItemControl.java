@@ -17,10 +17,6 @@ import java.util.Random;
  */
 public class ItemControl {
     
-   public void addsToHealth(){
-        System.out.println("chugs Potion");
-    }
-    
     public int calcLore(Character char1) throws ItemControlException {
         int [] ability = char1.getAbilities();
         if (ability[4] < 9) {
@@ -46,10 +42,6 @@ public class ItemControl {
         if (item.isIsIdentified() == true) {
             item.setIsEquipped(true);
         }
-    }
-    
-    public void itemList (){
-        System.out.println("item list here");
     }
     
 }

@@ -49,7 +49,7 @@ public abstract class View implements ViewInterface {
         // while a valid name has not been entered
         while(!valid) {
             // prompt for name
-            System.out.println(this.displayMessage);
+            this.console.println(this.displayMessage);
             
             //get value from keyboard entry
             value = this.keyboard.readLine();

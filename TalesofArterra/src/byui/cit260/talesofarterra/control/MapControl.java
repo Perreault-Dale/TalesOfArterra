@@ -14,12 +14,6 @@ import java.util.ArrayList;
  */
 public class MapControl {
     
-    public void drawMap(Map newMap)
-    {
-        //ASCII map
-        System.out.println(newMap);
-    }
-    
     public Location[][] createMap(Map currentMap) throws MapControlException {
         
         // get the map's dimensions

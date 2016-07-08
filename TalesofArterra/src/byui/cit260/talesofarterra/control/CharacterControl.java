@@ -159,7 +159,6 @@ public class CharacterControl {
             //The object is being persisted here
             objectOutputStream.writeObject(playerChar);
             objectOutputStream.close();
-            System.out.println("Object serialized in file : " + characterFileName);
         }
         catch(IOException ioe)
         {
@@ -171,38 +170,17 @@ public class CharacterControl {
         return true;
     }
     
-    public Character loadCharacter(String fileName) {
+    public Character loadCharacter(String fileName) throws FileNotFoundException, IOException, ClassNotFoundException {
         FileInputStream fileInputStream = null;
         ObjectInputStream objectInputStream = null;
  
         String serializedFileName = fileName;
         Character playerChar = null;
       
-        try
-        {
-           fileInputStream = new FileInputStream(serializedFileName);
-           objectInputStream = new ObjectInputStream(fileInputStream);
-           playerChar = (Character) objectInputStream.readObject();
-           objectInputStream.close();
-        }
-        catch(FileNotFoundException fnfe)
-        {
-           System.out.println("File not found: "+fnfe.getMessage());
-           //Close all I/O streams
-           //Handle the exception here
-        }
-        catch(IOException ioe)
-        {
-           ioe.printStackTrace();
-           //Close all I/O streams
-           //Handle the exception here
-        }
-        catch(ClassNotFoundException cnfe)
-        {
-           cnfe.printStackTrace();
-           //Close all I/O streams
-           //Handle the exception here
-        }
+        fileInputStream = new FileInputStream(serializedFileName);
+        objectInputStream = new ObjectInputStream(fileInputStream);
+        playerChar = (Character) objectInputStream.readObject();
+        objectInputStream.close();
         
         return playerChar;
     }

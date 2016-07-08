@@ -59,62 +59,30 @@ public class PlayerControl {
         }
     }
     
-    public boolean savePlayer(Player player, String fileName) {
+    public boolean savePlayer(Player player, String fileName) throws FileNotFoundException, IOException {
         String playerFileName = fileName;
         FileOutputStream fileOutputStream = null;
         ObjectOutputStream objectOutputStream = null;
         
-        try
-        {
-            fileOutputStream = new FileOutputStream(playerFileName);
-            objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            //The object is being persisted here
-            objectOutputStream.writeObject(player);
-            objectOutputStream.close();
-            System.out.println("Object serialized in file : " + playerFileName);
-        }
-        catch(IOException ioe)
-        {
-            //Close all I/O streams
-            ioe.printStackTrace();
-            return false;
-            //Handle the exception here
-        }
+        fileOutputStream = new FileOutputStream(playerFileName);
+        objectOutputStream = new ObjectOutputStream(fileOutputStream);
+        //The object is being persisted here
+        objectOutputStream.writeObject(player);
+        objectOutputStream.close();
         return true;
     }
     
-    public Player loadPlayer(String fileName) {
+    public Player loadPlayer(String fileName) throws FileNotFoundException, IOException, ClassNotFoundException {
         FileInputStream fileInputStream = null;
         ObjectInputStream objectInputStream = null;
  
         String serializedFileName = fileName;
         Player player = null;
       
-        try
-        {
-           fileInputStream = new FileInputStream(serializedFileName);
-           objectInputStream = new ObjectInputStream(fileInputStream);
-           player = (Player) objectInputStream.readObject();
-           objectInputStream.close();
-        }
-        catch(FileNotFoundException fnfe)
-        {
-           System.out.println("File not found: "+fnfe.getMessage());
-           //Close all I/O streams
-           //Handle the exception here
-        }
-        catch(IOException ioe)
-        {
-           ioe.printStackTrace();
-           //Close all I/O streams
-           //Handle the exception here
-        }
-        catch(ClassNotFoundException cnfe)
-        {
-           cnfe.printStackTrace();
-           //Close all I/O streams
-           //Handle the exception here
-        }
+        fileInputStream = new FileInputStream(serializedFileName);
+        objectInputStream = new ObjectInputStream(fileInputStream);
+        player = (Player) objectInputStream.readObject();
+        objectInputStream.close();
         
         return player;
     }
