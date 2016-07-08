@@ -85,7 +85,6 @@ class AbilitiesMenuView extends View {
                 "You have " + abilityPoints + " ability point(s) to use. "
                     + "Please select the ability to increase: (1-6)\n\nH - Help\n";
         
-            // Scanner keyboard = new Scanner(System.in);
             String value = "";
             
             boolean valid = false;
@@ -167,32 +166,35 @@ class AbilitiesMenuView extends View {
         "C - Confirm\n" + 
         "R - Revert\n\n";
         
-        Scanner keyboard = new Scanner(System.in);
         String value = "";
         boolean valid = false;
         
         do {
-            System.out.println(menu);
-            
-            value = keyboard.nextLine();
-            value = value.trim();
-            value = value.toUpperCase();
-            
-            switch (value) {
-            case "R":
-                this.resetAbility(able);
-                return false;
-            case "C":
-                playerChar.setAbilities(able);
-                CharacterControl cc = new CharacterControl();
-                cc.addHP(playerChar);
-                cc.saveCharacter(playerChar,"playerChar.ser");
-                valid = true;
-                break;
-            default:
-                System.out.println("\n*** Invalid selection *** Try again");
-                valid = false;
-                break;
+            try {
+                System.out.println(menu);
+                
+                value = this.keyboard.readLine();
+                value = value.trim();
+                value = value.toUpperCase();
+                
+                switch (value) {
+                    case "R":
+                        this.resetAbility(able);
+                        return false;
+                    case "C":
+                        playerChar.setAbilities(able);
+                        CharacterControl cc = new CharacterControl();
+                        cc.addHP(playerChar);
+                        cc.saveCharacter(playerChar,"playerChar.ser");
+                        valid = true;
+                        break;
+                    default:
+                        System.out.println("\n*** Invalid selection *** Try again");
+                        valid = false;
+                        break;
+                }
+            } catch (IOException ex) {
+                ErrorView.display(this.getClass().getName(), "Error reading input: " + ex.getMessage());
             }
         }
         while (!valid);

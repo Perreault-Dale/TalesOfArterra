@@ -43,7 +43,6 @@ public abstract class View implements ViewInterface {
     
     @Override
     public String getInput() {
-        //Scanner keyboard = new Scanner(System.in);
         String value = "";
         boolean valid = false;
         try {

@@ -20,40 +20,6 @@ public class BattleView extends View {
                 + "\n****************************************************"
         );
     }
-   /* void displayBattleMenuView() {
-        
-        boolean done = true;
-        
-        do {
-            String menuOption = this.getMenuOption();
-            
-            if (menuOption.toUpperCase().equals("R"))
-                return;
-            
-            done = this.doAction(menuOption);
-                } while (!done);       
-        }
-    
-    private String getMenuOption() {
-        
-        Scanner keyboard = new Scanner(System.in);
-        String value = "";
-        boolean valid = false;
-        
-        while (!valid){
-            System.out.println("\n" + this.battleMenu);
-            
-            value = keyboard.nextLine();
-            value = value.trim();
-            
-            if (value.length()<1) {
-                System.out.println("\nYou must choose wisely...letter.");
-                continue;
-            }
-            break;
-        }
-        return value;
-    }*/
     
     @Override
     public boolean doAction(String choice) {

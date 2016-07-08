@@ -5,17 +5,19 @@ not sure why this is not running by itself, but this is the quick test battle i 
 @carlos
 */
 
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import java.util.Random;
-import java.util.Scanner;
 
 
 public class TestBattle {
     
+    protected final BufferedReader keyboard = talesofarterra.TalesofArterra.getInFile();
+    protected final PrintWriter console = talesofarterra.TalesofArterra.getOutFile();
     public static void main(String[] args) {
         
         //system objects
         
-        Scanner in = new Scanner(System.in);
         Random rand = new Random();
         
         // Game variables
@@ -60,7 +62,7 @@ public class TestBattle {
                 System.out.println("\t 3. Run!, ya coward");
                
                 // !!!!!!input from user!!!!!!
-                String input = in.nextLine();
+                String input = TalesofArterra.inFile.readLine();
                 // what that choice does in the game
                 
                 // damage done to enemy and taken

@@ -9,8 +9,11 @@ import byui.cit260.talesofarterra.control.SpellControl;
 import byui.cit260.talesofarterra.exceptions.SpellControlException;
 import byui.cit260.talesofarterra.model.Spell;
 import byui.cit260.talesofarterra.model.Character;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import talesofarterra.TalesofArterra;
 
 /**
@@ -84,15 +87,15 @@ public class SpellListView extends View {
           + "\n*       \"6\"................................Negative           *"
           + "\n*       \"Q\"................................Quit Menu          *"
           + "\n*****************************************************************";
-        Scanner keyboard = new Scanner(System.in);
             String value = "";
             String type = "";
             
             boolean valid = false;
             while (!valid){
+            try {
                 System.out.println(menu);
             
-                value = keyboard.nextLine();
+                value = this.keyboard.readLine();
                 value = value.trim();
                 value = value.toUpperCase();
             
@@ -101,6 +104,9 @@ public class SpellListView extends View {
                     continue;
                 }
                 break;
+            } catch (IOException ex) {
+                ErrorView.display(this.getClass().getName(), "Error reading input: " + ex.getMessage());
+            }
             }
             switch(value) {
                 case "1":
