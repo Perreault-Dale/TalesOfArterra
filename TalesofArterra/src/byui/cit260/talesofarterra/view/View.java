@@ -17,26 +17,19 @@ public abstract class View implements ViewInterface {
     
     protected String displayMessage;
     
-    protected final BufferedReader keyboard = 
-            
-                                talesofarterra.TalesofArterra.getInFile();
-    protected final PrintWriter console = 
-                                talesofarterra.TalesofArterra.getOutFile();
+    protected final BufferedReader keyboard = talesofarterra.TalesofArterra.getInFile();
+    protected final PrintWriter console = talesofarterra.TalesofArterra.getOutFile();
     public View(String displayMessage) {
         this.displayMessage = displayMessage;
     }
     
     @Override
     public void display() {
-        
+        String value;
         boolean done = false;
         do {
-            // prompt for input
-            String value = this.getInput();
-            if (value.toUpperCase().equals("Q"))
-                return;
-            
-            // do the requested action
+            this.console.println(displayMessage);
+            value = this.getInput();
             done = this.doAction(value);
         } while (!done);
     }
@@ -48,9 +41,6 @@ public abstract class View implements ViewInterface {
         try {
         // while a valid name has not been entered
         while(!valid) {
-            // prompt for name
-            this.console.println(this.displayMessage);
-            
             //get value from keyboard entry
             value = this.keyboard.readLine();
             value = value.trim();

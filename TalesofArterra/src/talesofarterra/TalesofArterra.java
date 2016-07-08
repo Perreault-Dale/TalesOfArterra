@@ -25,32 +25,27 @@ public class TalesofArterra {
     
     private static PrintWriter outFile = null;
     private static BufferedReader inFile = null;
-    
     private static PrintWriter logFile = null;
     
     public static void main(String[] args) {
-        StartMenuView startItUp = new StartMenuView();
-       try {
-        
-           TalesofArterra.inFile =
-                   new BufferedReader(new InputStreamReader(System.in));
-           TalesofArterra.outFile =
-                   new PrintWriter(System.out, true);
+        try {
+            TalesofArterra.inFile = new BufferedReader(new InputStreamReader(System.in));
+            TalesofArterra.outFile = new PrintWriter(System.out, true);
            
-           String filePath = "log.txt";
-           talesofarterra.TalesofArterra.logFile = new PrintWriter(filePath);
-           
+            String filePath = "log.txt";
+            talesofarterra.TalesofArterra.logFile = new PrintWriter(filePath);
+            StartMenuView startItUp = new StartMenuView();
             startItUp.display();
-       } catch (Throwable te) {
-           System.out.println(te.getMessage());
-           te.printStackTrace();
-           startItUp.display();
-        
-       }
+        } catch (Throwable te) {
+            System.out.println("Exception: " + te.toString() + 
+                    "\nCause: " + te.getCause() + 
+                    "\nMessage: " + te.getMessage());
+            te.printStackTrace();
+        }
        
-       finally {
+        finally {
            
-           try {
+            try {
                
                 if (TalesofArterra.inFile != null)
                     TalesofArterra.inFile.close();
@@ -61,9 +56,9 @@ public class TalesofArterra {
                 if (TalesofArterra.logFile != null)
                     TalesofArterra.logFile.close();
                 
-           }    catch (IOException ex){
-           System.out.println("Error closing files");
-           return;
+            } catch (IOException ex) {
+                System.out.println("Error closing files");
+                return;
             }
        }       
        
