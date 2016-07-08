@@ -63,14 +63,20 @@ class AbilitiesMenuView extends View {
                 done = true;
                 break;
             default:
-                System.out.println("\nPlease select a valid entry (Y,Q)");
+                this.console.println("\nPlease select a valid entry (Y,Q)");
         }
         return done;
     }
 
     private int [] upgradeAbilities() {
         CharacterControl cc = new CharacterControl();
-        playerChar = cc.loadCharacter("playerChar.ser");
+        try {
+            playerChar = cc.loadCharacter("playerChar.ser");
+        } catch (IOException ex) {
+            this.console.println("Error reading input: " + ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            this.console.println("Error reading input: " + ex.getMessage());
+        }
         int [] able = playerChar.getAbilities();
         String menu;
         
@@ -90,14 +96,14 @@ class AbilitiesMenuView extends View {
             boolean valid = false;
             while (!valid){
                 try {
-                    System.out.println(menu);
+                    this.console.println(menu);
                     
                     value = this.keyboard.readLine();
                     value = value.trim();
                     value = value.toUpperCase();
                     
                     if (value.length()<1) {
-                        System.out.println("\nPlease enter a value.");
+                        this.console.println("\nPlease enter a value.");
                         continue;
                     }
                     break;
@@ -118,7 +124,7 @@ class AbilitiesMenuView extends View {
                         able[i] = checkPoints(able[i]);
                         break;
                     } catch(NumberFormatException ne) {
-                        System.out.println("\nPlease select a valid entry (1-6,H)");
+                        this.console.println("\nPlease select a valid entry (1-6,H)");
                     }
                 }
                 case "H": {
@@ -126,7 +132,7 @@ class AbilitiesMenuView extends View {
                     break;
                 }
                 default:
-                    System.out.println("\nPlease select a valid entry (1-6,H)");
+                    this.console.println("\nPlease select a valid entry (1-6,H)");
             }
         }
         return able;
@@ -145,7 +151,7 @@ class AbilitiesMenuView extends View {
             drop = 1;
         }
         if (abilityPoints < drop) {
-            System.out.println(notEnoughPoints);
+            this.console.println(notEnoughPoints);
         }
         else {
             score++;
@@ -171,7 +177,7 @@ class AbilitiesMenuView extends View {
         
         do {
             try {
-                System.out.println(menu);
+                this.console.println(menu);
                 
                 value = this.keyboard.readLine();
                 value = value.trim();
@@ -189,7 +195,7 @@ class AbilitiesMenuView extends View {
                         valid = true;
                         break;
                     default:
-                        System.out.println("\n*** Invalid selection *** Try again");
+                        this.console.println("\n*** Invalid selection *** Try again");
                         valid = false;
                         break;
                 }
