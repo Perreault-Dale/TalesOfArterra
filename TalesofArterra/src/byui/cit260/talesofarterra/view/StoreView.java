@@ -39,8 +39,8 @@ class StoreView extends View{
           + "\n*===================================================================*"
           + "\n*     KEY TO PRESS                               ACTION             *"
           + "\n*-------------------------------------------------------------------*"
-          + "\n*       \"1\"................................Print Store Inventory   *"
-          + "\n*       \"Q\"................................Quit Game              *"
+          + "\n*       \"1\"................................Print Store Inventory  *"
+          + "\n*       \"S\"................................Enter Store            *"
           + "\n*********************************************************************");
     }
     
@@ -52,7 +52,7 @@ class StoreView extends View{
             case "1":
                 done = drawStoreInventory();
                 break;
-            case "Q":
+            case "S":
                 return true;
             default: 
                 this.console.println("ERROR: That is not a valid choice!");
