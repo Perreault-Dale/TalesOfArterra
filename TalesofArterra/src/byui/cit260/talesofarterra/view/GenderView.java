@@ -40,17 +40,16 @@ public class GenderView extends View {
             case "M":
             case "F":
                 charCtl.inputGender(playerChar,choice.charAt(0));
-                {
-                    try {
-                        done = charCtl.saveCharacter(playerChar,"playerChar.ser");
-                    } catch (CharacterControlException ex) {
-                        ErrorView.display(this.getClass().getName(), "Error reading input: " + ex.getMessage());
-                    }
+                try {
+                    done = charCtl.saveCharacter(playerChar,"playerChar.ser");
+                } catch (CharacterControlException ex) {
+                    ErrorView.display(this.getClass().getName(), "Error reading input: " + ex.getMessage());
                 }
+                break;
             default:
-                this.console.println("\n*** Invalid selection *** Try again");
+                this.console.println("\n*** You entered " + choice + ". Invalid selection *** Try again");
                 break;
         }
-        return false;
+        return done;
     }
 }
