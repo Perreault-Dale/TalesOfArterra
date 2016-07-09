@@ -241,7 +241,13 @@ class CharacterRecord extends View {
           + "\r\n*                        " + availWeapon
           + "\r\n*******************************************************");
         
-        charSheet.close();
+        try {
+            charSheet.close();
+            this.console.println("\nCharacter sheet printed to " + fileName);
+        } catch(Exception ex) {
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
+        }
+        
         return done;
     }
     
