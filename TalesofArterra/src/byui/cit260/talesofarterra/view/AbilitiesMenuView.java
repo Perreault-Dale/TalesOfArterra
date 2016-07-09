@@ -6,6 +6,7 @@
 package byui.cit260.talesofarterra.view;
 
 import byui.cit260.talesofarterra.control.CharacterControl;
+import byui.cit260.talesofarterra.exceptions.CharacterControlException;
 import byui.cit260.talesofarterra.model.Character;
 import java.io.IOException;
 import java.util.Scanner;
@@ -72,10 +73,8 @@ class AbilitiesMenuView extends View {
         CharacterControl cc = new CharacterControl();
         try {
             playerChar = cc.loadCharacter("playerChar.ser");
-        } catch (IOException ex) {
-            this.console.println("Error reading input: " + ex.getMessage());
-        } catch (ClassNotFoundException ex) {
-            this.console.println("Error reading input: " + ex.getMessage());
+        } catch (CharacterControlException ex) {
+            ErrorView.display("AbilitiesMenuView", ex.getMessage());
         }
         int [] able = playerChar.getAbilities();
         String menu;
@@ -191,7 +190,13 @@ class AbilitiesMenuView extends View {
                         playerChar.setAbilities(able);
                         CharacterControl cc = new CharacterControl();
                         cc.addHP(playerChar);
+                {
+                    try {
                         cc.saveCharacter(playerChar,"playerChar.ser");
+                    } catch (CharacterControlException ex) {
+                        ErrorView.display(this.getClass().getName(), "Error reading input: " + ex.getMessage());
+                    }
+                }
                         valid = true;
                         break;
                     default:

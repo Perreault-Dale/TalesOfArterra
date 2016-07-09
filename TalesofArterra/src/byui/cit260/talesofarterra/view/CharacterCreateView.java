@@ -9,6 +9,8 @@ import byui.cit260.talesofarterra.control.CharacterControl;
 import byui.cit260.talesofarterra.exceptions.CharacterControlException;
 import byui.cit260.talesofarterra.model.Character;
 import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -31,6 +33,7 @@ public class CharacterCreateView extends View {
     @Override
     public boolean doAction(String value) {
         Character playerChar = null;
+        boolean done = false;
         try {
             playerChar = CharacterControl.createPlayer(value);
         } catch(CharacterControlException cce) {
@@ -38,6 +41,11 @@ public class CharacterCreateView extends View {
             return false;
         }
         CharacterControl cc = new CharacterControl();
-        return cc.saveCharacter(playerChar,"playerChar.ser");
+        try {
+            done =  cc.saveCharacter(playerChar,"playerChar.ser");
+        } catch (CharacterControlException ex) {
+            ErrorView.display(this.getClass().getName(), "Error reading input: " + ex.getMessage());
+        }
+        return done;
     } 
 }

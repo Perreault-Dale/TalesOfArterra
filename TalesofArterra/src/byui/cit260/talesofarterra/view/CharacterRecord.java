@@ -6,6 +6,7 @@
 package byui.cit260.talesofarterra.view;
 
 import byui.cit260.talesofarterra.control.CharacterControl;
+import byui.cit260.talesofarterra.exceptions.CharacterControlException;
 import byui.cit260.talesofarterra.model.Character;
 import byui.cit260.talesofarterra.model.Item;
 import java.io.IOException;
@@ -66,7 +67,7 @@ class CharacterRecord extends View {
         Character char1 = null;
         try {
             char1 = cc.loadCharacter(fileName);
-        } catch (IOException | ClassNotFoundException ex) {
+        } catch (CharacterControlException ex) {
             this.console.println("Error reading input: " + ex.getMessage());
         }
         if (char1 == null) {

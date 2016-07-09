@@ -6,6 +6,7 @@
 package byui.cit260.talesofarterra.view;
 
 import byui.cit260.talesofarterra.control.GameControl;
+import byui.cit260.talesofarterra.exceptions.CharacterControlException;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
@@ -90,7 +91,7 @@ public class MainMenuView extends View {
         GameControl gameControlObject = new GameControl();
         try {
             gameControlObject.createNewGame(TalesofArterra.getPlayer());
-        } catch (IOException | ClassNotFoundException ex) {
+        } catch (CharacterControlException ex) {
             ErrorView.display(this.getClass().getName(), "Error reading input: " + ex.getMessage());
         }
         
