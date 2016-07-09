@@ -9,9 +9,12 @@ import byui.cit260.talesofarterra.control.CharacterControl;
 import byui.cit260.talesofarterra.exceptions.CharacterControlException;
 import byui.cit260.talesofarterra.model.Character;
 import byui.cit260.talesofarterra.model.Item;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import talesofarterra.TalesofArterra;
 
 /**
  *
@@ -29,6 +32,7 @@ class CharacterRecord extends View {
           + "\n*       \"2\"................................Henchman 1         *"
           + "\n*       \"3\"................................Henchman 2         *"
           + "\n*       \"4\"................................Henchman 3         *"
+          + "\n*       \"P\"................................Print Player Sheet *"
           + "\n*       \"Q\"................................Quit Game          *"
           + "\n*****************************************************************");
     }
@@ -36,29 +40,28 @@ class CharacterRecord extends View {
     @Override
     public boolean doAction(String value) {
         boolean done = false;
-        String fileName = "";
         value = value.toUpperCase();
         switch(value) {
             case "1":
-                fileName = "playerChar.ser";
+                done = drawCharSheet("playerChar.ser");
                 break;
             case "2":
-                fileName = "char_evanine.ser";
+                done = drawCharSheet("char_evanine.ser");
                 break;
             case "3":
-                fileName = "char_montador.ser";
+                done = drawCharSheet("char_montador.ser");
                 break;
             case "4":
-                fileName = "char_persey.ser";
+                done = drawCharSheet("char_persey.ser");
                 break;
+            case "P":
+                done = printCharSheet();
             case "Q":
                 return true;
             default:
                 this.console.println( "ERROR: That is not a valid choice!" );
                 return false;
         }
-        
-        done = drawCharSheet(fileName);
         return done;
     }
 
@@ -176,6 +179,70 @@ class CharacterRecord extends View {
             alignment = "True Neutral";
         
         return alignment;
+    }
+
+    private boolean printCharSheet() {
+        PrintWriter charSheet = null;
+        CharacterControl cc = new CharacterControl();
+        boolean done = false;
+        this.console.println("Enter the location for the character sheet.");
+        String fileName = this.getInput();
+        try {
+            charSheet = new PrintWriter(fileName);
+        } catch (FileNotFoundException ex) {
+            ErrorView.display(this.getClass().getName(),ex.getMessage());
+        }
+        Character char1 = TalesofArterra.getGame().getPlayer().getPlayerChar();
+        int [] able = char1.getAbilities();
+        int [] align = char1.getAlignment();
+        int [] skill = char1.getSkills();
+        boolean [] feat = char1.getFeats();
+        String feats = checkFeats(feat);
+        boolean [] weapons = char1.getUseWeapons();
+        String availWeapon = checkWeapons(weapons);
+        
+        Item armor = char1.getArmor();
+        Item gloves = char1.getGloves();
+        Item shield = char1.getShield();
+        Item shoes = char1.getShoes();
+        Item weapon = char1.getWeapon();
+                
+        charSheet.println(
+            "\r\n*******************************************************"
+          + "\r\n*              Character Record                       *"
+          + "\r\n*=====================================================*"
+          + "\r\n* Name:                  " + char1.getName()
+          + "\r\n* Gender:                " + char1.getGender()
+          + "\r\n* Class:                 " + char1.getCharClass()
+          + "\r\n* Alignment:             " + setAlignment(align)
+          + "\r\n* Level:                 " + char1.getLevel()
+          + "\r\n* Experience:            " + char1.getExperience()
+          + "\r\n* Hit Points:            " + char1.getHitPoints() + " / " + char1.getMaxHP()
+          + "\r\n* Armor Class:           " + cc.calcArmorClass(char1)
+          + "\r\n* Max Physical Damage:   " + cc.calcMaxDamage(char1)
+          + "\r\n* Spell Slots:           " + cc.calcSpellSlots(char1)
+        + "\r\n\r\n* Character Abilities:   "
+          + "\r\n* Strength:              " + able[0]
+          + "\r\n* Constitution:          " + able[1]
+          + "\r\n* Wisdom:                " + able[2]
+          + "\r\n* Dexterity:             " + able[3]
+          + "\r\n* Intelligence:          " + able[4]
+          + "\r\n* Charisma:              " + able[5]
+        + "\r\n\r\n* Character Skills:      "
+          + "\r\n* Concentration:         " + skill[0]
+          + "\r\n* Lore:                  " + skill[1]
+          + "\r\n* Sneak:                 " + skill[2]
+          + "\r\n* Detect:                " + skill[3]
+          + "\r\n* Persuade:              " + skill[4]
+          + "\r\n* Heal:                  " + skill[5]
+        + "\r\n\r\n* Feats:                 "
+          + "\r\n*                        " + feats
+        + "\r\n\r\n* Weapons Available:     "
+          + "\r\n*                        " + availWeapon
+          + "\r\n*******************************************************");
+        
+        charSheet.close();
+        return done;
     }
     
 }
