@@ -10,54 +10,136 @@ import java.text.DecimalFormat;
 import byui.cit260.talesofarterra.exceptions.SceneControlException;
 import byui.cit260.talesofarterra.model.Player;
 import java.io.BufferedReader;
-import java.util.Random;
+import java.io.IOException;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import talesofarterra.TalesofArterra;
+import java.io.Console;
+import byui.cit260.talesofarterra.control.CharacterControl;
+import byui.cit260.talesofarterra.exceptions.CharacterControlException;
+import byui.cit260.talesofarterra.model.Character;
+import byui.cit260.talesofarterra.model.Item;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import talesofarterra.TalesofArterra;
+
+
 /**
  *
  * @author Lucas
  */
-public class StoreView {
+class StoreView extends View{
+    
+    public StoreView() {
+        super("\n*******************************************************************"
+          + "\n*                       Store Inventory                             *"
+          + "\n*===================================================================*"
+          + "\n*     KEY TO PRESS                               ACTION             *"
+          + "\n*-------------------------------------------------------------------*"
+          + "\n*       \"1\"................................Print Store Inventory   *"
+          + "\n*       \"Q\"................................Quit Game              *"
+          + "\n*********************************************************************");
+    }
+    
+    public boolean doAction(String value) {
+        boolean done = false;;
+        value = value.toUpperCase();
+        switch(value) {
+            case "1":
+                done = drawStoreInventory();
+                break;
+            case "Q":
+                return true;
+            default: 
+                this.console.println("ERROR: That is not a valid choice!");
+                return false;
+        }
+        return done;
+    }
     
     private BufferedReader keyboard = TalesofArterra.getInFile();
     
-        public enum InventoryList {
-         Regular_Sword(8, 10, 1, "Regular Sword"),
-         Strong_Sword(3, 25, 2, "Strong Sword"),
-         Dagger_of_the_Night(2, 78, 3, "Dagger of the Night"),
-         Potion_of_Healing(5, 5, 4, "Potion of Healing"),
-         Potion_of_Fortitude(9, 9, 5, "Potion of Fortitude"),
-         Weak_Shield(11, 2, 6, "Weak Shield"),
-         Strong_Shield(5, 40, 7, "Strong Shield"),
-         Shield_of_Olympus(1, 120, 8, "Shield of Olympus");
+    public enum InventoryList {
+        Regular_Sword(8, 10, 1, "Regular Sword"),
+        Strong_Sword(3, 25, 2, "Strong Sword"),
+        Dagger_of_the_Night(2, 78, 3, "Dagger of the Night"),
+        Potion_of_Healing(5, 5, 4, "Potion of Healing"),
+        Potion_of_Fortitude(9, 9, 5, "Potion of Fortitude"),
+        Weak_Shield(11, 2, 6, "Weak Shield"),
+        Strong_Shield(5, 40, 7, "Strong Shield"),
+        Shield_of_Olympus(1, 120, 8, "Shield of Olympus");
          
-         private int amount;
-         private final int price;
-         private final int index;
-         private final String name;
+        private int amount;
+        private final int price;
+        private final int index;
+        private final String name;
          
-         InventoryList(int amount, int price, int index, String name) {
+        InventoryList(int amount, int price, int index, String name) {
             this.amount = amount;
             this.price = price;
             this.index = index;
             this.name = name;
-         }
-         public int getAmount() {
+        }
+        public int getAmount() {
              return this.amount;
-         }
-         public int getPrice() {
+        }
+        public int getPrice() {
              return this.price;
-         }
-         public int getIndex() {
+        }
+        public int getIndex() {
              return this.index;
-         }
-         public void setAmount(int amount) {
+        }
+        public void setAmount(int amount) {
              this.amount = amount;
-         }
-         public String getName() {
+        }
+        public String getName() {
              return this.name;
-         }
+        }
     }
+    
+     private boolean drawStoreInventory () {
+        InventoryList[] items = InventoryList.values();
+        PrintWriter storeSheet = null;
+        
+        boolean done = false;
+        this.console.println("Enter the location for the character sheet.");
+        String fileName = this.getInput();
+        try {
+            storeSheet = new PrintWriter(fileName);
+        } catch (FileNotFoundException ex) {
+            ErrorView.display(this.getClass().getName(),ex.getMessage());
+        }
+        
+         storeSheet.println(
+            "\r\n*******************************************************"
+          + "\r\n*                  Store Record                       *"
+          + "\r\n*=====================================================*"
+          + "\r\n*" + items[0].getName() + " - "  + items[0].getAmount()
+          + "\r\n*" + items[1].getName() + " - "  + items[1].getAmount()
+          + "\r\n*" + items[2].getName() + " - "  + items[2].getAmount()
+          + "\r\n*" + items[3].getName() + " - "  + items[3].getAmount()
+          + "\r\n*" + items[4].getName() + " - "  + items[4].getAmount()
+          + "\r\n*" + items[5].getName() + " - "  + items[5].getAmount()
+          + "\r\n*" + items[6].getName() + " - "  + items[6].getAmount()
+          + "\r\n*" + items[7].getName() + " - "  + items[7].getAmount()
+          + "\r\n*" + items[8].getName() + " - "  + items[8].getAmount()
+          + "\r\n*" + items[9].getName() + " - "  + items[9].getAmount()
+          + "\r\n*******************************************************");
+ 
+        try {
+            storeSheet.close();
+            this.console.println("\nCharacter sheet printed to " + fileName);
+        } catch(Exception ex) {
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
+        }
+        return done;   
+}
        
     private static final int totalItems = InventoryList.values().length;
         
@@ -131,6 +213,5 @@ public class StoreView {
         System.out.println("You spent a total of ₢" + df.format(sum));   
 
     }
-    
     
 }

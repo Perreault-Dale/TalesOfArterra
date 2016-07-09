@@ -234,7 +234,7 @@ public boolean doAction(String choice) {
     
        private void storeMenu() {
         StoreView sc = new StoreView();    
-        
+        sc.display();
         try {
             sc.storeInventory();
             //SceneControl.storeInventory();
