@@ -23,10 +23,7 @@ import byui.cit260.talesofarterra.exceptions.CharacterControlException;
 import byui.cit260.talesofarterra.model.Character;
 import byui.cit260.talesofarterra.model.Item;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import talesofarterra.TalesofArterra;
 
 
@@ -47,8 +44,9 @@ class StoreView extends View{
           + "\n*********************************************************************");
     }
     
+    @Override
     public boolean doAction(String value) {
-        boolean done = false;;
+        boolean done = false;
         value = value.toUpperCase();
         switch(value) {
             case "1":
@@ -62,8 +60,6 @@ class StoreView extends View{
         }
         return done;
     }
-    
-    private BufferedReader keyboard = TalesofArterra.getInFile();
     
     public enum InventoryList {
         Regular_Sword(8, 10, 1, "Regular Sword"),
@@ -108,7 +104,7 @@ class StoreView extends View{
         PrintWriter storeSheet = null;
         
         boolean done = false;
-        this.console.println("Enter the location for the character sheet.");
+        this.console.println("Enter the location for the inventory report.");
         String fileName = this.getInput();
         try {
             storeSheet = new PrintWriter(fileName);
@@ -116,21 +112,15 @@ class StoreView extends View{
             ErrorView.display(this.getClass().getName(),ex.getMessage());
         }
         
-         storeSheet.println(
-            "\r\n*******************************************************"
-          + "\r\n*                  Store Record                       *"
-          + "\r\n*=====================================================*"
-          + "\r\n*" + items[0].getName() + " - "  + items[0].getAmount()
-          + "\r\n*" + items[1].getName() + " - "  + items[1].getAmount()
-          + "\r\n*" + items[2].getName() + " - "  + items[2].getAmount()
-          + "\r\n*" + items[3].getName() + " - "  + items[3].getAmount()
-          + "\r\n*" + items[4].getName() + " - "  + items[4].getAmount()
-          + "\r\n*" + items[5].getName() + " - "  + items[5].getAmount()
-          + "\r\n*" + items[6].getName() + " - "  + items[6].getAmount()
-          + "\r\n*" + items[7].getName() + " - "  + items[7].getAmount()
-          + "\r\n*" + items[8].getName() + " - "  + items[8].getAmount()
-          + "\r\n*" + items[9].getName() + " - "  + items[9].getAmount()
-          + "\r\n*******************************************************");
+        storeSheet.println(
+           "\r\n*******************************************************"
+         + "\r\n*                  Store Record                       *"
+         + "\r\n*=====================================================*");
+        for (InventoryList item : items) {
+            storeSheet.println("\r\n*" + item.getName() + " - "  + item.getAmount());
+        }
+          
+          storeSheet.println("\r\n*******************************************************");
  
         try {
             storeSheet.close();
