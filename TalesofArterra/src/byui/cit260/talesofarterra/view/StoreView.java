@@ -132,9 +132,9 @@ class StoreView extends View{
 }
        
     private static final int totalItems = InventoryList.values().length;
-        
-    public void storeInventory() throws SceneControlException { 
-        String value = "";
+    
+    public boolean storeInventory() throws SceneControlException { 
+        //String value = "";
         int sum = 0;         
         int userPurchase = 0;
         InventoryList[] items = InventoryList.values();
@@ -163,6 +163,8 @@ class StoreView extends View{
             try {
             userPurchase = Integer.parseInt(this.keyboard.readLine());
                 
+            if (userPurchase == 0)
+                return true;
             
             if (userPurchase > totalItems) {    
                 while (userPurchase > totalItems) {
@@ -192,16 +194,17 @@ class StoreView extends View{
             } else {
                     System.out.println("We are Sold out! Sorry!!");
                 }
+ 
          }
         }
         while (userPurchase != 0);                         
         
         //Player player = new Player();
         //player = TalesofArterra.getGame().getPlayer();
-             //       throw new SceneControlException("Sorry, come back latter we .");            
+        //throw new SceneControlException("Sorry, come back latter we .");            
             
         System.out.println("You spent a total of ₢" + df.format(sum));   
-
+        return true;
     }
     
 }
