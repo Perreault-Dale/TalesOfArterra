@@ -5,22 +5,13 @@
  */
 package byui.cit260.talesofarterra.control;
 
-
-import byui.cit260.talesofarterra.view.View;
-
-import talesofarterra.TalesofArterra;
 /**
  *
  * @author Portal
  */
-public class AttackControl extends View {
+public class AttackControl {
 
-    public AttackControl(String displayMessage) {
-        super("Hero attacks");
-    }
-    
-    @Override
-     public boolean doAction(String choice) {
-         return true;
-     }
+    public void createNewAttack (){
+        System.out.println("Hero attacks");
+}
 }

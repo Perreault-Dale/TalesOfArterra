@@ -9,9 +9,6 @@ import byui.cit260.talesofarterra.control.GameControl;
 import byui.cit260.talesofarterra.exceptions.CharacterControlException;
 import java.io.File;
 import java.io.FilenameFilter;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import talesofarterra.TalesofArterra;
 
 /**
