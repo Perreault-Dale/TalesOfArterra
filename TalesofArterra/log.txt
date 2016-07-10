@@ -1,0 +1,2 @@
+byui.cit260.talesofarterra.view.GameMenuView - Error reading input: Map NonWorking is smaller than 1x1. That will never do.
+byui.cit260.talesofarterra.view.GameMenuView - Error reading input: Map NoLocations has no locations, and that's no fun at all.
