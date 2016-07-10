@@ -5,23 +5,10 @@
  */
 package byui.cit260.talesofarterra.view;
 
-import byui.cit260.talesofarterra.model.Character;
+
 import java.text.DecimalFormat;
 import byui.cit260.talesofarterra.exceptions.SceneControlException;
 import byui.cit260.talesofarterra.model.Player;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.FileWriter;
-import java.io.PrintWriter;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import talesofarterra.TalesofArterra;
-import java.io.Console;
-import byui.cit260.talesofarterra.control.CharacterControl;
-import byui.cit260.talesofarterra.exceptions.CharacterControlException;
-import byui.cit260.talesofarterra.model.Character;
-import byui.cit260.talesofarterra.model.Item;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import talesofarterra.TalesofArterra;
@@ -117,7 +104,7 @@ class StoreView extends View{
          + "\r\n*                  Store Record                       *"
          + "\r\n*=====================================================*");
         for (InventoryList item : items) {
-            storeSheet.println("\r\n*" + item.getName() + " - "  + item.getAmount());
+            storeSheet.println("\r\n* " + item.getName() + " - "  + item.getAmount());
         }
           
           storeSheet.println("\r\n*******************************************************");
@@ -139,27 +126,27 @@ class StoreView extends View{
         int userPurchase = 0;
         InventoryList[] items = InventoryList.values();
         DecimalFormat df = new DecimalFormat("#.00");
-        System.out.print(
+        this.console.print(
               "\n****************************************************************"
             + "\n*             WELCOME TO THE STORE IN EDINBURG                 *"
             + "\n*                  *Business is Booming!*                      *");      
          
         do {
-            System.out.println(
+            this.console.println(
                   "\n*--------------------------------------------------------------*"                    
                 + "\n*            The following is a list of our inventory          *" 
                 + "\n****************************************************************");
         
             for (InventoryList item : items) {
-                System.out.println(item.getIndex() + " - " + item.getName() + " - we have " + item.getAmount() + " at ₢" + df.format(item.getPrice()) + " each.");
+                this.console.println(item.getIndex() + " - " + item.getName() + " - we have " + item.getAmount() + " at ₢" + df.format(item.getPrice()) + " each.");
             }
-            System.out.println(
+            this.console.println(
                     "\n****************************************************************"
                   + "\n*                What would you like to buy?                   *" 
                   + "\n****************************************************************\n");
             //Scanner in = new Scanner(System.in);
-            System.out.println("Pick an item: (1 for the first, 2 for the second, so on and so forth");
-            System.out.print("Press 0 to leave\n>");
+            this.console.println("Pick an item: (1 for the first, 2 for the second, so on and so forth");
+            this.console.print("Press 0 to leave\n>");
             try {
             userPurchase = Integer.parseInt(this.keyboard.readLine());
                 
@@ -168,7 +155,7 @@ class StoreView extends View{
             
             if (userPurchase > totalItems) {    
                 while (userPurchase > totalItems) {
-                    System.out.print("Invalid Selection, Please select a number between 1 and " + totalItems + "\n>");
+                    this.console.print("Invalid Selection, Please select a number between 1 and " + totalItems + "\n>");
                     userPurchase = Integer.parseInt(this.keyboard.readLine());
                 }
             }
@@ -187,12 +174,12 @@ class StoreView extends View{
                     items[userPurchase - 1].setAmount(items[userPurchase - 1].getAmount() - 1); 
                  
                     player.setBank(player.getBank() - items[userPurchase - 1].getPrice());
-                    System.out.println("You just bought a " + items[userPurchase - 1].getName() + "! Congrats!!");
+                    this.console.println("You just bought a " + items[userPurchase - 1].getName() + "! Congrats!!");
                     
                     sum += items[userPurchase - 1].getPrice();
                     
             } else {
-                    System.out.println("We are Sold out! Sorry!!");
+                    this.console.println("We are Sold out! Sorry!!");
                 }
  
          }
@@ -203,7 +190,7 @@ class StoreView extends View{
         //player = TalesofArterra.getGame().getPlayer();
         //throw new SceneControlException("Sorry, come back latter we .");            
             
-        System.out.println("You spent a total of ₢" + df.format(sum));   
+        this.console.println("You spent a total of ₢" + df.format(sum));   
         return true;
     }
     

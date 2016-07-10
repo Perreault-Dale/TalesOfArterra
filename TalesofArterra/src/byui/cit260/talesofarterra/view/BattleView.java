@@ -56,8 +56,9 @@ public class BattleView extends View {
 
     private void startNewAttack() {
     
-        AttackControl attackControlObject = new AttackControl ();
-        attackControlObject.createNewAttack();
+        this.console.println("\n*** startNewAttack function called ***");
+        //AttackControl attackControlObject = new AttackControl ();
+        //attackControlObject.createNewAttack();
         
        
         }
