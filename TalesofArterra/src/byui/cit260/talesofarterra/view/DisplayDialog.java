@@ -24,7 +24,8 @@ class DisplayDialog {
         String[] dialog = TalesofArterra.getGame().getDialogue();
         
         if (dialog.length > 0) {
-                for (String line : dialog) {
+            for (String line : dialog) {
+                line = replaceText(line);
                 console.println(line);
                 try {
                     TimeUnit.MILLISECONDS.sleep(500);
@@ -33,6 +34,25 @@ class DisplayDialog {
                 }
             }
         }
+    }
+
+    private static String replaceText(String line) {
+        String firstName = null;
+        String name = TalesofArterra.getGame().getPlayer().getPlayerChar().getName();
+        
+        if (name.contains(" ")) {
+            firstName = name.substring(0,name.indexOf(" "));
+        } else {
+            firstName = name;
+        }
+        line = line.replace("<FirstName>",firstName);
+        
+        if (TalesofArterra.getGame().getPlayer().getPlayerChar().getGender() == 'M') {
+            line = line.replace("<lad/lass>","lad");
+        } else {
+            line = line.replace("<lad/lass>","lass");
+        }
+        return line;
     }
     
 }
