@@ -91,7 +91,9 @@ public class GameControl {
         game.setCurrentMap(map);
         
         Location location = Location.OutsideStart;
-        game.setCurrentLocation(location);
+        LocationControl lc = new LocationControl();
+        lc.setDialog();
+        lc.changeLocation(game,location);
         
         TalesofArterra.setGame(game);
     }

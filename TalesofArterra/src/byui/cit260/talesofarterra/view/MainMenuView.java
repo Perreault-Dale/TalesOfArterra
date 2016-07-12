@@ -92,6 +92,9 @@ public class MainMenuView extends View {
             ErrorView.display(this.getClass().getName(), "Error reading input: " + ex.getMessage());
         }
         
+        DisplayDialog dd = new DisplayDialog();
+        DisplayDialog.display();
+        
         GameMenuView gameMenu = new GameMenuView();
         gameMenu.display();
         }

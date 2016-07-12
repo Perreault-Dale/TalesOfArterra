@@ -23,6 +23,7 @@ public class Game implements Serializable {
     private Location currentLocation;
     private Player player;
     private Quest[] journal;
+    private String[] dialogue;
 
     //public getter and setter functions
     public Game() {
@@ -74,6 +75,14 @@ public class Game implements Serializable {
 
     public void setJournal(Quest[] journal) {
         this.journal = journal;
+    }
+
+    public String[] getDialogue() {
+        return dialogue;
+    }
+
+    public void setDialogue(String[] dialogue) {
+        this.dialogue = dialogue;
     }
 
     @Override
