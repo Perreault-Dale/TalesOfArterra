@@ -33,6 +33,8 @@ class DisplayDialog {
                     ErrorView.display("DisplayDialog", "Error reading input: " + ex.getMessage());
                 }
             }
+        } else {
+            console.println("No dialogue for this location.");
         }
     }
 
