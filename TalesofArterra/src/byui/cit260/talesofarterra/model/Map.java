@@ -17,6 +17,8 @@ public enum Map implements Serializable {
     //list of Maps
     Outside(0,5,5,true,true),
     CityCenter(1,10,10,true,false),
+    LazyLion(2,4,4,true,false),
+    SmithSundries(3,2,2,true,false),
     NonWorking(98,0,0,true,false),
     NoLocations(99,5,5,true,false);
     

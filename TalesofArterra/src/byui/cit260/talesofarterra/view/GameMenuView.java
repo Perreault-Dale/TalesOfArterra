@@ -8,7 +8,6 @@ import byui.cit260.talesofarterra.control.GameControl;
 import byui.cit260.talesofarterra.control.MapControl;
 import byui.cit260.talesofarterra.model.Game;
 import byui.cit260.talesofarterra.model.Location;
-import byui.cit260.talesofarterra.view.StoreView;
 import byui.cit260.talesofarterra.exceptions.MapControlException;
 import byui.cit260.talesofarterra.exceptions.SceneControlException;
 import byui.cit260.talesofarterra.model.Map;
@@ -25,14 +24,14 @@ public class GameMenuView extends View {
           +  "\n*****************************************************************"
           + "\n*                      GAME MENU                                *"
           + "\n*===============================================================*"
-          + "\nMAP"
           + "\n*     KEY TO PRESS                           ACTION             *"
           + "\n*---------------------------------------------------------------*"
+          + "\n*       \"D\"..................................REPLAY DIALOGUE   *"
           + "\n*       \"X\"..................................EXPLORE           *"
           + "\n*       \"R\"..................................REST              *"
           + "\n*       \"I\"..................................LIST INVENTORY    *"
           + "\n*       \"C\"..................................CHECK CHARACTER   *"
-          + "\n*       \"#\"..................................GO TO: LOCATION   *"
+          + "\n*       \"L\"..................................GO TO: LOCATION   *"
           + "\n*       \"J\"..................................DISPLAY JOURNAL   *"
           + "\n*       \"B\"..................................DISPLAY SPELLS    *"
           + "\n*       \"S\"..................................SAVE GAME         *"
@@ -52,6 +51,10 @@ public boolean doAction(String choice) {
            switch(choice)
            {
             
+            case "D": 
+                this.displayDialogue();
+                break;
+           
             case "X": 
                 this.displayMap();
                 break;
@@ -68,7 +71,7 @@ public boolean doAction(String choice) {
                 this.charSheet();
                 break; 
                 
-            case "#": 
+            case "L": 
                 this.goTo();
                 break;
             
@@ -192,7 +195,11 @@ public boolean doAction(String choice) {
     }
 
     private void goTo() {
-        this.console.println("\n*** goTo stub function called ***");
+        GoToLocation gtl = new GoToLocation();
+        gtl.display();
+            
+        DisplayDialog dd = new DisplayDialog();
+        dd.display();
     }
 
     private void displayJournal() {
@@ -232,7 +239,7 @@ public boolean doAction(String choice) {
         displayMap();
     }
     
-       private void storeMenu() {
+    private void storeMenu() {
         StoreView sc = new StoreView();    
         sc.display();
         try {
@@ -241,5 +248,10 @@ public boolean doAction(String choice) {
         } catch(SceneControlException sce) {
             ErrorView.display(this.getClass().getName(), "Error reading input: " + sce.getMessage());
         }
-       }
+    }
+
+    private void displayDialogue() {
+        DisplayDialog dd = new DisplayDialog();
+        DisplayDialog.display();
+    }
 }

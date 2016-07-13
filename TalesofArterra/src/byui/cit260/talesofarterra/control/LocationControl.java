@@ -53,11 +53,62 @@ public class LocationControl {
     "Last night, you spotted torchlights in the distance and collapsed, the thorny pine nettles a relief to your aching mind, body, and soul.",
     "You have arrived at Edinburg."};
     
+    String[] cityCenterBedimes = new String[] {
+        "You notice a rather grubby-looking street urchin bump up against a large noblewoman as she scolds her husband. A second later, the boy puts something in his pocket. Just before he runs away, the noblewoman notices him.",
+        "\"You there! I'm talking to you, you filthy little rat! Don't think I don't know what you did! I felt you reaching into my pocket! What did you steal?\"",
+        "\"I didn't steal nothin'!\" The boy exclaims innocently. \"I was just passin' by an' bumped ya, was all. T'was an accident, I swears it!\"",
+        "\"Preposterous! I had a gold ring in my pocket, and now it's gone! Where is it, you dirty little snot rag?!\"",
+        "\"I dunno... maybe ya just drops it?\"",
+        "\"Ridiculous! Walton, you saw this smelly dung beetle reach into my pocket, didn't you?\"",
+        "\"Umm... what? Oh, yes! Of course, dear!\"",
+        "\"And you, Jeeves! You saw it too, didn't you?\"",
+        "\"My name is Anders, ma'am.\"",
+        "\"How dare you correct me?!\"",
+        "As the woman's bellowing reaches a crescendo, the nearby gate commander steps forward. \"What's all this commotion about?\"",
+        "\"Finally, the authorities are here! This ratty little lice monkey stole my gold ring! Now, make yourself useful and do something about it!\"",
+        "\"I didn't steal it! Honest! I think she just lost it in one o'the folds of her belly.\"",
+        "\"How dare you?!\"",
+        "Stifling a smile, the gate commander turns to you. \"Pardon me, <sir/madam>, but did you see anything?\"",
+        "\"You must be joking? This scruffy lint monger is probably in league with the tiny ragamuffin!\"",
+        "The boy turns to you with pleading eyes. \"You didn't see nothin', did ya?\""
+    };
+    
+    String[] cityCenterBedimesLawful = new String[] {
+        "\"Aw, thanks a lot, ya jerk.\" Raffie reaches a dirty hand into his pocket and retrieves a gold ring, handing it back to the noblewoman.",
+	"\"Hmph! How about that? The beggar wasn't in league with the stink bug after all.\"",
+	"\"Thank you for your honesty, <sir/madam>.\"",
+	"\"It's a shame we're no longer hiring servants at the Bedime Estate. Normally we would never consider someone of your lowly heritage, but in light of what just happened, I think you would make a fine stable<boy/girl>.\"",
+	"\"Walton. Jeeves. Let's return to the Noble's District. I need a change of clothes. There's beggar stink on mine.\""
+    };
+    
+    String[] cityCenterBedimesNeutral = new String[] {
+        "\"Ha! Ya don't gots no proof, lady!\"",
+	"\"I knew it! They were in league with each other.\"",
+	"\"Thank you for your help, <sir/madam>. Now, everybody please disperse from the gates.\"",
+	"The noblewoman turns to you in a huff. \"Well, if you fancied the privilege of attaining one of the vacant servant positions at the Bedime Estate, you can forget about it!\""
+    };
+    
+    String[] cityCenterBedimesChaotic = new String[] {
+        "\"Ya see? I tolds ya I didn't do nothin'!\"",
+	"\"I knew it! They're in league with each other.\"",
+	"\"Thank you for your help, <sir/madam>. Now, everybody please disperse from the gates.\"",
+	"The noblewoman turns to you in a huff. \"Well, if you fancied the privilege of attaining one of the vacant servant positions at the Bedime Estate, you can forget about it!\""
+    };
+    
+    String[] lazyLionLando = new String[] {
+        "\"Welcome to the Lazy Lion; I am your host, Lando the Lion."
+    };
+    
     public void setDialog() {
         dialogs.put("OutsideStart", outsideStart);
+        dialogs.put("CityCenterBedimes", cityCenterBedimes);
+        dialogs.put("CityCenterBedimesLawful", cityCenterBedimesLawful);
+        dialogs.put("CityCenterBedimesNeutral", cityCenterBedimesNeutral);
+        dialogs.put("CityCenterBedimesChaotic", cityCenterBedimesChaotic);
+        dialogs.put("LazyLionLando", lazyLionLando);
     }
 
-    void changeLocation(Game game, Location location) {
+    public void changeLocation(Game game, Location location) {
         String[] dialog = dialogs.get(location.name());
         game.setDialogue(dialog);
         game.setCurrentLocation(location);

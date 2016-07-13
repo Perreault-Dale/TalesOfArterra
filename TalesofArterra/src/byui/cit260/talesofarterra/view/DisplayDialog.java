@@ -6,7 +6,6 @@
 package byui.cit260.talesofarterra.view;
 
 import byui.cit260.talesofarterra.control.LocationControl;
-import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.util.concurrent.TimeUnit;
 import talesofarterra.TalesofArterra;
@@ -23,7 +22,7 @@ class DisplayDialog {
         LocationControl lc = new LocationControl();
         String[] dialog = TalesofArterra.getGame().getDialogue();
         
-        if (dialog.length > 0) {
+        try {
             for (String line : dialog) {
                 line = replaceText(line);
                 console.println(line);
@@ -33,7 +32,7 @@ class DisplayDialog {
                     ErrorView.display("DisplayDialog", "Error reading input: " + ex.getMessage());
                 }
             }
-        } else {
+        } catch(Exception e) {
             console.println("No dialogue for this location.");
         }
     }
@@ -51,8 +50,12 @@ class DisplayDialog {
         
         if (TalesofArterra.getGame().getPlayer().getPlayerChar().getGender() == 'M') {
             line = line.replace("<lad/lass>","lad");
+            line = line.replace("<sir/madam>","sir");
+            line = line.replace("<boy/girl>","boy");
         } else {
             line = line.replace("<lad/lass>","lass");
+            line = line.replace("<sir/madam>","madam");
+            line = line.replace("<boy/girl>","girl");
         }
         return line;
     }
