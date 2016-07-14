@@ -52,10 +52,12 @@ class DisplayDialog {
             line = line.replace("<lad/lass>","lad");
             line = line.replace("<sir/madam>","sir");
             line = line.replace("<boy/girl>","boy");
+            line = line.replace("<Flowers/Sweets>","Flowers to charm a young woman, perhaps?");
         } else {
             line = line.replace("<lad/lass>","lass");
             line = line.replace("<sir/madam>","madam");
             line = line.replace("<boy/girl>","girl");
+            line = line.replace("<Flowers/Sweets>","Sweets to cheer up a girlfriend, perhaps?");
         }
         return line;
     }

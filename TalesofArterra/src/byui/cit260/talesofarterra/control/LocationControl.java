@@ -96,7 +96,27 @@ public class LocationControl {
     };
     
     String[] lazyLionLando = new String[] {
-        "\"Welcome to the Lazy Lion; I am your host, Lando the Lion."
+        "Despite this man's obvious age, he scans the room alertly and appears to have the respect of even the rowdiest patrons. He is bulky as though he was muscular in his youth. \"Greetings, <lad/lass>. Lando 'The Lion' at your service.\"",
+        "\"You must be new in town if you'd ask me that. What's your name, <lad/lass>?\"",
+        "\"My name is <FirstName>. It's a pleasure to meet you.\"",
+        "\"Well then, <FirstName>, as I said, my name is Lando. I got the nickname 'The Lion' when I was about your age, throwing myself at orcs and ogres with not a care in the world.\" He sighs, smiling fondly at old memories. \"We all settle down one day.\"",
+        "\"That's right, <lad/lass>. Started this place up... oh... almost twenty years ago, when I settled down from adventuring.\"",
+        "\"Less dirt than the Boar and less infidelity than the Fox's Tail, so you could say it's the cleanest tavern in Edinburg. The Quilted Saddle is nice too, I have a friend who runs it, but it's packed full these days.\"",
+        "\"I'm an innkeeper and a bartender... I've heard everything, <lad/lass>. Let's see... there's the rising evil... there's the rival thieves guild... there's the orcs... I suppose those are the hottest topics right now.\"",
+        "\"The most popular topic for a couple of weeks now, this one. They say there are undead... vampires and the like, stalking people at night. The city guard is denying it, but they have reason to... they don't want to start a panic.\"",
+        "\"Some people in the Merchant's District say there are werewolves howling beyond the South Gates. Imagine that, werewolves so close to the city! It's no wonder people are scared.\"",
+        "\"Alas, I know about werewolves; my stepfather died to protect me from a werewolf who had entered our home\"",
+        "The innkeeper's eyes widen. \"Truly? I'm sorry, <lad/lass>, that's a terrible tragedy, it is. You might speak to Captain Thorin... he's in the Office in the Government District. Maybe you can get a job with the city guard.\"",
+        "\"Well, there's a local thieves guild in Edinburg, there has been for a long time now. They're called the Bloody Daggers and they keep to the Slums, but sometimes venture out to nick a copper from a noble.\"",
+        "\"In the last few weeks, they say there's another thieves guild that's made it's way into the Deep Slums... that's the furthest part of the Slums, <lad/lass>. Don't go there.\"",
+        "\"Rumor is this rival guild is throwing around the Shadow Weaver name. Normally, this would be a bad thing. The Shadow Weavers are one of the most dangerous organizations in Istar, but they've never tried to enter Britannica, not to my knowledge.\"",
+        "\"From what I've heard, the Weavers in Edinburg are nothing but a bunch of thugs trying to take over Bloody Dagger turf. Probably just a bunch of punk kids using the Weaver name to scare people.\"",
+        "\"As long as this guild war doesn't hurt any civilians, the Council isn't going to bother with them. If anything, they're doing the Council a favor by killing each other off.\""
+    };
+    
+    String[] smithSundriesSamuel = new String[] {
+        "\"Hello! Hello! Welcome to Samuel's Smith & Sundries! I'm Samuel, purveyor of quality goods at reasonable prices. How may I help you today, good <sir/madam>? New suit of leather?\"",
+        "\"<Flowers/Sweets>\""
     };
     
     public void setDialog() {
@@ -106,6 +126,7 @@ public class LocationControl {
         dialogs.put("CityCenterBedimesNeutral", cityCenterBedimesNeutral);
         dialogs.put("CityCenterBedimesChaotic", cityCenterBedimesChaotic);
         dialogs.put("LazyLionLando", lazyLionLando);
+        dialogs.put("SmithSundriesSamuel", smithSundriesSamuel);
     }
 
     public void changeLocation(Game game, Location location) {
