@@ -165,8 +165,6 @@ public boolean doAction(String choice) {
         } catch (MapControlException ex) {
             ErrorView.display(this.getClass().getName(), "Error reading input: " + ex.getMessage());
         }
-        
-        
     }
 
     private void rest() {

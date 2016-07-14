@@ -50,8 +50,6 @@ class GoToLocation extends View {
         
         for (Location loc : listLocations) {
             this.console.println(listLocations.indexOf(loc)
-                + " - " 
-                + loc.name()
                 + " - "
                 + loc.getDescription());
         }
