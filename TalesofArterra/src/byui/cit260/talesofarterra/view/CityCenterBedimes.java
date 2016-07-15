@@ -8,6 +8,7 @@ package byui.cit260.talesofarterra.view;
 import byui.cit260.talesofarterra.control.LocationControl;
 import byui.cit260.talesofarterra.model.Game;
 import byui.cit260.talesofarterra.model.Character;
+import byui.cit260.talesofarterra.model.Quest;
 import talesofarterra.TalesofArterra;
 
 /**
@@ -31,6 +32,12 @@ public class CityCenterBedimes extends View {
     public boolean doAction(String value) {
         Game game = TalesofArterra.getGame();
         LocationControl lc = new LocationControl();
+        Quest edinburg = game.getJournal()[0];
+        edinburg.setAccepted(true);
+        Quest job = game.getJournal()[1];
+        job.setAccepted(true);
+        Quest bedimes = game.getJournal()[2];
+        bedimes.setAccepted(true);
         
         try {
             int i = Integer.parseInt(value);
@@ -63,6 +70,9 @@ public class CityCenterBedimes extends View {
                 break;
             }
         }
+        bedimes.setComplete(true);
+        lc.setDialog();
+        DisplayDialog.display();
         return true;
     }
 }

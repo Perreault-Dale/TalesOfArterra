@@ -90,17 +90,10 @@ class GoToLocation extends View {
             
         DisplayDialog.display();
         
-        boolean more = false;
         try {
             Class.forName("byui.cit260.talesofarterra.view." + locationName).newInstance();
-            more = true;
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
             // do nothing, just move along
-        }
-        
-        if (more != false) {
-            lc.setDialog();
-            DisplayDialog.display();
         }
         
         return true;

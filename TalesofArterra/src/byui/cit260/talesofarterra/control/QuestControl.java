@@ -51,7 +51,13 @@ public class QuestControl {
         index++;
         
         title = "Tales of Rising Evil";
-        description = "You hear rumors from the people of rising evil in Edinburg.";
+        description = "You hear rumors from Lando the Lion of rising evil in Edinburg.";
+        journal[index].setTitle(title);
+        journal[index].setDescription(description);
+        index++;
+        
+        title = "Rival Thieves' Guild";
+        description = "You hear rumors from Lando the Lion of a rival thieves' guild called the Shadow Reapers, setting up in the Deep Slums.";
         journal[index].setTitle(title);
         journal[index].setDescription(description);
         index++;
