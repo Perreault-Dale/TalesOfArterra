@@ -67,10 +67,7 @@ public class LocationControl {
         "As the woman's bellowing reaches a crescendo, the nearby gate commander steps forward. \"What's all this commotion about?\"",
         "\"Finally, the authorities are here! This ratty little lice monkey stole my gold ring! Now, make yourself useful and do something about it!\"",
         "\"I didn't steal it! Honest! I think she just lost it in one o'the folds of her belly.\"",
-        "\"How dare you?!\"",
-        "Stifling a smile, the gate commander turns to you. \"Pardon me, <sir/madam>, but did you see anything?\"",
-        "\"You must be joking? This scruffy lint monger is probably in league with the tiny ragamuffin!\"",
-        "The boy turns to you with pleading eyes. \"You didn't see nothin', did ya?\""
+        "\"How dare you?!\""
     };
     
     String[] cityCenterBedimesLawful = new String[] {
@@ -85,14 +82,16 @@ public class LocationControl {
         "\"Ha! Ya don't gots no proof, lady!\"",
 	"\"I knew it! They were in league with each other.\"",
 	"\"Thank you for your help, <sir/madam>. Now, everybody please disperse from the gates.\"",
-	"The noblewoman turns to you in a huff. \"Well, if you fancied the privilege of attaining one of the vacant servant positions at the Bedime Estate, you can forget about it!\""
+	"The noblewoman turns to you in a huff. \"Well, if you fancied the privilege of attaining one of the vacant servant positions at the Bedime Estate, you can forget about it!\"",
+	"\"Walton. Jeeves. Let's return to the Noble's District. I need a change of clothes. There's beggar stink on mine.\""
     };
     
     String[] cityCenterBedimesChaotic = new String[] {
         "\"Ya see? I tolds ya I didn't do nothin'!\"",
 	"\"I knew it! They're in league with each other.\"",
 	"\"Thank you for your help, <sir/madam>. Now, everybody please disperse from the gates.\"",
-	"The noblewoman turns to you in a huff. \"Well, if you fancied the privilege of attaining one of the vacant servant positions at the Bedime Estate, you can forget about it!\""
+	"The noblewoman turns to you in a huff. \"Well, if you fancied the privilege of attaining one of the vacant servant positions at the Bedime Estate, you can forget about it!\"",
+	"\"Walton. Jeeves. Let's return to the Noble's District. I need a change of clothes. There's beggar stink on mine.\""
     };
     
     String[] lazyLionLando = new String[] {

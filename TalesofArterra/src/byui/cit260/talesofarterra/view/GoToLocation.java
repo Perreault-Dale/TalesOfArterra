@@ -7,11 +7,15 @@ package byui.cit260.talesofarterra.view;
 
 import byui.cit260.talesofarterra.control.LocationControl;
 import byui.cit260.talesofarterra.control.MapControl;
+import byui.cit260.talesofarterra.control.SceneControl;
 import byui.cit260.talesofarterra.exceptions.MapControlException;
 import byui.cit260.talesofarterra.model.Game;
 import byui.cit260.talesofarterra.model.Location;
 import byui.cit260.talesofarterra.model.Map;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import talesofarterra.TalesofArterra;
 
 /**
@@ -83,6 +87,22 @@ class GoToLocation extends View {
         LocationControl lc = new LocationControl();
         lc.setDialog();
         lc.changeLocation(game, Location.valueOf(locationName));
+            
+        DisplayDialog.display();
+        
+        boolean more = false;
+        try {
+            Class.forName("byui.cit260.talesofarterra.view." + locationName).newInstance();
+            more = true;
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
+            // do nothing, just move along
+        }
+        
+        if (more != false) {
+            lc.setDialog();
+            DisplayDialog.display();
+        }
+        
         return true;
     }
     

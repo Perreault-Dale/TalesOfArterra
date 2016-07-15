@@ -195,9 +195,6 @@ public boolean doAction(String choice) {
     private void goTo() {
         GoToLocation gtl = new GoToLocation();
         gtl.display();
-            
-        DisplayDialog dd = new DisplayDialog();
-        dd.display();
     }
 
     private void displayJournal() {
