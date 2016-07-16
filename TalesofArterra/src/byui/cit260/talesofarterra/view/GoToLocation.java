@@ -82,7 +82,11 @@ class GoToLocation extends View {
         };
         
         if (!(mapName == null)) {
-            game.setCurrentMap(Map.valueOf(mapName));
+            try {
+                game.setCurrentMap(Map.valueOf(mapName));
+            } catch(Exception ex) {
+                ErrorView.display(this.getClass().getName(), "Error reading input: " + ex.getMessage());
+            }
         }
         LocationControl lc = new LocationControl();
         lc.setDialog();
