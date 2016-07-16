@@ -234,7 +234,7 @@ public boolean doAction(String choice) {
         displayMap();
     }
     
-    private void storeMenu() {
+    private void storeMenu() {} /*{
         StoreView sc = new StoreView();    
         sc.display();
         try {
@@ -243,7 +243,7 @@ public boolean doAction(String choice) {
         } catch(SceneControlException sce) {
             ErrorView.display(this.getClass().getName(), "Error reading input: " + sce.getMessage());
         }
-    }
+    }*/
 
     private void displayDialogue() {
         DisplayDialog dd = new DisplayDialog();
