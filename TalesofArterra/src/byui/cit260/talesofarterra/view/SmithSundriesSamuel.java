@@ -19,8 +19,7 @@ import talesofarterra.TalesofArterra;
 public class SmithSundriesSamuel extends View {
 
     public SmithSundriesSamuel() {
-        super("WELCOME WELCOME WELCOME!! to the Smith Sundries Samuel!! We have a lot of items for sale.  Would you like to see a list of our inventory and prices?"
-                + "---------- What would you like to do? ----------\n\n"
+        super("---------- What would you like to do? ----------\n\n"
                 + "1 - Show Store Inventory\n"
                 + "2 - Get back to your quest!\n"                
                 );

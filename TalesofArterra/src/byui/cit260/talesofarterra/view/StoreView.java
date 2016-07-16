@@ -56,8 +56,15 @@ class StoreView extends View{
         Potion_of_Fortitude(9, 9, 5, "Potion of Fortitude"),
         Weak_Shield(11, 2, 6, "Weak Shield"),
         Strong_Shield(5, 40, 7, "Strong Shield"),
-        Shield_of_Olympus(1, 120, 8, "Shield of Olympus");
-         
+        Shield_of_Olympus(1, 120, 8, "Shield of Olympus"),
+        Green_Tunic(20, 1, 9, "Green Tunic"),
+        Red_Tunic(20, 1, 10, "Red Tunic"),
+        Black_Tunic(19, 1, 11, "Black Tunic"),        
+        Regular_Trowsers(20, 1, 12, "Regular Trowsers"),
+        Cloak_of_Sheilding(8, 10, 13, "Cloak of Sheilding"),
+        Armored_Trowsers(5, 15, 14, "Armored Trowsers"),
+        Armored_Tunic(5, 16, 15, "Armored Tunic"),
+        Full_Body_Armor(2, 65, 16, "Full Body Armor");        
         private int amount;
         private final int price;
         private final int index;
@@ -128,7 +135,7 @@ class StoreView extends View{
         DecimalFormat df = new DecimalFormat("#.00");
         this.console.print(
               "\n****************************************************************"
-            + "\n*             WELCOME TO THE STORE IN EDINBURG                 *"
+            + "\n*             WELCOME TO SAMUEL'S SMITH & SUNDRIES!            *"
             + "\n*                  *Business is Booming!*                      *");      
          
         do {
