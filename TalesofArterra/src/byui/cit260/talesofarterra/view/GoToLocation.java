@@ -7,15 +7,11 @@ package byui.cit260.talesofarterra.view;
 
 import byui.cit260.talesofarterra.control.LocationControl;
 import byui.cit260.talesofarterra.control.MapControl;
-import byui.cit260.talesofarterra.control.SceneControl;
 import byui.cit260.talesofarterra.exceptions.MapControlException;
 import byui.cit260.talesofarterra.model.Game;
 import byui.cit260.talesofarterra.model.Location;
 import byui.cit260.talesofarterra.model.Map;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import talesofarterra.TalesofArterra;
 
 /**
