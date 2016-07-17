@@ -9,7 +9,6 @@ import byui.cit260.talesofarterra.control.MapControl;
 import byui.cit260.talesofarterra.model.Game;
 import byui.cit260.talesofarterra.model.Location;
 import byui.cit260.talesofarterra.exceptions.MapControlException;
-import byui.cit260.talesofarterra.exceptions.SceneControlException;
 import byui.cit260.talesofarterra.model.Map;
 import talesofarterra.TalesofArterra;
 /**
@@ -173,18 +172,8 @@ public boolean doAction(String choice) {
         restView.doAction("playerChar.ser");
     }
     private void bagContent() {
-        
-        this.console.println("bag stuff");
-        /*GameControl bag = new GameControl();
-        bag.createBagList();
-        
-        StringBuilder line;
-        
-        Game game = TalesofArterra.getGame();
-        BagItem[] bag = game.getBag();
-        
-        */
-        
+        ShowInventory si = new ShowInventory();
+        si.display();
     }
 
     private void charSheet() {
