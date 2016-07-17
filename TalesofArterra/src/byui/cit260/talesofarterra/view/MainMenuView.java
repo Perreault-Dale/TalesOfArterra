@@ -5,6 +5,7 @@
  */
 package byui.cit260.talesofarterra.view;
 
+import byui.cit260.talesofarterra.control.BattleControl;
 import byui.cit260.talesofarterra.control.GameControl;
 import byui.cit260.talesofarterra.exceptions.CharacterControlException;
 import java.io.File;
@@ -35,6 +36,7 @@ public class MainMenuView extends View {
                 +"\n ## Test Area menu options                 ##"
                 +"\nB - Battle view test"
                 +"\nM - Game Menu Test                           "
+                +"\nD - Battle Demo"
                 +"\n                          "                
                 +"\n---------------------------------------------");
     }
@@ -64,6 +66,8 @@ public class MainMenuView extends View {
                 return true;
             case "M":
                 this.startGameMenu();
+            case "D":
+                this.startBattleDemo();
                 break;
             default:
                 this.console.println("\n*** Invalid selection *** Try again");
@@ -140,6 +144,11 @@ public class MainMenuView extends View {
         
         GameMenuView gameMenuViewObject = new GameMenuView ();
         gameMenuViewObject.display();
+    }
+
+    private void startBattleDemo() {
+        BattleControl demo = new BattleControl ();
+        demo.demoCombat();
     }
 }
 

@@ -12,6 +12,10 @@ package byui.cit260.talesofarterra.control;
 public class AttackControl {
 
     public void createNewAttack (){
+        boolean combat = true;
+        
+        while (combat)
+        
         System.out.println("Hero attacks");
 }
 }
