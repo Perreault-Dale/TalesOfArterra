@@ -1,5 +1,5 @@
 package byui.cit260.talesofarterra.model;
-
+import java.util.ArrayList;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Objects;
@@ -30,6 +30,8 @@ public class Character implements Serializable {
     private Item shoes;
     private Item weapon;
     private Item shield;
+    private ArrayList<Item> charInventory;
+
 
     //public getter and setter functions
     public Character() {
@@ -197,6 +199,14 @@ public class Character implements Serializable {
 
     public void setUseWeapons(boolean[] useWeapons) {
         this.useWeapons = useWeapons;
+    }
+    
+    public ArrayList<Item> getCharInventory() {
+        return charInventory;
+    }
+
+    public void setCharInventory(ArrayList<Item> charInventory) {
+        this.charInventory = charInventory;
     }
 
     @Override

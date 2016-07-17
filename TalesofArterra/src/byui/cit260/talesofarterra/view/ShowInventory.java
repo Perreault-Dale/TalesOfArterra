@@ -8,6 +8,8 @@ package byui.cit260.talesofarterra.view;
 import talesofarterra.TalesofArterra;
 import byui.cit260.talesofarterra.model.Character;
 import byui.cit260.talesofarterra.model.Item;
+import java.util.ArrayList;
+
 
 /**
  *
@@ -31,7 +33,8 @@ class ShowInventory extends View {
     public boolean doAction(String value) {
         boolean done = false;
         value = value.toUpperCase();
-        Character char1 = TalesofArterra.getGame().getPlayer().getPlayerChar();
+        Character char1;
+        char1 = TalesofArterra.getGame().getPlayer().getPlayerChar();
         String armorDesc;
         String gloveDesc;
         String shoesDesc;
@@ -74,14 +77,24 @@ class ShowInventory extends View {
                 break;
             }
             case "B": {
-                this.console.println("Bag Content ... coming soon.");
+                ArrayList<Item> charInventory = char1.getCharInventory();
+                if (charInventory.size() > 0) {
+                    for (Item item : charInventory) {
+                    this.console.println(item.getDescription());
+                    } 
+                } else if (charInventory.isEmpty()) {
+                        this.console.println("You have nothing in your bag.");
+                  }
+                done = true;
+                break;
             }
             case "Q":
                 done = true;
                 break;
             default:
                 this.console.println( "ERROR: That is not a valid choice!" );
-        }
-        return done;
-    }
+        
+    }        return done;
+
+}
 }
