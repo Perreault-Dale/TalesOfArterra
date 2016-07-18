@@ -9,13 +9,10 @@ import byui.cit260.talesofarterra.model.Character;
 import byui.cit260.talesofarterra.model.Item;
 import byui.cit260.talesofarterra.exceptions.CharacterControlException;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.ArrayList;
 /**
  *
  * @author Dale
@@ -28,6 +25,8 @@ public class CharacterControl {
             throw new CharacterControlException("Your character must have a non-numeric name.");
         }
         inputName(playerChar,charName);
+        ArrayList<Item> inventory = new ArrayList<Item>();
+        playerChar.setCharInventory(inventory);
         return playerChar;
     }
     
